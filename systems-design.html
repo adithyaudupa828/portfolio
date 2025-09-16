@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Systems Design | Adithya Udupa Portfolio</title>
+  <meta name="description" content="Systems design portfolio: mechanics, features, and gameplay systems by Adithya Udupa.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="systems-design.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar" aria-label="Main navigation">
+      <a href="index.html" class="nav-logo">Adithya Udupa</a>
+      <input type="checkbox" id="nav-checkbox" class="visually-hidden" aria-label="Toggle navigation">
+      <label for="nav-checkbox" class="nav-toggle" tabindex="0" aria-controls="nav-links" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </label>
+      <div class="nav-links" id="nav-links">
+        <a class="nav-link" href="level-design.html">Level Design</a>
+            <a class="nav-link" href="systems-design.html">Systems Design</a>
+            <a class="nav-link" href="general-games.html">General</a>
+            <a class="nav-link" href="resume.html">Resume &#8595;</a>
+            <a class="nav-link" href="contact.html">Contact Me</a>
+      </div>
+    </nav>
+  </header>
+  <main>
+      <section class="page-title">
+          <h1><b>SYSTEMS DESIGN</b></h1>
+      </section>
+
+      <section class="project-section">
+      <h1>General Interaction System</h1>
+      <p>
+        The interaction system is an actor component that can be added to the player to make them interact with certain blueprints.
+          It uses collisions to detect when the player is within the range of an interactable object and displays the appropriate UI element.
+          The system supports different types of interactions, such as single press, hold for any duration (instance editable), and tap repeatedly any number of times (instance editable).
+
+      </p>
+      <div class="carousel" tabindex="0" aria-label="Systems Project 3 screenshots" alt="Systems Project 3 Screenshot 1">
+          <img src="assets/systemdesign/interaction/house.png" height="942" width="1885" alt="Systems Project 3 Screenshot 1"/>
+          <img src="assets/systemdesign/interaction/kitchen.png" height="940" width="1883" alt="Systems Project 3 Screenshot 1"/>
+          <img src="assets/systemdesign/interaction/doors.png" height="940" width="1884" alt="Systems Project 3 Screenshot 1"/>
+          <img src="assets/systemdesign/interaction/save and exit.png" height="940" width="1884" alt="Systems Project 3 Screenshot 1"/>
+          <img src="assets/systemdesign/interaction/loadout ui.png" height="925" width="1592" alt="Systems Project 3 Screenshot 1"/>
+          <img src="assets/systemdesign/interaction/level select.png" height="939" width="1883" alt="Systems Project 3 Screenshot 1"/>
+          <img src="assets/systemdesign/interaction/pause.png" height="939" width="1884"/>
+          <img src="assets/systemdesign/interaction/missionselect.png" height="922" width="1592"/>
+      </div>
+      <div class="video">
+        <video width="1120" controls>
+            <source src="assets/systemdesign/interaction/interactiontypes.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+      </div>
+    </section>
+
+      <section class="project-section">
+      <h1>X-Ray Vision</h1>
+      <p>
+        X-Ray Vision is a post-processing effect that allows the player to see through walls and other objects to locate enemies and items of interest.
+          The effect is achieved using a custom depth pass and a post-process material that highlights objects based on their distance from the player.
+          The system is designed to be modular and can be easily integrated into any Unreal Engine 5 project.
+      </p>
+      <p>
+          It can be particularly useful in stealth missions or when navigating complex environments where visibility is limited,
+          as includes different colors for different object types, such as enemies and items, to enhance situational awareness.
+      </p>
+      <div class="carousel" tabindex="0" aria-label="Systems Project 4 screenshots">
+          <img src="assets/systemdesign/xrayvision/sideview.png" height="942" width="1883"/>
+          <img src="assets/systemdesign/xrayvision/default.png" height="942" width="1885"/>
+          <img src="assets/systemdesign/xrayvision/frontview.png" height="940" width="1883"/>
+          <img src="assets/systemdesign/xrayvision/starting.png" height="942" width="1885"/>
+          <img src="assets/systemdesign/xrayvision/depth.png" height="938" width="1532"/>
+          <img src="assets/systemdesign/xrayvision/input.png" height="761" width="1330"/>
+          <img src="assets/systemdesign/xrayvision/postporcessing.png" height="945" width="1888"/></div>
+      <div class="video">
+        <video width="1120" controls>
+            <source src="assets/systemdesign/xrayvision/generalvideo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <video width="1120" controls>
+            <source src="assets/systemdesign/xrayvision/xray.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+      </div>
+    </section>
+
+      <section class="project-section">
+      <h1>Enemy AI</h1>
+      <p>
+        (WIP) This is a comprehensive series of youtube videos by Ali Elzoheiry on different types of enemy AI, including melee, ranged, and magic enemies.
+          The AI uses behavior trees and blackboards to manage their states and actions, allowing for complex behaviors such as patrolling, chasing, and attacking the player.
+      </p>
+      <p>This was part of a learning exercise, during my time as a systems designer, to understand AI programming in Unreal Engine 5.
+          The system is designed to be modular and can be easily integrated into any Unreal Engine 5 project.
+      </p>
+      <p><a href="https://www.youtube.com/playlist?list=PLNwKK6OwH7eW1n49TW6-FmiZhqRn97cRy" target="_blank" rel="noopener">Link</a> to the youtube series by Ali Elzoheiry.</p>
+      <div class="carousel" tabindex="0" aria-label="Systems Project 1 screenshots">
+          <img src="assets/systemdesign/enemyai/bpcattacks.png" height="941" width="1622" alt="Systems Project 1 Screenshot 2"/>
+          <img src="assets/systemdesign/enemyai/enemybt.png" height="945" width="1455" alt="Systems Project 1 Screenshot 2"/>
+      </div>
+      <div class="video">
+        <video width="1120" controls>
+            <source src="assets/systemdesign/enemyai/rangedenemy.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <video width="1120" controls>
+            <source src="assets/systemdesign/enemyai/magicenemy.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+      </div>
+    </section>
+
+    <section class="project-section">
+      <h1>Parkour System</h1>
+      <p>
+        (WIP)The parkour system is a comprehensive movement system that includes various mechanics such as sprinting, mantling, sliding, rolling, grappling hook, and different types of jumps (vault, double jump, triple jump, spin jump, and long jump).
+      </p>
+      <p>
+          This will be an important part of my Daredevil fan game as Daredevil focuses almost completely on combat and parkour. It is an ongoing project, and I'm learning from a long list of youtube videos to implement these mechanics using Blueprints in Unreal Engine 5.
+      </p>
+      <div class="carousel" tabindex="0" aria-label="Systems Project 2 screenshots">
+          <img src="assets/systemdesign/parkour/mantlingimage.png" height="940" width="1885" alt="Systems Project 3 Screenshot 1"/>
+          <img src="assets/systemdesign/parkour/differentjumps.png" height="940" width="1885" alt="Systems Project 3 Screenshot 1"/>
+          <img src="assets/systemdesign/parkour/grappling.png" height="940" width="1885" alt="Systems Project 3 Screenshot 1"/>
+          <img src="assets/systemdesign/parkour/mantling.png" height="940" width="1885" alt="Systems Project 3 Screenshot 1"/>
+          <img src="assets/systemdesign/parkour/player.png" height="940" width="1885" alt="Systems Project 3 Screenshot 1"/>
+          <img src="assets/systemdesign/parkour/rolling.png" height="940" width="1885" alt="Systems Project 3 Screenshot 1"/>
+          <img src="assets/systemdesign/parkour/sliding.png" height="940" width="1885" alt="Systems Project 3 Screenshot 1"/>
+      </div>
+      <div class="video">
+        <video width="1120" controls>
+            <source src="assets/systemdesign/parkour/jumps.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <video width="1120" controls>
+            <source src="assets/systemdesign/parkour/grapplinghook.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+      </div>
+    </section>
+
+    <button id="back-to-top" aria-label="Back to top">↑ Back to Top</button>
+  </main>
+  <footer>
+    &copy; 2025 Adithya Udupa.
+  </footer>
+  <script>
+      document.getElementById('back-to-top').onclick = function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      };
+  </script>
+</body>
+</html>

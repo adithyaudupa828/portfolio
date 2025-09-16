@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Resume | Adithya Udupa</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar" aria-label="Main navigation">
+      <a href="index.html" class="nav-logo">Adithya Udupa</a>
+      <input type="checkbox" id="nav-checkbox" class="visually-hidden" aria-label="Toggle navigation">
+      <label for="nav-checkbox" class="nav-toggle" tabindex="0" aria-controls="nav-links" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </label>
+      <div class="nav-links" id="nav-links">
+        <a class="nav-link" href="level-design.html">Level Design</a>
+            <a class="nav-link" href="systems-design.html">Systems Design</a>
+            <a class="nav-link" href="general-games.html">General</a>
+            <a class="nav-link" href="resume.html">Resume &#8595;</a>
+            <a class="nav-link" href="contact.html">Contact Me</a>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <section>
+      <h1 style="text-align: center;">RESUME</h1>
+      <iframe src="/assets/resume.pdf" width="100%" height="800px" style="border:none;"></iframe>
+    </section>
+  </main>
+  <footer>
+    &copy; 2025 Adithya Udupa.
+  </footer>
+  <!--
+  <script>
+    window.onload = function() {
+      const link = document.createElement('a');
+      link.href = '/assets/resume.pdf';
+      link.download = 'Adithya_Udupa_Resume.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    };
+  </script>
+  -->
+</body>
+</html>
