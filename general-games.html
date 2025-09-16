@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>General Games | Adithya Udupa Portfolio</title>
+  <meta name="description" content="General games portfolio: prototypes, jams, and experimental projects by Adithya Udupa.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="general-games.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar" aria-label="Main navigation">
+      <a href="index.html" class="nav-logo">Adithya Udupa</a>
+      <input type="checkbox" id="nav-checkbox" class="visually-hidden" aria-label="Toggle navigation">
+      <label for="nav-checkbox" class="nav-toggle" tabindex="0" aria-controls="nav-links" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </label>
+      <div class="nav-links" id="nav-links">
+        <a class="nav-link" href="level-design.html">Level Design</a>
+            <a class="nav-link" href="systems-design.html">Systems Design</a>
+            <a class="nav-link" href="general-games.html">General</a>
+            <a class="nav-link" href="resume.html">Resume &#8595;</a>
+            <a class="nav-link" href="contact.html">Contact Me</a>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <section class="page-title">
+          <h1><b>GENERAL</b></h1>
+      </section>
+      <section class="project-section">
+      <h1>Pac-Man Style Village Game</h1>
+      <p>
+          This is a simple game similar to Pac-Man but in 3D. The player has to navigate a densely populated environment to collect coins scattered in the village.
+          The villagers have a simple perception system and follow the player while in range. They have a single axe-swing animation that reduces player lives when connected.
+          The game was made in Unreal Engine 5 using Blueprints for all mechanics and systems.
+      </p>
+      <p>
+          I created the combat, player boost, AI behavior, coin collection system, and UI elements. The environment is an asset pack from the Fab store.
+      </p>
+      <div class="carousel" tabindex="0" aria-label="General Game Project 1 screenshots">
+          <img src="assets/generalgames/villagers/player.png" height="946" width="1628"/>
+          <img src="assets/generalgames/villagers/enemyai.png" height="944" width="1624"/>
+          <img src="assets/generalgames/villagers/enemysenses.png" height="942" width="1885"/>
+          <img src="assets/generalgames/villagers/coin.png" height="942" width="1885"/>
+          <img src="assets/generalgames/villagers/town.png" height="942" width="1885"/>
+        </div>
+    </section>
+
+    <section class="project-section">
+      <h1>Castle Environment</h1>
+      <p>
+        Inspired by the youtube video created by Unreal Sensei, I tried recreating a similar landscape with the same assets.
+          This landscape is only for cinematic shots and cannot be used in video games due to its dense foliage.
+        </p>
+        <p>
+          The castle is made using modular pieces from the Unreal Marketplace, and the landscape is made using Unreal Engine 5's landscape tools and foliage system.
+      </p>
+      <div class="carousel" tabindex="0" aria-label="General Game Project 2 screenshots">
+          <img src="assets/generalgames/castle/HighresScreenshot00000.png" height="942" width="1885"/>
+          <img src="assets/generalgames/castle/HighresScreenshot00004.png" height="942" width="1885"/>
+          <img src="assets/generalgames/castle/HighresScreenshot00002.png" height="942" width="1885"/>
+          <img src="assets/generalgames/castle/HighresScreenshot00003.png" height="942" width="1885"/>
+      </div>
+    </section>
+
+      <section class="project-section">
+      <h1>Elixir Blitz: Saya's Trials</h1>
+      <p>
+        In this group project, I created the entire second level as shown in the Level Design section.
+          I also created all the UI elements such as the inventory, main menu widget, settings, and the pause menu.
+          I modeled and textured a low-poly set of ingredients that the player collects in the game.
+      </p>
+      <div class="carousel" tabindex="0" aria-label="General Game Project 3 screenshots">
+          <img src="assets/generalgames/elixirblitz/Screenshot 2025-09-15 185011.png" height="938" width="1881"/>
+          <img src="assets/generalgames/elixirblitz/Screenshot 2025-09-15 185032.png" height="941" width="1885"/>
+          <img src="assets/generalgames/elixirblitz/Screenshot 2025-09-15 211711.png" height="1421" width="2123"/>
+          <img src="assets/generalgames/elixirblitz/Screenshot 2025-09-15 212155.png" height="1143" width="1707"/>
+          <img src="assets/generalgames/elixirblitz/Screenshot 2025-09-15 185520.png" height="943" width="1885"/>
+          <img src="assets/generalgames/elixirblitz/Screenshot 2025-09-15 185708.png" height="944" width="1885"/>
+      </div>
+    </section>
+
+<!--
+    <section class="project-section">
+      <h1>General Game Project 3 Title</h1>
+      <p>
+        General Game Project 3 description. Add more paragraphs as needed to explain the design, goals, and your contributions.
+      </p>
+      <div class="carousel" tabindex="0" aria-label="General Game Project 3 screenshots">
+        <img src="assets/general3-1.jpg" alt="General Game Project 3 Screenshot 1">
+        <img src="assets/general3-2.jpg" alt="General Game Project 3 Screenshot 2">
+        <img src="assets/general3-3.jpg" alt="General Game Project 3 Screenshot 3">
+        <img src="assets/general3-4.jpg" alt="General Game Project 3 Screenshot 4">
+        <img src="assets/general3-5.jpg" alt="General Game Project 3 Screenshot 5">
+        <img src="assets/general3-6.jpg" alt="General Game Project 3 Screenshot 6">
+      </div>
+      <div class="video">
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID3" title="General Game Project 3 Video" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </section>
+-->
+
+    <button id="back-to-top" aria-label="Back to top">↑ Back to Top</button>
+  </main>
+  <footer>
+    &copy; 2025 Adithya Udupa.
+  </footer>
+  <script>
+  document.getElementById('back-to-top').onclick = function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+</script>
+</body>
+</html>
