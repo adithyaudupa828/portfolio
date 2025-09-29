@@ -1,71 +1,81 @@
 .project-section {
-  margin: 1rem auto 4rem auto;
-  max-width: 1200px;
-  padding: 2rem 1.5rem;
-  background: var(--panel);
-  border-radius: var(--radius);
-  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
-  animation: fadeIn 0.4s;
+    margin: 1rem auto 3rem auto;
+    max-width: 1400px;
+    width: 100%;
+    padding: 1.5rem 1.5rem;
+    background: var(--panel);
+    border-radius: var(--radius);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    animation: fadeIn .5s;
+    scroll-margin-top: 132px;
 }
 
 .project-section h1 {
-  margin-top: 0;
-  font-size: 2rem;
-  color: var(--accent);
+    margin-top: 0;
+    font-size: 2rem;
+    color: var(--accent);
 }
 
 .page-title {
-  text-align: center;
-  margin-top: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #fff;
+    padding-top: 2rem;
+}
+
+body, html {
+    background: #181818;
 }
 
 .carousel {
-  display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  gap: 1rem;
-  padding-bottom: 0.5rem;
-  scrollbar-width: thin;
-  max-width: 100%;
-  margin: 2rem 0;
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 1rem;
+    padding-bottom: 0.5rem;
+    scrollbar-width: thin;
+    max-width: 100%;
+    margin: 2rem 0;
 }
 
 .carousel img {
-  width: 942px;
-  height: 471px;
-  object-fit: cover;
-  border-radius: var(--radius);
-  scroll-snap-align: start;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
-  flex-shrink: 0;
+    width: 942px;
+    height: 471px;
+    object-fit: cover;
+    border-radius: var(--radius);
+    scroll-snap-align: start;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    flex-shrink: 0;
 }
 
 .video {
-  margin: 2rem 0 1rem 0;
-  max-width: 1200px;
+    margin: 2rem 0 1rem 0;
+    max-width: 1200px;
 }
 
 .video iframe {
-  width: 100%;
-  aspect-ratio: 16/9;
-  border-radius: var(--radius);
-  border: none;
+    width: 100%;
+    aspect-ratio: 16/9;
+    border-radius: var(--radius);
+    border: none;
 }
 
 @media (max-width: 900px) {
-  .carousel img {
-    width: 394px;
-    height: 216px;
-  }
-  .video {
-    max-width: 100%;
-  }
-  .project-section {
-    padding: 1rem 0.5rem;
-  }
+    .carousel img {
+        width: 394px;
+        height: 216px;
+    }
+    .video {
+        max-width: 100%;
+    }
+    .project-section {
+        padding: 1rem 0.5rem;
+    }
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(16px);}
-  to { opacity: 1; transform: none;}
+    from { opacity: 0; transform: translateY(16px);}
+    to { opacity: 1; transform: none;}
 }
