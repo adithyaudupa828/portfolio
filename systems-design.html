@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <title>Systems Design | Adithya Udupa Portfolio</title>
         <meta name="description" content="Systems design portfolio: mechanics, features, and gameplay systems by Adithya Udupa.">
+        <link rel="icon" type="image/png" href="assets/favicon.png">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="base.css">
         <link rel="stylesheet" href="systems-design.css">
@@ -23,7 +24,6 @@
                 </label>
                 <div class="nav-links" id="nav-links">
                     <a class="nav-link" href="level-design.html">Level Design</a>
-                    <a class="nav-link" href="systems-design.html">Systems Design</a>
                     <a class="nav-link" href="general-games.html">General</a>
                     <a class="nav-link" href="resume.html">Resume &#8595;</a>
                     <a class="nav-link" href="contact.html">About Me</a>
@@ -31,10 +31,11 @@
             </nav>
 
             <nav class="project-menu">
-                <a href="#interaction">Interaction System</a>
-                <a href="#xray-vision">X-Ray Vision</a>
-                <a href="#enemyai">Enemy AI</a>
-                <a href="#parkour">Parkour System</a>
+                <span class="project-menu-label">Projects: </span>
+                <a href="#xray-vision">1. X-Ray Vision</a>
+                <a href="#parkour">2. Parkour System</a>
+                <a href="#interaction">3. Interaction System</a>
+                <a href="#enemyai">4. Enemy AI</a>
             </nav>
 
         </header>
@@ -43,41 +44,21 @@
                 <h1><b>Systems Design</b></h1>
             </section>
 
-            <section id="interaction" class="project-section">
-                <h1>General Interaction System</h1>
-                <h3>Daredevil Fan Game</h3>
-                <p>
-                    <b>Tools:</b> UE5, Blueprints, Mixamo
-                </p>
-                <div class="carousel" tabindex="0" aria-label="Systems Project 3 screenshots" alt="Systems Project 3 Screenshot 1">
-                    <img src="assets/systemdesign/interaction/house.png" height="942" width="1885" alt="Systems Project 3 Screenshot 1"/>
-                    <img src="assets/systemdesign/interaction/kitchen.png" height="940" width="1883" alt="Systems Project 3 Screenshot 1"/>
-                    <img src="assets/systemdesign/interaction/doors.png" height="940" width="1884" alt="Systems Project 3 Screenshot 1"/>
-                    <img src="assets/systemdesign/interaction/save and exit.png" height="940" width="1884" alt="Systems Project 3 Screenshot 1"/>
-                    <img src="assets/systemdesign/interaction/loadout ui.png" height="925" width="1592" alt="Systems Project 3 Screenshot 1"/>
-                    <img src="assets/systemdesign/interaction/level select.png" height="939" width="1883" alt="Systems Project 3 Screenshot 1"/>
-                    <img src="assets/systemdesign/interaction/pause.png" height="939" width="1884"/>
-                    <img src="assets/systemdesign/interaction/missionselect.png" height="922" width="1592"/>
-                </div>
-                <p>
-                    The interaction system is an actor component that can be added to the player to make them interact with certain blueprints.
-                    It uses collision boxes to detect when the player is within the range of an interactable object that are instance editable and displays the appropriate UI element.
-                    The system supports different types of interactions, such as single press, hold for any duration, and tap repeatedly any number of times.
-                </p>
-                <div class="video">
-                    <video width="1120" controls>
-                        <source src="assets/systemdesign/interaction/interactiontypes.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-            </section>
-
             <section id="xray-vision" class="project-section">
-                <h1>X-Ray Vision</h1>
-                <h3>Daredevil Fan Game</h3>
+                <h1>1. WORLD ON FIRE</h1>
+                <h3>Daredevil, Fan Game</h3>
+                <h3>
+                    Roles: Systems design, UI design, environment art.
+                </h3>
                 <p>
-                    <b>Tools:</b> UE5, Blueprints
+                    World On Fire (X-Ray Vision / Radar Sense) is a <u>modular, post-processing effect</u> that allows the player to see through walls to locate enemies and items of interest.
+                    The effect is achieved using a <u>custom depth pass and a post-process material</u> that highlights objects based on their stencil value.
+                    It has <u>different colors</u> for different object types, such as enemies and items, to enhance situational awareness.
                 </p>
+                <h3>
+                    Tools: UE5, Blueprints
+                </h3>
+
                 <div class="carousel" tabindex="0" aria-label="Systems Project 4 screenshots">
                     <img src="assets/systemdesign/xrayvision/sideview.png" height="942" width="1883"/>
                     <img src="assets/systemdesign/xrayvision/default.png" height="942" width="1885"/>
@@ -86,12 +67,7 @@
                     <img src="assets/systemdesign/xrayvision/depth.png" height="938" width="1532"/>
                     <img src="assets/systemdesign/xrayvision/input.png" height="761" width="1330"/>
                     <img src="assets/systemdesign/xrayvision/postporcessing.png" height="945" width="1888"/></div>
-                <p>
-                    X-Ray Vision is a modular, post-processing effect that allows the player to see through walls to locate enemies and items of interest.
-                    The effect is achieved using a custom depth pass and a post-process material that highlights objects based on their stencil value.
-                    It can be particularly useful when navigating complex environments where visibility is limited,
-                    and has different colors for different object types, such as enemies and items, to enhance situational awareness.
-                </p>
+
                 <div class="video">
                     <video width="1120" controls>
                         <source src="assets/systemdesign/xrayvision/generalvideo.mp4" type="video/mp4">
@@ -102,50 +78,34 @@
                         Your browser does not support the video tag.
                     </video>
                 </div>
-            </section>
-
-            <section id="enemyai" class="project-section">
-                <h1>Enemy AI</h1>
-                <h3>Internship Assignment (work in progress)</h3>
+                <h3>
+                    Post-Mortem / What I learnt:
+                </h3>
                 <p>
-                    <b>Tools:</b> UE5, Blueprints, Mixamo, Fab
+                    This was my first real dive into <u>advanced materials and post-processing</u>, and it was a huge learning curve.
+                    I was inspired by sensing abilities in games like Batman: Arkham and really wanted to build a "world on fire" mode for my Daredevil project.
+                    The biggest technical hurdle was figuring out <u>how to use custom depth and stencil buffers</u> to properly highlight enemies, items, and objectives through walls.
+                    I'm proud of the result because it’s a <u>clean, reusable post-process effect</u> that I can now easily drop into other projects to highlight any object.
                 </p>
-                <div class="carousel" tabindex="0" aria-label="Systems Project 1 screenshots">
-                    <img src="assets/systemdesign/enemyai/bpcattacks.png" height="941" width="1622" alt="Systems Project 1 Screenshot 2"/>
-                    <img src="assets/systemdesign/enemyai/enemybt.png" height="945" width="1455" alt="Systems Project 1 Screenshot 2"/>
-                </div>
-                <p>
-                    This is a comprehensive series of YouTube videos by Ali Elzoheiry on different types of enemy AI, including melee, ranged, and magic enemies.
-                    The AI uses behavior trees and blackboards to manage their states and actions, allowing for complex behaviors such as patrolling, chasing, and attacking the player.
-                </p>
-                <p>
-                    This is part of a learning exercise, during my time as a systems designer, to understand AI programming in Unreal Engine 5.
-                    The system is designed to be modular and can be easily integrated into any Unreal Engine 5 project.
-                <a href="https://www.youtube.com/playlist?list=PLNwKK6OwH7eW1n49TW6-FmiZhqRn97cRy" target="_blank" rel="noopener">Link</a> to the YouTube series by Ali Elzoheiry.
-                </p>
-                <div class="video">
-                    <video width="1120" controls>
-                        <source src="assets/systemdesign/enemyai/rangedenemy.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <video width="1120" controls>
-                        <source src="assets/systemdesign/enemyai/magicenemy.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
             </section>
 
             <section id="parkour" class="project-section">
-                <h1>Parkour System</h1>
-                <h3>Daredevil Fan Game (work in progress)</h3>
+                <h1>2. PARKOUR SYSTEM</h1>
+                <h3>Daredevil, Fan Game</h3>
+                <h3>
+                    Roles: Systems design.
+                </h3>
                 <p>
-                    <b>Tools: </b>UE5, Blueprints, Mixamo
+                    The parkour system is a comprehensive movement system that includes various mechanics such as <u>sprinting, mantling, sliding, rolling,
+                    grappling hook, and different types of jumps</u> (vault, double jump, triple jump, spin jump, and long jump).
+                    This is an important part of my Daredevil fan game as it focuses almost completely on combat and parkour.
                 </p>
-                <p>
-                    <b>Resources: </b>Two YouTube videos (<a href="https://www.youtube.com/watch?v=6hPArmWkKJQ" target="_blank" rel="noopener">video 1</a> and
-                    <a href="https://www.youtube.com/watch?v=Cgshs4TTi3s" target="_blank" rel="noopener">video 2</a>) by Matt Aspland that covers a single jump and climbing
-
-                </p>
+                <h3>Resources: <a href="https://www.youtube.com/watch?v=6hPArmWkKJQ" target="_blank" rel="noopener">Video 1</a> and
+                    <a href="https://www.youtube.com/watch?v=Cgshs4TTi3s" target="_blank" rel="noopener">video 2</a> by Matt Aspland for a single jump and climbing.
+                </h3>
+                <h3>
+                    Tools: UE5, Blueprints, Mixamo
+                </h3>
                 <div class="carousel" tabindex="0" aria-label="Systems Project 2 screenshots">
                     <img src="assets/systemdesign/parkour/mantlingimage.png" height="940" width="1885" alt="Systems Project 3 Screenshot 1"/>
                     <img src="assets/systemdesign/parkour/differentjumps.png" height="940" width="1885" alt="Systems Project 3 Screenshot 1"/>
@@ -155,17 +115,7 @@
                     <img src="assets/systemdesign/parkour/rolling.png" height="940" width="1885" alt="Systems Project 3 Screenshot 1"/>
                     <img src="assets/systemdesign/parkour/sliding.png" height="940" width="1885" alt="Systems Project 3 Screenshot 1"/>
                 </div>
-                <p>
-                    The parkour system is a comprehensive movement system that includes various mechanics such as sprinting, mantling, sliding, rolling,
-                    grappling hook, and different types of jumps (vault, double jump, triple jump, spin jump, and long jump).
-                </p>
-                <p>
-                    This will be an important part of my Daredevil fan game as Daredevil focuses almost completely on combat and parkour.
-                    It is an ongoing project, and I'm learning from a long list of YouTube videos to implement these mechanics using Blueprints in UE5.
-                </p>
-                <p>
-                    After completing this system, I plan to convert it into an actor component that can be easily integrated into any project.
-                </p>
+
                 <div class="video">
                     <video width="1120" controls>
                         <source src="assets/systemdesign/parkour/jumps.mp4" type="video/mp4">
@@ -176,7 +126,101 @@
                         Your browser does not support the video tag.
                     </video>
                 </div>
+                <h3>
+                    Post-Mortem / What I learnt:
+                </h3>
+                <p>
+                    This system felt <u>overwhelmingly complex</u> when I started, especially when thinking about all the different <u>player states like mantling, vaulting, and sliding</u>.
+                    Watching a few tutorials gave me a great starting point, but I quickly realized the real challenge was in adapting those lessons and building a much larger, more robust system.
+                    It taught me that a good parkour system is all about <u>"game feel,"</u> and I was able to build a flexible system with <u>many different jump types</u> from the ground up.
+                </p>
             </section>
+
+            <section id="interaction" class="project-section">
+                <h1>3. INTERACTION SYSTEM</h1>
+                <h3>Daredevil, Fan Game</h3>
+                <h3>
+                    Roles: Systems design, UI design, environment art.
+                </h3>
+                <p>
+                    The interaction system is an <u>actor component</u> that can be added to the player to make them interact with certain blueprints.
+                    The system supports <u>different types of interactions</u>, such as single press, hold for any duration, and tap repeatedly any number of times.
+                </p>
+                <h3>Tools: UE5, Mixamo, blueprints</h3>
+                <div class="carousel" tabindex="0" aria-label="Systems Project 3 screenshots" alt="Systems Project 3 Screenshot 1">
+                    <img src="assets/systemdesign/interaction/house.png" height="942" width="1885" alt="Systems Project 3 Screenshot 1"/>
+                    <img src="assets/systemdesign/interaction/kitchen.png" height="940" width="1883" alt="Systems Project 3 Screenshot 1"/>
+                    <img src="assets/systemdesign/interaction/doors.png" height="940" width="1884" alt="Systems Project 3 Screenshot 1"/>
+                    <img src="assets/systemdesign/interaction/save and exit.png" height="940" width="1884" alt="Systems Project 3 Screenshot 1"/>
+                    <img src="assets/systemdesign/interaction/loadout ui.png" height="925" width="1592" alt="Systems Project 3 Screenshot 1"/>
+                    <img src="assets/systemdesign/interaction/level select.png" height="939" width="1883" alt="Systems Project 3 Screenshot 1"/>
+                    <img src="assets/systemdesign/interaction/pause.png" height="939" width="1884"/>
+                    <img src="assets/systemdesign/interaction/missionselect.png" height="922" width="1592"/>
+                </div>
+
+                <div class="video">
+                    <video width="1120" controls>
+                        <source src="assets/systemdesign/interaction/interactiontypes.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <h3>
+                    Post-Mortem / What I learnt:
+                </h3>
+                <p>
+                    I designed this system to be <u>simple on the surface but powerful and flexible under the hood</u>.
+                    My main goal was to build it as a <u>modular Actor Component</u>, which lets me just drop it onto any character blueprint and have it work instantly.
+                    I used <u>Blueprint Interfaces</u> to handle all the communication, which makes it super easy to add new interaction types like "single press," "hold," or "mash" without rewriting old code.
+                    This project was a great lesson in <u>object-oriented programming</u>, which taught me spending a little extra time on the architecture could save a lot of work later.
+                </p>
+            </section>
+
+            <section id="enemyai" class="project-section">
+                <h1>4. ENEMY AI</h1>
+                <h3>
+                    Internship Assignment, Daredevil Fan Game
+                </h3>
+                <h3>
+                    Roles: Systems design, UI design, environment art.
+                </h3>
+                <p>
+                    This is a comprehensive series of YouTube videos by Ali Elzoheiry on different types of enemy AI, including <u>melee, ranged, and magic enemies.</u>
+                    The AI uses <u>behavior trees and blackboards</u> to manage their states and actions, allowing for complex behaviors such as patrolling, chasing, and attacking the player.
+                </p>
+                <p>
+                    This is part of a learning exercise, during my time as a systems designer at Mars Games, to understand AI programming in Unreal Engine 5.
+                    The system is designed to be modular and can be easily integrated into any Unreal Engine 5 project.
+                    <a href="https://www.youtube.com/playlist?list=PLNwKK6OwH7eW1n49TW6-FmiZhqRn97cRy" target="_blank" rel="noopener">Link</a> to the YouTube series by Ali Elzoheiry.
+                </p>
+                <h3>
+                    Tools: UE5, Blueprints, Mixamo, Fab
+                </h3>
+                <div class="carousel" tabindex="0" aria-label="Systems Project 1 screenshots">
+                    <img src="assets/systemdesign/enemyai/bpcattacks.png" height="941" width="1622" alt="Systems Project 1 Screenshot 2"/>
+                    <img src="assets/systemdesign/enemyai/enemybt.png" height="945" width="1455" alt="Systems Project 1 Screenshot 2"/>
+                </div>
+
+                <div class="video">
+                    <video width="1120" controls>
+                        <source src="assets/systemdesign/enemyai/rangedenemy.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <video width="1120" controls>
+                        <source src="assets/systemdesign/enemyai/magicenemy.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <h3>
+                    Post-Mortem / What I learnt:
+                </h3>
+                <p>
+                    This was by far the <u>most complex system</u> I've tackled, but I was determined to learn how <u>professional AI is built in Unreal</u>.
+                    I followed a very comprehensive YouTube series that did a great job of breaking down every single detail, which was the perfect way to learn such a deep topic.
+                    I finally understood how <u>Behavior Trees and Blackboards communicate</u> to make all the different AI states work.
+                    This project was a huge confidence boost, as I now have a <u>solid grasp on AI</u>, from perception and sensing to managing patrol, chase, and attack logic.
+                </p>
+            </section>
+
             <button id="back-to-top" aria-label="Back to top">↑ Back to Top</button>
         </main>
 
