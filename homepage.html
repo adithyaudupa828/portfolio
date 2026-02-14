@@ -671,8 +671,8 @@
       // Build main media carousel
       const mainMediaItems = [
         ...project.mainImages.map((img, i) => img ? 
-                `<img src="${img}" alt="Screenshot ${i+1}" 
-                class="rounded-lg h-full object-cover cursor-pointer hover:opacity-90 transition-opacity" 
+          `<img src="${img}" alt="Screenshot ${i+1}" 
+                class="rounded-lg h-full object-cover cursor-pointer hover:opacity-90 transition-opacity flex-shrink-0" 
                 style="min-width: 750px;" 
                 onclick="openFullscreenViewer('${img}')" 
                 loading="lazy" 
@@ -680,7 +680,7 @@
           : createMediaPlaceholder('image', '750px', '100%')
         ),
         project.mainVideo ?
-          `<video src="${project.mainVideo}" controls class="rounded-lg h-full" style="min-width: 750px;"></video>`
+          `<video src="${project.mainVideo}" controls class="rounded-lg h-full flex-shrink-0" style="min-width: 750px;"></video>`
           : createMediaPlaceholder('video', '750px', '100%')
       ];
 
@@ -1066,6 +1066,7 @@
 </body>
 
 </html>
+
 
 
 
