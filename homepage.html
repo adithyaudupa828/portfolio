@@ -604,12 +604,15 @@
     let config = { ...defaultConfig };
 
     // Render Project Cards
+    // Render Project Cards
     function renderProjectCards() {
       const grid = document.getElementById('projects-grid');
       grid.innerHTML = projectsData.map(project => `
         <div class="project-card cursor-pointer card-glow rounded-lg overflow-hidden" onclick="openProjectOverlay(${project.id})" style="background: ${config.surface_color}; aspect-ratio: 2/3;">
-          <div class="relative overflow-hidden" style="background: linear-gradient(135deg, rgba(0, 240, 255, 0.2), rgba(255, 0, 128, 0.2)); height: 70%;">
-            ${project.thumbnail ? `<img src="${project.thumbnail}" alt="${project.name}" class="w-full h-full object-cover" loading="lazy" onerror="this.style.display='none';">` : `
+          
+          <div class="relative overflow-hidden" style="background: linear-gradient(135deg, rgba(0, 240, 255, 0.2), rgba(255, 0, 128, 0.2)); height: 65%;">
+            ${project.thumbnail ? 
+              `<img src="${project.thumbnail}" alt="${project.name}" class="w-full h-full object-cover" loading="lazy" onerror="this.style.display='none';">` : `
               <div class="w-full h-full flex items-center justify-center">
                 <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="${config.primary_color}" stroke-width="1" class="opacity-30">
                   <rect x="3" y="3" width="18" height="18" rx="2"/>
@@ -620,21 +623,22 @@
             `}
             <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
           </div>
-          <div class="p-3 flex flex-col justify-between" style="height: 30%;">
+
+          <div class="p-4 flex flex-col justify-between" style="height: 35%;">
             <div>
-              <h3 class="font-orbitron text-base font-bold mb-1 text-glow-micro" style="color: ${config.primary_color};">
+              <h3 class="font-orbitron text-base font-bold mb-1 text-glow-micro truncate" style="color: ${config.primary_color};">
                 ${project.name}
               </h3>
               <div class="flex flex-wrap gap-1 mb-2">
                 ${project.tools.slice(0, 3).map(tool => `
-                  <span class="font-rajdhani text-lg px-3 py-1 rounded" style="background: rgba(255, 0, 128, 0.2); color: ${config.secondary_color};">
+                  <span class="font-rajdhani text-sm px-2 py-1 rounded" style="background: rgba(255, 0, 128, 0.2); color: ${config.secondary_color};">
                     ${tool}
                   </span>
                 `).join('')}
               </div>
             </div>
-            <p class="font-rajdhani text-xl" style="color: #c0c0d0;">
-              View More Details →
+            <p class="font-rajdhani text-lg" style="color: #808090;">
+               View Details →
             </p>
           </div>
         </div>
@@ -668,37 +672,44 @@
       const overlay = document.getElementById('project-overlay');
       const content = document.getElementById('overlay-content').querySelector('.inner-dark');
 
-      // 1. Build Main Media (With Flex Fixes)
-      // We force "flex-shrink-0" so images don't squish, and remove newlines from onerror to prevent crashes
+      // --- CONFIGURATION FOR SIZES ---
+      const MAIN_W = "1200px";
+      const MAIN_H = "700px";
+      const GAL_W  = "600px";
+      const GAL_H  = "350px";
+
+      // 1. Build Main Media
       const mainMediaItems = [
+        // Images: Map them, if null show placeholder
         ...project.mainImages.map((img, i) => img ? 
           `<img src="${img}" alt="Screenshot ${i+1}" 
-                class="rounded-lg h-full object-cover cursor-pointer hover:opacity-90 transition-opacity flex-shrink-0" 
-                style="min-width: 750px;" 
+                class="rounded-lg object-cover cursor-pointer hover:opacity-90 transition-opacity flex-shrink-0" 
+                style="width: ${MAIN_W}; height: ${MAIN_H};" 
                 onclick="openFullscreenViewer('${img}')" 
                 loading="lazy" 
-                onerror="this.outerHTML='${createMediaPlaceholder('image', '750px', '100%').replace(/'/g, "\\'").replace(/\n/g, "")}'">`
-          : createMediaPlaceholder('image', '750px', '100%')
+                onerror="this.outerHTML='${createMediaPlaceholder('image', MAIN_W, MAIN_H).replace(/'/g, "\\'").replace(/\n/g, "")}'">`
+          : createMediaPlaceholder('image', MAIN_W, MAIN_H)
         ),
-        project.mainVideo ?
-          `<video src="${project.mainVideo}" controls class="rounded-lg h-full flex-shrink-0" style="min-width: 750px;"></video>`
-          : createMediaPlaceholder('video', '750px', '100%')
+        // Video: ONLY add if it exists (Skips if null)
+        ...(project.mainVideo ? [
+          `<video src="${project.mainVideo}" controls class="rounded-lg flex-shrink-0" style="width: ${MAIN_W}; height: ${MAIN_H}; background: black;"></video>`
+        ] : [])
       ];
 
-      // 2. Build Gallery (With Flex Fixes)
+      // 2. Build Gallery
       const galleryItems = [
         ...project.gallery.map((img, i) => img ?
           `<img src="${img}" alt="Gallery ${i+1}" 
-                class="rounded-lg h-full object-cover cursor-pointer hover:opacity-80 transition-opacity flex-shrink-0" 
-                style="min-width: 350px;" 
+                class="rounded-lg object-cover cursor-pointer hover:opacity-80 transition-opacity flex-shrink-0" 
+                style="width: ${GAL_W}; height: ${GAL_H};" 
                 loading="lazy" 
                 onclick="openFullscreenViewer('${img}')" 
-                onerror="this.outerHTML='${createMediaPlaceholder('image', '350px', '100%').replace(/'/g, "\\'").replace(/\n/g, "")}'">`
-          : createMediaPlaceholder('image', '350px', '100%')
+                onerror="this.outerHTML='${createMediaPlaceholder('image', GAL_W, GAL_H).replace(/'/g, "\\'").replace(/\n/g, "")}'">`
+          : createMediaPlaceholder('image', GAL_W, GAL_H)
         ),
         ...(project.galleryVideos || []).map((vid, i) => vid ?
-          `<video src="${vid}" controls class="rounded-lg h-full flex-shrink-0" style="min-width: 350px;"></video>`
-          : createMediaPlaceholder('video', '350px', '100%')
+          `<video src="${vid}" controls class="rounded-lg flex-shrink-0" style="width: ${GAL_W}; height: ${GAL_H}; background: black;"></video>`
+          : createMediaPlaceholder('video', GAL_W, GAL_H)
         )
       ];
 
@@ -742,7 +753,7 @@
           <h3 class="font-orbitron text-lg font-bold mb-4 text-glow-micro" style="color: ${config.secondary_color};">
             FEATURED MEDIA
           </h3>
-          <div class="media-scroll flex gap-4 overflow-x-auto pb-4" style="height: 550px; display: flex;">
+          <div class="media-scroll flex gap-4 overflow-x-auto pb-4" style="height: ${parseInt(MAIN_H) + 20}px; display: flex;">
             ${mainMediaItems.join('')}
           </div>
         </div>
@@ -786,7 +797,7 @@
           <h3 class="font-orbitron text-lg font-bold mb-4 text-glow-micro" style="color: ${config.secondary_color};">
             GALLERY
           </h3>
-          <div class="media-scroll flex gap-3 overflow-x-auto pb-4" style="height: 250px; display: flex;">
+          <div class="media-scroll flex gap-3 overflow-x-auto pb-4" style="height: ${parseInt(GAL_H) + 20}px; display: flex;">
             ${galleryItems.join('')}
           </div>
         </div>
@@ -1054,6 +1065,7 @@
 </body>
 
 </html>
+
 
 
 
