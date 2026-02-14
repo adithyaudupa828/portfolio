@@ -676,7 +676,7 @@
                 style="min-width: 750px;" 
                 onclick="openFullscreenViewer('${img}')" 
                 loading="lazy" 
-                onerror="this.outerHTML='${createMediaPlaceholder('image', '750px', '100%').replace(/'/g, "\\'")}'">`
+                onerror="this.outerHTML='${createMediaPlaceholder('image', '750px', '100%').replace(/'/g, "\\'").replace(/\n/g, "")}'">`
           : createMediaPlaceholder('image', '750px', '100%')
         ),
         project.mainVideo ?
@@ -687,8 +687,7 @@
       // Build gallery
       const galleryItems = [
         ...project.gallery.map((img, i) => img ?
-          // WIDTH INCREASED to 350px below
-          `<img src="${img}" alt="Gallery ${i+1}" class="rounded-lg h-full object-cover cursor-pointer hover:opacity-80 transition-opacity" style="min-width: 350px;" loading="lazy" onclick="openFullscreenViewer('${img}')" onerror="this.outerHTML='${createMediaPlaceholder('image', '350px', '100%').replace(/'/g, "\\'")}'">`
+          `<img src="${img}" alt="Gallery ${i+1}" class="rounded-lg h-full object-cover cursor-pointer hover:opacity-80 transition-opacity" style="min-width: 350px;" loading="lazy" onclick="openFullscreenViewer('${img}')" onerror="this.outerHTML='${createMediaPlaceholder('image', '350px', '100%').replace(/'/g, "\\'").replace(/\n/g, "")}'">`
           : createMediaPlaceholder('image', '350px', '100%')
         ),
         ...(project.galleryVideos || []).map((vid, i) => vid ?
@@ -1067,6 +1066,7 @@
 </body>
 
 </html>
+
 
 
 
