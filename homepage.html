@@ -668,7 +668,8 @@
       const overlay = document.getElementById('project-overlay');
       const content = document.getElementById('overlay-content').querySelector('.inner-dark');
 
-      // Build main media carousel
+      // 1. Build Main Media (With Flex Fixes)
+      // We force "flex-shrink-0" so images don't squish, and remove newlines from onerror to prevent crashes
       const mainMediaItems = [
         ...project.mainImages.map((img, i) => img ? 
           `<img src="${img}" alt="Screenshot ${i+1}" 
@@ -684,23 +685,25 @@
           : createMediaPlaceholder('video', '750px', '100%')
       ];
 
-      // Build gallery
+      // 2. Build Gallery (With Flex Fixes)
       const galleryItems = [
         ...project.gallery.map((img, i) => img ?
-          `<img src="${img}" alt="Gallery ${i+1}" class="rounded-lg h-full object-cover cursor-pointer hover:opacity-80 transition-opacity" style="min-width: 350px;" loading="lazy" onclick="openFullscreenViewer('${img}')" onerror="this.outerHTML='${createMediaPlaceholder('image', '350px', '100%').replace(/'/g, "\\'").replace(/\n/g, "")}'">`
+          `<img src="${img}" alt="Gallery ${i+1}" 
+                class="rounded-lg h-full object-cover cursor-pointer hover:opacity-80 transition-opacity flex-shrink-0" 
+                style="min-width: 350px;" 
+                loading="lazy" 
+                onclick="openFullscreenViewer('${img}')" 
+                onerror="this.outerHTML='${createMediaPlaceholder('image', '350px', '100%').replace(/'/g, "\\'").replace(/\n/g, "")}'">`
           : createMediaPlaceholder('image', '350px', '100%')
         ),
         ...(project.galleryVideos || []).map((vid, i) => vid ?
-          `<video src="${vid}" controls class="rounded-lg h-full" 
-          style="min-width: 350px;"></video>`
+          `<video src="${vid}" controls class="rounded-lg h-full flex-shrink-0" style="min-width: 350px;"></video>`
           : createMediaPlaceholder('video', '350px', '100%')
         )
       ];
 
+      // 3. Inject Content
       content.innerHTML = `
-        
-
-	<!-- Header -->
         <div class="mb-8">
           <h2 class="font-orbitron text-3xl md:text-4xl font-bold mb-4 text-glow" style="color: ${config.primary_color};">
             ${project.name}
@@ -735,19 +738,15 @@
           </div>
         </div>
 
-
-        <!-- Main Media Carousel -->
         <div class="mb-8">
           <h3 class="font-orbitron text-lg font-bold mb-4 text-glow-micro" style="color: ${config.secondary_color};">
             FEATURED MEDIA
           </h3>
-          <div class="media-scroll flex gap-4 overflow-x-auto pb-4" style="height: 550px;">
+          <div class="media-scroll flex gap-4 overflow-x-auto pb-4" style="height: 550px; display: flex;">
             ${mainMediaItems.join('')}
           </div>
         </div>
 
-
-        <!-- Description -->
         <div class="mb-8">
           <h3 class="font-orbitron text-lg font-bold mb-4 text-glow-micro" style="color: ${config.secondary_color};">
             GAME OVERVIEW
@@ -770,8 +769,6 @@
           </p>
         </div>
 
-
-        <!-- Tools Used -->
         <div class="mb-8">
           <h3 class="font-orbitron text-lg font-bold mb-4 text-glow-micro" style="color: ${config.secondary_color};">
             TOOLS & TECHNOLOGIES
@@ -785,25 +782,20 @@
           </div>
         </div>
 
-        <!-- Gallery -->
         <div class="mb-8">
           <h3 class="font-orbitron text-lg font-bold mb-4 text-glow-micro" style="color: ${config.secondary_color};">
             GALLERY
           </h3>
-          <div class="media-scroll flex gap-3 overflow-x-auto pb-4" style="height: 250px;">
+          <div class="media-scroll flex gap-3 overflow-x-auto pb-4" style="height: 250px; display: flex;">
             ${galleryItems.join('')}
           </div>
         </div>
 
-        <!-- Postmortem -->
         <div>
           <h3 class="font-orbitron text-lg font-bold mb-6 text-glow-micro" style="color: ${config.secondary_color};">
             POSTMORTEM
           </h3>
           <div class="grid md:grid-cols-3 gap-6">
-            
-
-	    <!-- What Went Well -->
             <div class="rounded-lg p-5" style="background: rgba(0, 255, 128, 0.05); border: 1px solid rgba(0, 255, 128, 0.2);">
               <div class="flex items-center gap-2 mb-3">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00ff80" stroke-width="2">
@@ -817,8 +809,6 @@
               </p>
             </div>
 
-
-            <!-- What I Learned -->
             <div class="rounded-lg p-5" style="background: rgba(0, 240, 255, 0.05); border: 1px solid rgba(0, 240, 255, 0.2);">
               <div class="flex items-center gap-2 mb-3">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="${config.primary_color}" stroke-width="2">
@@ -832,8 +822,6 @@
               </p>
             </div>
 
-
-            <!-- What Went Wrong -->
             <div class="rounded-lg p-5" style="background: rgba(255, 0, 128, 0.05); border: 1px solid rgba(255, 0, 128, 0.2);">
               <div class="flex items-center gap-2 mb-3">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="${config.secondary_color}" stroke-width="2">
@@ -1066,6 +1054,7 @@
 </body>
 
 </html>
+
 
 
 
