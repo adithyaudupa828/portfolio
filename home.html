@@ -405,19 +405,20 @@
         }
       },
       {
-        id: 3,
+        // Small error with main and gallery images, fixed. Don't revert them.
+		id: 3,
         name: "Unannounced Game",
         duration: "2 sprints each",
         role: "Blockout, Level Designer, Environment Art, Set Dressing",
 		type: "Mars Games",
         tools: ["UE5", "Splines", "Photoshop"],
         thumbnail: "thumbnails/t_coppertinmine.png",
-        mainImages: ["main_images/marsgames/genfantasy/coppertinmine/coppermineflood.png", "main_images/marsgames/genfantasy/farm/farmplants.png", "main_images/marsgames/genfantasy/farm/wheat.png"],
+        mainImages: ["main_images/marsgames/genfantasy/coppertinmine/coppermineflood.png", "gallery_images/marsgames/farm/plants.png", "main_images/marsgames/genfantasy/farm/wheat.png"],
         mainVideo: null,
         game: "**Multiplayer Action Shooter Game: **Still in its early stages, this game offers variety of gameplay scenarios, such as action, combat, interactions, resource gathering, building communities, buying and selling items, and lots more.",
 		description: "**Biome: General Fantasy** \nThis biome is inspired by fantasy elements like bright flowering plants, tall trees, magical animals, and appropriate enemies. It contains lots of resources and little enemies to encourage exploration. \n\n**Copper and Tin Mines** A maze-like tunnel system with lots of exploration and resources deep in the center, which has higher risk but gives higher reward. \n**Farm** A relatively calm level with low combat where players can interact and exchange resources.",
-        gallery: ["gallery_images/marsgames/farm/wheat.png", "gallery_images/marsgames/farm/plants.png", "gallery_images/marsgames/farm/farmtop.png", "gallery_images/marsgames/farm/restarea.png", "gallery_images/marsgames/coppertinmine/2/tracks.png", "gallery_images/marsgames/coppertinmine/1/coppertinmap.png", "gallery_images/marsgames/coppertinmine/2/flood.png", "gallery_images/marsgames/coppertinmine/1/splines.png", "gallery_images/marsgames/coppertinmine/1/coppertinhouses2.png", "gallery_images/marsgames/coppertinmine/1/genfantasy1.png", "gallery_images/marsgames/coppertinmine/1/coppertinhouses.png"],
-        galleryVideos: [],
+        gallery: ["gallery_images/marsgames/farm/wheat.png", "main_images/marsgames/genfantasy/farm/farmplants.png", "gallery_images/marsgames/farm/farmtop.png", "gallery_images/marsgames/farm/restarea.png", "gallery_images/marsgames/coppertinmine/2/tracks.png", "gallery_images/marsgames/coppertinmine/1/coppertinmap.png", "gallery_images/marsgames/coppertinmine/2/flood.png", "gallery_images/marsgames/coppertinmine/1/splines.png", "gallery_images/marsgames/coppertinmine/1/coppertinhouses2.png", "gallery_images/marsgames/coppertinmine/1/genfantasy1.png", "gallery_images/marsgames/coppertinmine/1/coppertinhouses.png"],
+        galleryVideos: [null],
         postmortem: {
           wentWell: "Finished each level in a tight schedule perfectly.",
           learned: "Learnt how to manage different tasks simultaneously and deliver all of them on time.",
@@ -554,7 +555,7 @@
         thumbnail: "thumbnails/t_village.png",
         mainImages: ["main_images/villagegame/town.png", "main_images/villagegame/coin.png"],
         mainVideo: null,
-        game: "Pac-Man Style Game - This is a simple game similar to Pac-Man, but in 3D.",
+        game: "**Pac-Man Style Game** This is a simple game similar to Pac-Man, but in 3D.",
         description: "The player has to navigate a densely populated environment to collect coins. The villagers have a simple perception system and follow the player while in range. They have a single axe-swing animation that reduces player lives when connected.",
         gallery: ["gallery_images/villagegame/enemysenses.png", "gallery_images/villagegame/player.png", "gallery_images/villagegame/town.png", "gallery_images/villagegame/enemyai.png", "gallery_images/villagegame/coin.png"],
         galleryVideos: [null],
@@ -806,11 +807,21 @@
       document.body.style.overflow = 'hidden';
     }
 
-    // Close Project Overlay
+    /// Close Project Overlay (Pauses all videos)
     function closeProjectOverlay() {
       const overlay = document.getElementById('project-overlay');
+      
+      // 1. Find all videos inside the overlay
+      const videos = overlay.querySelectorAll('video');
+      
+      // 2. Pause each one
+      videos.forEach(video => {
+        video.pause();
+        });
+
+      // 3. Hide the overlay
       overlay.classList.add('hidden');
-      document.body.style.overflow = '';
+      document.body.style.overflow = ''; 
     }
 
     // Open Fullscreen Viewer
@@ -1010,6 +1021,7 @@
 </body>
 
 </html>
+
 
 
 
