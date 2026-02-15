@@ -366,26 +366,6 @@
     const projectsData = [
       {
         id: 1,
-        name: "Daredevil",
-        duration: "2 months",
-        role: "Level Designer, Blockout, Environment Art, Set Dressing",
-		type: "Solo Developer - Fan Game",
-        tools: ["UE5", "Blender", "Photoshop", "Blueprints"],
-        thumbnail: "thumbnails/t_ddhouse.png",
-        mainImages: ["main_images/daredevil/houseandshipyard/ddhome1.png", "main_images/daredevil/houseandshipyard/ddshipyard2.png", "main_images/daredevil/houseandshipyard/ddwarehouse.png"],
-        mainVideo: null,
-        game: "**Daredevil:** A fan game (in progress) with Daredevil as the main character. It has different types of combat (hand-to-hand, melee and ranged weapons, throwables, etc.) and parkour-like movement abilities.",
-		description: "**Home Level:** Inspired by Ready Or Not's headquarters for loadout, mission select, and interactions, this serves as Daredevil’s base of operations, an interactive hub with distinct zones that each serve a purpose. \n**Shipyard and Warehouses:** Set in New York’s docks, this is a hostile combat environment filled with enemies and narrative clues. The docked ship contains a challenging mini-boss fight. Smaller warehouses hide civilians in need of rescue and hints that tie in to the larger story.",
-        gallery: ["gallery_images/daredevil/houseandshipyard/ddbathroom.png", "gallery_images/daredevil/houseandshipyard/ddreferences.png", "gallery_images/daredevil/houseandshipyard/ddreferences2.png", "gallery_images/daredevil/houseandshipyard/dddojo.png", "gallery_images/daredevil/houseandshipyard/ddwarehousestairs.png", "gallery_images/daredevil/houseandshipyard/ddshipyard.png", "gallery_images/daredevil/houseandshipyard/ddwarehouse2.png"],
-        galleryVideos: [null],
-        postmortem: {
-          wentWell: "Levels look visually realistic, cohesive, and memorable.",
-          learned: "Learnt how to use trigger boxes to implement realistic interaction system.",
-          wentWrong: "Some assets were too detailed and reduced FPS greatly. Fixed it by implementing Nanite and lower polygon counts."
-        }
-      },
-      {
-        id: 2,
         name: "Unannounced Game",
         duration: "1 sprint each",
         role: "Blockout, POI Designer, Level Designer, Environment Art, Set Dressing",
@@ -408,7 +388,7 @@
         }
       },	
       {
-        id: 3,
+        id: 2,
         name: "Unannounced Game",
         duration: "2 sprints each",
         role: "Blockout, Level Designer, Environment Art, Set Dressing",
@@ -428,7 +408,7 @@
         }
       },
       {
-        id: 4,
+        id: 3,
         name: "Unannounced Game",
         duration: "2 sprints each",
         role: "Blockout, Level Designer, Environment Art, Set Dressing",
@@ -447,6 +427,26 @@
           wentWrong: "Tight schedule made our team work in crunches. So we implemented Sprint Retrospectives to discuss team failures."
         }
       },
+	  {
+        id: 4,
+        name: "Daredevil",
+        duration: "2 months",
+        role: "Level Designer, Blockout, Environment Art, Set Dressing",
+		type: "Solo Developer - Fan Game",
+        tools: ["UE5", "Blender", "Photoshop", "Blueprints"],
+        thumbnail: "thumbnails/t_ddhouse.png",
+        mainImages: ["main_images/daredevil/houseandshipyard/ddhome1.png", "main_images/daredevil/houseandshipyard/ddshipyard2.png", "main_images/daredevil/houseandshipyard/ddwarehouse.png"],
+        mainVideo: null,
+        game: "**Daredevil:** A fan game (in progress) with Daredevil as the main character. It has different types of combat (hand-to-hand, melee and ranged weapons, throwables, etc.) and parkour-like movement abilities.",
+		description: "**Home Level:** Inspired by Ready Or Not's headquarters for loadout, mission select, and interactions, this serves as Daredevil’s base of operations, an interactive hub with distinct zones that each serve a purpose. \n**Shipyard and Warehouses:** Set in New York’s docks, this is a hostile combat environment filled with enemies and narrative clues. The docked ship contains a challenging mini-boss fight. Smaller warehouses hide civilians in need of rescue and hints that tie in to the larger story.",
+        gallery: ["gallery_images/daredevil/houseandshipyard/ddbathroom.png", "gallery_images/daredevil/houseandshipyard/ddreferences.png", "gallery_images/daredevil/houseandshipyard/ddreferences2.png", "gallery_images/daredevil/houseandshipyard/dddojo.png", "gallery_images/daredevil/houseandshipyard/ddwarehousestairs.png", "gallery_images/daredevil/houseandshipyard/ddshipyard.png", "gallery_images/daredevil/houseandshipyard/ddwarehouse2.png"],
+        galleryVideos: [null],
+        postmortem: {
+          wentWell: "Levels look visually realistic, cohesive, and memorable.",
+          learned: "Learnt how to use trigger boxes to implement realistic interaction system.",
+          wentWrong: "Some assets were too detailed and reduced FPS greatly. Fixed it by implementing Nanite and lower polygon counts."
+        }
+      },
       {
         id: 5,
         name: "Parkour System",
@@ -456,7 +456,7 @@
         tools: ["UE5", "Blueprints", "Mixamo"],
         thumbnail: "thumbnails/t_parkour.png",
         mainImages: ["main_images/daredevil/parkour/mantlingimage.png", "main_images/daredevil/parkour/sliding.png"],
-        mainVideo: null,
+        mainVideo: "assets/systemdesign/parkour/jumps.mp4",
         game: "**Daredevil: **A fan game (in progress) with Daredevil as the main character. It has different types of combat (hand-to-hand, melee and ranged weapons, throwables, etc.) and parkour-like movement abilities.",
 		description: "The parkour system is a comprehensive movement system with various mechanics like sprinting, mantling, sliding, rolling, grappling hook, and different types of jumps (vault, double jump, triple jump, spin jump, and long jump). This is an important part of my Daredevil fan game as it focuses almost completely on combat and parkour.",
         gallery: ["gallery_images/daredevil/parkour/differentjumps.png", "gallery_images/daredevil/parkour/grappling.png", "gallery_images/daredevil/parkour/mantling.png", "gallery_images/daredevil/parkour/player.png", "gallery_images/daredevil/parkour/rolling.png", "gallery_images/daredevil/parkour/sliding.png"],
@@ -476,7 +476,7 @@
         tools: ["UE5", "Blueprints"],
         thumbnail: "thumbnails/t_wof.png",
         mainImages: ["main_images/daredevil/worldonfire/sideview.png", "main_images/daredevil/worldonfire/postprocessing.png"],
-        mainVideo: null,
+        mainVideo: "assets/systemdesign/xrayvision/xray.mp4",
 		game: "**Daredevil:** A fan game (in progress) with Daredevil as the main character. It has different types of combat (hand-to-hand, melee and ranged weapons, throwables, etc.) and parkour-like movement abilities.",
         description: "**World On Fire (X-Ray Vision / Radar Sense)** is a modular, post-processing effect that allows the player to see through walls to locate enemies and items of interest. The effect is achieved using a custom depth pass and a post-process material that highlights objects based on their stencil value. It has different colors for different object types, such as enemies and items, to enhance situational awareness.",
         gallery: ["gallery_images/daredevil/worldonfire/default.png", "gallery_images/daredevil/worldonfire/depth.png", "gallery_images/daredevil/worldonfire/frontview.png", "gallery_images/daredevil/worldonfire/postprocessing.png", "gallery_images/daredevil/worldonfire/sideview.png"],
@@ -496,10 +496,10 @@
         tools: ["UE5", "Blueprints", "Mixamo", "YouTube"],
         thumbnail: "thumbnails/t_enemyai.png",
         mainImages: ["main_images/marsgames/enemyai/x.png", "main_images/marsgames/enemyai/bpcattacks.png", "main_images/marsgames/enemyai/enemybt.png"],
-        mainVideo: null,
+        mainVideo: "assets/enemyai/magicenemy.mp4",
         game: "**Multiplayer Action Shooter Game** Still in its early stages, this game offers variety of gameplay scenarios, such as action, combat, interactions, resource gathering, building communities, buying and selling items, and lots more.",
 		description: "This is a comprehensive series of YouTube videos by Ali Elzoheiry on different types of enemy AI, including melee, ranged, and magic enemies. The AI uses behavior trees and blackboards to manage their states and actions, allowing for complex behaviors such as patrolling, chasing, and attacking the player. \n\nThis is part of a learning exercise, during my time as a systems designer at Mars Games, to understand AI programming in Unreal Engine 5. The system is designed to be modular and can be easily integrated into any Unreal Engine 5 project.",
-        gallery: ["gallery_images/marsgames/enemyai/x.png", "gallery_images/marsgames/enemyai/bpcattacks.png", "gallery_images/marsgames/enemyai/enemybt.png", "gallery_images/marsgames/enemyai/x.png"],
+        gallery: ["gallery_images/marsgames/enemyai/smallenemies.png", "gallery_images/marsgames/enemyai/bpcattacks.png", "gallery_images/marsgames/enemyai/playerbp.png", "gallery_images/marsgames/enemyai/enemymage.png", "gallery_images/marsgames/enemyai/enemybt.png", "gallery_images/marsgames/enemyai/bossbt.png"],
         galleryVideos: [null],
         postmortem: {
           wentWell: "Systems were designed modularly, allowing for quick iteration and easy bug fixing. The documentation received positive feedback.",
@@ -516,7 +516,7 @@
         tools: ["UE5", "Blender", "GIMP", "Blueprints"],
         thumbnail: "thumbnails/t_elixirblitz.png",
         mainImages: ["main_images/elixirblitz/forestlevel/forest.png", "main_images/elixirblitz/forestlevel/portal.png"],
-        mainVideo: null,
+        mainVideo: "assets/generalgames/elixirblitz/Screen Recording 2025-09-15 184544.mp4",
 		game: "**Elixir Blitz:** A cozy shop management game set in a mystical forest. Here the player takes orders from customers and goes through magic portals to different locations, which offer different ingredients. The player then returns to the shop to craft potions ordered by the customers.",
         description: "**Mystical Forest:** The environment shifts between serene lakes, cascading waterfalls, and shadowy forests, creating both beauty and mystery. Once the ingredients are collected, players must reach the portal to complete the run and craft the ingredients into potions.",
         gallery: ["gallery_images/elixirblitz/forestlevel/castle.png", "gallery_images/elixirblitz/forestlevel/windmill.png", "gallery_images/elixirblitz/forestlevel/foggyforest.png", "gallery_images/elixirblitz/forestlevel/darkforest.png", "gallery_images/elixirblitz/forestlevel/portal.png"],
@@ -536,7 +536,7 @@
         tools: ["UE5", "Unreal Widgets", "Blender", "Photoshop"],
         thumbnail: "thumbnails/t_elixirblitz.png",
         mainImages: ["main_images/elixirblitz/uiandmodels/3d1.png", "main_images/elixirblitz/uiandmodels/ui1.png"],
-        mainVideo: null,
+        mainVideo: "assets/generalgames/elixirblitz/Screen Recording 2025-09-15 184544.mp4",
         game: "**Elixir Blitz:** A cozy shop management game set in a mystical forest. Here the player takes orders from customers and goes through magic portals to different locations, which offer different ingredients. The player then returns to the shop to craft potions ordered by the customers.",
         description: "**UI Design: **I created all the UI elements such as the inventory, main menu, settings, and the pause menu. I modeled and textured a set of ingredients that the player collects in the game. \n**3D Modeling: **Modeled ingredients, Sun Berries, Moon Flowers, Beetles, and r that the player collects around the level to create potions.",
         gallery: ["gallery_images/elixirblitz/uiandmodels/ui2.png", "gallery_images/elixirblitz/uiandmodels/3d2.png", "gallery_images/elixirblitz/uiandmodels/mainmenu.png", "gallery_images/elixirblitz/uiandmodels/pausemenu.png", "gallery_images/elixirblitz/uiandmodels/3d1.png", "gallery_images/elixirblitz/uiandmodels/ui1.png"],
@@ -1013,6 +1013,7 @@
 </body>
 
 </html>
+
 
 
 
