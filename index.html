@@ -669,7 +669,7 @@
       currentGrid.innerHTML = currentProjects.map(project => `
         <div class="project-card cursor-pointer card-glow rounded-lg overflow-hidden flex flex-col md:flex-row w-full banner-height" onclick="openProjectOverlay(${project.id})" style="background: ${config.surface_color};">
           
-          <div class="relative overflow-hidden w-full md:w-2/3 h-64 md:h-full shrink-0" style="background: linear-gradient(135deg, rgba(0, 240, 255, 0.2), rgba(255, 0, 128, 0.2));">
+          <div class="relative overflow-hidden w-full md:w-2/3 aspect-video md:aspect-auto md:h-full shrink-0" style="background: linear-gradient(135deg, rgba(0, 240, 255, 0.2), rgba(255, 0, 128, 0.2));">
             ${project.thumbnail ? 
             `<img src="${project.thumbnail}" alt="${project.name}" class="w-full h-full object-cover" loading="lazy" onerror="this.style.display='none';">` : `
               <div class="w-full h-full flex items-center justify-center">
@@ -775,41 +775,34 @@
       const overlay = document.getElementById('project-overlay');
       const content = document.getElementById('overlay-content').querySelector('.inner-dark');
 
-      // Standardize sizes
-      const MAIN_W = "1200px";
-      const MAIN_H = "700px";
-      const GAL_W  = "600px";
-      const GAL_H  = "350px";
-
       // 1. Build Main Media (Filter out nulls automatically)
       // We use .filter(img => img) to skip nulls
       // We use onerror="this.style.display='none'" to hide broken links
+      // 1. Build Main Media (Responsive 16:9)
       const mainMediaItems = [
         ...(project.mainImages || []).filter(img => img).map((img, i) => 
           `<img src="${img}" alt="Screenshot ${i+1}" 
-                class="rounded-lg object-cover cursor-pointer transition-all duration-300 hover:brightness-50 flex-shrink-0" 
-                style="width: ${MAIN_W}; height: ${MAIN_H};" 
+                class="rounded-lg object-cover cursor-pointer transition-all duration-300 hover:brightness-50 flex-shrink-0 w-[85vw] md:w-[800px] aspect-video" 
                 onclick="openFullscreenViewer('${img}')" 
                 loading="lazy" 
                 onerror="this.style.display='none'">`
         ),
         ...(project.mainVideo ? [
-          `<video src="${project.mainVideo}" controls class="rounded-lg flex-shrink-0" style="width: ${MAIN_W}; height: ${MAIN_H}; background: black;"></video>`
+          `<video src="${project.mainVideo}" controls class="rounded-lg flex-shrink-0 w-[85vw] md:w-[800px] aspect-video" style="background: black;"></video>`
         ] : [])
       ];
 
-      // 2. Build Gallery (Filter out nulls automatically)
+      // 2. Build Gallery (Responsive 16:9)
       const galleryItems = [
         ...(project.gallery || []).filter(img => img).map((img, i) => 
           `<img src="${img}" alt="Gallery ${i+1}" 
-                class="rounded-lg object-cover cursor-pointer transition-all duration-300 hover:brightness-50 flex-shrink-0" 
-                style="width: ${GAL_W}; height: ${GAL_H};" 
+                class="rounded-lg object-cover cursor-pointer transition-all duration-300 hover:brightness-50 flex-shrink-0 w-[75vw] md:w-[500px] aspect-video" 
                 loading="lazy" 
                 onclick="openFullscreenViewer('${img}')" 
                 onerror="this.style.display='none'">`
         ),
         ...(project.galleryVideos || []).filter(vid => vid).map((vid, i) => 
-          `<video src="${vid}" controls class="rounded-lg flex-shrink-0" style="width: ${GAL_W}; height: ${GAL_H}; background: black;"></video>`
+          `<video src="${vid}" controls class="rounded-lg flex-shrink-0 w-[75vw] md:w-[500px] aspect-video" style="background: black;"></video>`
         )
       ];
 
@@ -848,7 +841,7 @@
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
             </button>
             
-            <div class="media-scroll flex flex-nowrap gap-4 overflow-x-auto overflow-y-hidden pb-4" style="height: ${parseInt(MAIN_H) + 20}px;" onscroll="updateScrollButtons(this)">
+            <div class="media-scroll flex flex-nowrap gap-4 overflow-x-auto overflow-y-hidden pb-4" onscroll="updateScrollButtons(this)">
               ${mainMediaItems.join('')}
             </div>
             
@@ -905,7 +898,7 @@
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
             </button>
             
-            <div class="media-scroll flex flex-nowrap gap-3 overflow-x-auto overflow-y-hidden pb-4" style="height: ${parseInt(GAL_H) + 20}px;" onscroll="updateScrollButtons(this)">
+            <div class="media-scroll flex flex-nowrap gap-3 overflow-x-auto overflow-y-hidden pb-4" onscroll="updateScrollButtons(this)">
               ${galleryItems.join('')}
             </div>
             
@@ -949,11 +942,6 @@
       overlay.classList.remove('hidden');
       document.body.style.overflow = 'hidden';
 
-	//-----------------------------------------------------------------------------------------------------------------------------------------------------------//
-	//-----------------------------------------------------------------------------------------------------------------------------------------------------------//
-	//-----------------------------------------------------------------------------------------------------------------------------------------------------------//
-	//-----------------------------------------------------------------------------------------------------------------------------------------------------------//
-	//Doubtful//
 	  setTimeout(() => {
         document.querySelectorAll('#project-overlay .media-scroll').forEach(container => updateScrollButtons(container));
       }, 50);
