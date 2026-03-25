@@ -284,17 +284,18 @@
 
 <section id="projects" class="py-24 px-6">
     <div class="max-w-6xl mx-auto">
-     <h2 class="font-orbitron text-4xl md:text-5xl font-bold text-center mb-4 text-glow-subtle" style="color: #00f0ff;">PROJECTS</h2>
-     <p class="font-orbitron text-center text-sm tracking-widest mb-16" style="color: #ff0080;">A COLLECTION OF MY WORK</p>
+        <h2 class="font-orbitron text-4xl md:text-5xl font-bold text-center mb-4 text-glow-subtle" style="color: #00f0ff;">PROJECTS</h2>
+        <p class="font-orbitron text-center text-sm tracking-widest mb-16" style="color: #ff0080;">A COLLECTION OF MY WORK</p>
 
+        <h3 class="font-orbitron text-2xl font-bold mb-6 text-glow-micro" style="color: #e0e0e0; max-w-5xl mx-auto">CURRENT PROJECTS</h3>
+        
+        <div id="current-projects-grid" class="flex flex-col gap-8 max-w-5xl mx-auto mb-16"></div>
 
-<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto" id="projects-grid">
+        <h3 class="font-orbitron text-2xl font-bold mb-6 text-glow-micro" style="color: #e0e0e0; max-w-5xl mx-auto">ALL PROJECTS</h3>
 
-
-</div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto" id="projects-grid"></div>
     </div>
-   </section>
-   <div class="section-divider max-w-6xl mx-auto"></div>
+</section>
 
 
 <section id="contact" class="py-24 px-6">
@@ -587,13 +588,60 @@
 
     // Render Project Cards
     function renderProjectCards() {
-      const grid = document.getElementById('projects-grid');
-      grid.innerHTML = projectsData.map(project => `
+      const currentGrid = document.getElementById('current-projects-grid');
+      const allGrid = document.getElementById('projects-grid');
+
+      // Grab the first two projects for the banner section
+      const currentProjects = projectsData.slice(0, 2);
+      // Grab the rest for the standard grid
+      const allProjects = projectsData.slice(2);
+
+      // 1. Render Current Projects (Wide Banners)
+      currentGrid.innerHTML = currentProjects.map(project => `
+        <div class="project-card cursor-pointer card-glow rounded-lg overflow-hidden flex flex-col md:flex-row" onclick="openProjectOverlay(${project.id})" style="background: ${config.surface_color}; width: 100%;">
+          
+          <div class="relative overflow-hidden md:w-2/3" style="background: linear-gradient(135deg, rgba(0, 240, 255, 0.2), rgba(255, 0, 128, 0.2)); min-height: 250px;">
+            ${project.thumbnail ? 
+            `<img src="${project.thumbnail}" alt="${project.name}" class="w-full h-full object-cover" loading="lazy" onerror="this.style.display='none';">` : `
+              <div class="w-full h-full flex items-center justify-center">
+                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="${config.primary_color}" stroke-width="1" class="opacity-30">
+                  <rect x="3" y="3" width="18" height="18" rx="2"/>
+                  <circle cx="8.5" cy="8.5" r="1.5"/>
+                  <path d="M21 15l-5-5L5 21"/>
+                </svg>
+              </div>
+            `}
+            <div class="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-black/80 via-black/20 to-transparent"></div>
+          </div>
+
+          <div class="p-6 flex flex-col justify-center md:w-1/3 space-y-4">
+            <div>
+              <h3 class="font-orbitron text-2xl font-bold mb-2 text-glow-micro truncate" style="color: ${config.primary_color};">
+                ${project.name}
+              </h3>
+              <div class="flex flex-wrap gap-2 mb-3">
+                ${project.tools.slice(0, 3).map(tool => `
+                  <span class="font-rajdhani text-sm px-2 py-1 rounded" style="background: rgba(255, 0, 128, 0.2); color: ${config.secondary_color};">
+                    ${tool}
+                  </span>
+                `).join('')}
+              </div>
+              <p class="font-rajdhani text-lg line-clamp-3" style="color: #c0c0d0;">${project.role}</p>
+            </div>
+            <p class="font-rajdhani text-lg mt-auto font-bold transition-colors" style="color: #00f0ff;">
+                View Details →
+            </p>
+          </div>
+        </div>
+      `).join('');
+
+      // 2. Render All Other Projects (Standard Grid)
+      allGrid.innerHTML = allProjects.map(project => `
         <div class="project-card cursor-pointer card-glow rounded-lg overflow-hidden" onclick="openProjectOverlay(${project.id})" style="background: ${config.surface_color}; aspect-ratio: 2/3;">
           
           <div class="relative overflow-hidden" style="background: linear-gradient(135deg, rgba(0, 240, 255, 0.2), rgba(255, 0, 128, 0.2)); height: 65%;">
             ${project.thumbnail ? 
-              `<img src="${project.thumbnail}" alt="${project.name}" class="w-full h-full object-cover" loading="lazy" onerror="this.style.display='none';">` : `
+            `<img src="${project.thumbnail}" alt="${project.name}" class="w-full h-full object-cover" loading="lazy" onerror="this.style.display='none';">` : `
               <div class="w-full h-full flex items-center justify-center">
                 <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="${config.primary_color}" stroke-width="1" class="opacity-30">
                   <rect x="3" y="3" width="18" height="18" rx="2"/>
@@ -619,7 +667,7 @@
               </div>
             </div>
             <p class="font-rajdhani text-lg" style="color: #808090;">
-               View Details →
+                View Details →
             </p>
           </div>
         </div>
