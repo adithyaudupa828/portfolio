@@ -103,10 +103,50 @@
     .media-scroll {
       scroll-behavior: smooth;
       -webkit-overflow-scrolling: touch;
+	  scroll-snap-type: x mandatory;
     }
     
     .media-scroll::-webkit-scrollbar {
       height: 6px;
+    }
+
+	.media-scroll > * {
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+    }
+    
+    .scroll-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(10, 10, 20, 0.9);
+      border: 1px solid #00f0ff;
+      color: #00f0ff;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 20;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(4px);
+      box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
+    }
+    
+    .scroll-btn:hover {
+      background: rgba(0, 240, 255, 0.2);
+      box-shadow: 0 0 15px rgba(0, 240, 255, 0.6);
+      transform: translateY(-50%) scale(1.1);
+    }
+    
+    .scroll-btn.left { left: 10px; }
+    .scroll-btn.right { right: 10px; }
+
+    .scroll-btn.opacity-0 {
+      opacity: 0;
+      pointer-events: none;
     }
     
     .gradient-border {
@@ -728,7 +768,6 @@
     }
 
     // Open Project Overlay
-    // Open Project Overlay
     function openProjectOverlay(projectId) {
       const project = projectsData.find(p => p.id === projectId);
       if (!project) return;
@@ -798,13 +837,24 @@
           </div>
         </div>
 
-        ${mainMediaItems.length > 0 ? `
+        ${mainMediaItems.length > 0 ?
+        `
         <div class="mb-8">
           <h3 class="font-orbitron text-lg font-bold mb-4 text-glow-micro" style="color: ${config.secondary_color};">
             FEATURED MEDIA
           </h3>
-          <div class="media-scroll flex flex-nowrap gap-4 overflow-x-auto overflow-y-hidden pb-4" style="height: ${parseInt(MAIN_H) + 20}px;">
-            ${mainMediaItems.join('')}
+          <div class="relative group">
+            <button class="scroll-btn left opacity-0" onclick="scrollGallery(this, -1)">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </button>
+            
+            <div class="media-scroll flex flex-nowrap gap-4 overflow-x-auto overflow-y-hidden pb-4" style="height: ${parseInt(MAIN_H) + 20}px;" onscroll="updateScrollButtons(this)">
+              ${mainMediaItems.join('')}
+            </div>
+            
+            <button class="scroll-btn right" onclick="scrollGallery(this, 1)">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
           </div>
         </div>
         ` : ''}
@@ -844,17 +894,28 @@
           </div>
         </div>
 
-        ${galleryItems.length > 0 ? `
+        ${galleryItems.length > 0 ?
+        `
         <div class="mb-8">
           <h3 class="font-orbitron text-lg font-bold mb-4 text-glow-micro" style="color: ${config.secondary_color};">
             GALLERY
           </h3>
-          <div class="media-scroll flex flex-nowrap gap-3 overflow-x-auto overflow-y-hidden pb-4" style="height: ${parseInt(GAL_H) + 20}px;">
-            ${galleryItems.join('')}
+          <div class="relative group">
+            <button class="scroll-btn left opacity-0" onclick="scrollGallery(this, -1)">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </button>
+            
+            <div class="media-scroll flex flex-nowrap gap-3 overflow-x-auto overflow-y-hidden pb-4" style="height: ${parseInt(GAL_H) + 20}px;" onscroll="updateScrollButtons(this)">
+              ${galleryItems.join('')}
+            </div>
+            
+            <button class="scroll-btn right" onclick="scrollGallery(this, 1)">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
           </div>
         </div>
         ` : ''}
-
+		
         <div>
           <h3 class="font-orbitron text-lg font-bold mb-6 text-glow-micro" style="color: ${config.secondary_color};">
             POSTMORTEM
@@ -887,6 +948,15 @@
 
       overlay.classList.remove('hidden');
       document.body.style.overflow = 'hidden';
+
+	//-----------------------------------------------------------------------------------------------------------------------------------------------------------//
+	//-----------------------------------------------------------------------------------------------------------------------------------------------------------//
+	//-----------------------------------------------------------------------------------------------------------------------------------------------------------//
+	//-----------------------------------------------------------------------------------------------------------------------------------------------------------//
+	//Doubtful//
+	  setTimeout(() => {
+        document.querySelectorAll('#project-overlay .media-scroll').forEach(container => updateScrollButtons(container));
+      }, 50);
     }
 
     /// Close Project Overlay (Pauses all videos)
@@ -953,18 +1023,54 @@
       }
     });
 
+	// Scrolls the gallery left or right by one image width
+    function scrollGallery(btn, direction) {
+      const container = btn.parentElement.querySelector('.media-scroll');
+      const item = container.firstElementChild;
+      if (!item) return;
+      
+      // Calculate scroll amount (image width + 16px gap)
+      const scrollAmount = item.offsetWidth + 16; 
+      container.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+    }
+
+    // Hides/Shows buttons based on scroll position
+    function updateScrollButtons(container) {
+      const wrapper = container.parentElement;
+      const leftBtn = wrapper.querySelector('.scroll-btn.left');
+      const rightBtn = wrapper.querySelector('.scroll-btn.right');
+      
+      if (!leftBtn || !rightBtn) return;
+
+      // Hide left button if at the very beginning (with a 5px buffer)
+      if (container.scrollLeft <= 5) {
+        leftBtn.classList.add('opacity-0');
+      } else {
+        leftBtn.classList.remove('opacity-0');
+      }
+
+      // Hide right button if at the very end
+      if (container.scrollLeft + container.clientWidth >= container.scrollWidth - 5) {
+        rightBtn.classList.add('opacity-0');
+      } else {
+        rightBtn.classList.remove('opacity-0');
+      }
+    }
+
     // Close on backdrop click
     document.getElementById('project-overlay').addEventListener('click', (e) => {
       if (e.target === document.getElementById('project-overlay') || e.target.closest('.py-8.px-4') === e.target) {
         closeProjectOverlay();
       }
     });
+	  
     // Close fullscreen viewer on backdrop click
     document.getElementById('fullscreen-viewer').addEventListener('click', (e) => {
       if (e.target === document.getElementById('fullscreen-viewer')) {
         closeFullscreenViewer();
       }
     });
+	  
     // Smooth scroll for navigation
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
