@@ -408,8 +408,32 @@
     <svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12" /> <polyline points="12 19 5 12 12 5" />
     </svg><span class="font-rajdhani text-lg">Back</span> </button> <img id="fullscreen-image" src="" alt="Fullscreen view" class="max-w-[90%] max-h-[90%] object-contain">
   </div>
+	 
   <script>
-    
+
+	  // Listen for the native browser back button/swipe
+    window.addEventListener('popstate', (event) => {
+      // 1. Check if fullscreen is open (closes first)
+      const fullscreen = document.getElementById('fullscreen-viewer');
+      if (!fullscreen.classList.contains('hidden')) {
+        closeFullscreenViewer(true);
+        return;
+      }
+      
+      // 2. Check if project overlay is open (closes second)
+      const project = document.getElementById('project-overlay');
+      if (!project.classList.contains('hidden')) {
+        closeProjectOverlay(true);
+        return;
+      }
+
+      // 3. Check if resume overlay is open
+      const resume = document.getElementById('resume-overlay');
+      if (resume && !resume.classList.contains('hidden')) {
+        closeResumeOverlay(true);
+        return;
+      }
+    });
 
 // Project Data Template
     const projectsData = [
@@ -907,27 +931,25 @@
 
       overlay.classList.remove('hidden');
       document.body.style.overflow = 'hidden';
+	  history.pushState({ modal: 'project' }, '');	
 
 	  setTimeout(() => {
         document.querySelectorAll('#project-overlay .media-scroll').forEach(container => updateScrollButtons(container));
       }, 50);
     }
 
-    /// Close Project Overlay (Pauses all videos)
-    function closeProjectOverlay() {
+    function closeProjectOverlay(fromHistory = false) {
+      // If triggered by a UI button, use the browser history to close it
+      if (!fromHistory) {
+        history.back();
+        return;
+      }
+      
       const overlay = document.getElementById('project-overlay');
-      
-      // 1. Find all videos inside the overlay
       const videos = overlay.querySelectorAll('video');
-      
-      // 2. Pause each one
-      videos.forEach(video => {
-        video.pause();
-        });
-
-      // 3. Hide the overlay
+      videos.forEach(video => video.pause());
       overlay.classList.add('hidden');
-      document.body.style.overflow = ''; 
+      document.body.style.overflow = '';
     }
 
     // Open Fullscreen Viewer
@@ -936,10 +958,16 @@
       const image = document.getElementById('fullscreen-image');
       image.src = imageSrc;
       viewer.classList.remove('hidden');
+      history.pushState({ modal: 'fullscreen' }, '');
+    }
     }
 
-    // Close Fullscreen Viewer
-    function closeFullscreenViewer() {
+    function closeFullscreenViewer(fromHistory = false) {
+      if (!fromHistory) {
+        history.back();
+        return;
+      }
+      
       const viewer = document.getElementById('fullscreen-viewer');
       viewer.classList.add('hidden');
     }
@@ -969,10 +997,15 @@
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         const fullscreenViewer = document.getElementById('fullscreen-viewer');
+        const projectOverlay = document.getElementById('project-overlay');
+        const resumeOverlay = document.getElementById('resume-overlay');
+
         if (!fullscreenViewer.classList.contains('hidden')) {
           closeFullscreenViewer();
-        } else {
+        } else if (!projectOverlay.classList.contains('hidden')) {
           closeProjectOverlay();
+        } else if (resumeOverlay && !resumeOverlay.classList.contains('hidden')) {
+          closeResumeOverlay();
         }
       }
     });
@@ -1101,13 +1134,19 @@
       const overlay = document.getElementById('resume-overlay');
       overlay.classList.remove('hidden');
       document.body.style.overflow = 'hidden'; // Stop background scrolling
+	  history.pushState({ modal: 'resume' }, '');	
     }
 
     // Close Resume Overlay
-    function closeResumeOverlay() {
+    function closeResumeOverlay(fromHistory = false) {
+      if (!fromHistory) {
+        history.back();
+        return;
+      }
+      
       const overlay = document.getElementById('resume-overlay');
       overlay.classList.add('hidden');
-      document.body.style.overflow = ''; // Restore scrolling
+      document.body.style.overflow = '';
     }
 
     // Initialize
