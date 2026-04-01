@@ -837,18 +837,31 @@
 
 		${project.layoutImages && project.layoutImages.length > 0 ? `
         <div class="mb-12">
-          <h3 class="font-orbitron text-xl md:text-2xl font-bold mb-6 text-glow-micro" style="color: ${config.secondary_color};">
+          <h3 class="font-orbitron text-xl md:text-2xl font-bold mb-4 text-glow-micro" style="color: ${config.secondary_color};">
             LAYOUT & DESIGN
           </h3>
-          <div class="flex flex-col gap-8">
-            ${project.layoutImages.map((img, i) => `
-              <img src="${img}" alt="Layout ${i+1}" 
-                   class="w-full h-auto object-contain rounded-lg border border-white/10 shadow-2xl cursor-pointer hover:opacity-80 transition-opacity" 
-                   onclick="openFullscreenViewer('${img}')" 
-                   loading="lazy" 
-                   onerror="this.style.display='none'">
-            `).join('')}
+          <div class="relative group">
+            <button class="scroll-btn left opacity-0" onclick="scrollGallery(this, -1)">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </button>
+            
+            <div class="media-scroll flex flex-nowrap gap-6 overflow-x-auto overflow-y-hidden pb-4" onscroll="updateScrollButtons(this)">
+              ${project.layoutImages.map((img, i) => `
+                <img src="${img}" alt="Layout ${i+1}" 
+                     class="flex-shrink-0 w-[85vw] md:w-[1100px] aspect-[4/3] md:aspect-video object-contain rounded-lg border border-white/10 shadow-2xl cursor-pointer hover:opacity-80 transition-opacity bg-black/40" 
+                     onclick="openFullscreenViewer('${img}')" 
+                     loading="lazy" 
+                     onerror="this.style.display='none'">
+              `).join('')}
+            </div>
+            
+            <button class="scroll-btn right" onclick="scrollGallery(this, 1)">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
           </div>
+          <p class="font-rajdhani text-sm mt-2 text-center md:text-left italic opacity-70" style="color: #c0c0d0;">
+             * Tap to open images
+          </p>
         </div>
         ` : ''}
 
