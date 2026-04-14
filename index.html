@@ -653,17 +653,7 @@
     };
 
     let activeTags = [];
-
-    
-		
-		
-		
-		
-		
-		
-		
-		
-		
+	
 	// 2. Build the interactive tag buttons
     function renderTags() {
       const container = document.getElementById('tag-filters');
@@ -683,15 +673,17 @@
         </div>
       `).join('');
 
-      if (activeTags.length > 0) {
-        tagsHTML += `
-          <div class="flex justify-center mt-4">
-            <button onclick="clearAllTags()" class="font-rajdhani text-sm tracking-wider underline transition-colors duration-300 hover:text-[#00f0ff]" style="color: #ff0080;">
-              Clear All Tags
-            </button>
-          </div>
-        `;
-      }
+      const hasTags = activeTags.length > 0;
+
+      tagsHTML += `
+        <div class="flex justify-center mt-4">
+          <button onclick="clearAllTags()" 
+                  class="font-rajdhani text-sm tracking-wider underline transition-all duration-300 hover:text-[#00f0ff] ${hasTags ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}" 
+                  style="color: #ff0080;">
+            Clear All Tags
+          </button>
+        </div>
+      `;
 
       container.innerHTML = tagsHTML;
     }
