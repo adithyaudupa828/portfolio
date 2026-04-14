@@ -331,13 +331,28 @@
 	<section id="projects" class="py-24 px-6">
     <div class="max-w-6xl mx-auto">
         <h2 class="font-orbitron text-4xl md:text-5xl font-bold text-center mb-4 text-glow-subtle" style="color: #00f0ff;">PROJECTS</h2>
-        <p class="font-orbitron text-center text-sm tracking-widest mb-16" style="color: #ff0080;">A COLLECTION OF MY WORK</p>
-        <h3 class="font-orbitron text-2xl font-bold mb-6 text-glow-micro" style="color: #e0e0e0; max-w-5xl mx-auto">CURRENT PROJECTS</h3>
-        <div id="current-projects-grid" class="flex flex-col gap-8 max-w-5xl mx-auto mb-16"></div>
-        <h3 class="font-orbitron text-2xl font-bold mb-6 text-glow-micro" style="color: #e0e0e0; max-w-5xl mx-auto">ALL PROJECTS</h3>
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto" id="projects-grid"></div>
+        <p class="font-orbitron text-center text-sm tracking-widest mb-12" style="color: #ff0080;">A COLLECTION OF MY WORK</p>
+
+        <div id="tag-filters" class="max-w-4xl mx-auto mb-16 flex flex-col gap-3">
+            </div>
+
+        <div id="default-projects-layout">
+            <h3 class="font-orbitron text-2xl font-bold mb-6 text-glow-micro" style="color: #e0e0e0; max-w-5xl mx-auto">CURRENT PROJECTS</h3>
+            <div id="current-projects-grid" class="flex flex-col gap-8 max-w-5xl mx-auto mb-16"></div>
+
+            <h3 class="font-orbitron text-2xl font-bold mb-6 text-glow-micro" style="color: #e0e0e0; max-w-5xl mx-auto">ALL PROJECTS</h3>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto" id="projects-grid"></div>
+        </div>
+
+        <div id="filtered-projects-layout" class="hidden">
+            <div class="flex items-center justify-between max-w-5xl mx-auto mb-6">
+                <h3 class="font-orbitron text-2xl font-bold text-glow-micro" style="color: #00f0ff;">FILTERED RESULTS</h3>
+                <button onclick="clearAllTags()" class="font-rajdhani text-sm text-white/50 hover:text-white underline">Clear All Tags</button>
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto" id="filtered-projects-grid"></div>
+        </div>
     </div>
-	</section>
+</section>
 
 	<section id="contact" class="py-24 px-6">
    	<div class="max-w-4xl mx-auto text-center">
@@ -401,7 +416,8 @@
     	id: 1,
         name: "Cost of Living",
 		isCurrent: true,
-        duration: "2 months",
+        tags: ["Level Design", "VOID Interactive", "Multiplayer", "AAA", "Mod", "First-Person"],
+		duration: "2 months",
         role: "Blockout, Level Designer, AI, Environment Artist, Set Dressing",
 		type: "Custom Map, Ready Or Not, VOID Interactive",
         tools: ["UE5", "FMod", "SWAT AI", "Collision", "Blender", "Navigation", "Set Dressing"],
@@ -423,7 +439,8 @@
         id: 2,
         name: "Unannounced AAA Game",
 		isCurrent: true,
-        duration: "1 sprint each",
+        tags: ["Level Design", "Mars Games", "Multiplayer", "Third-Person", "AAA"],
+		duration: "1 sprint each",
         role: "Blockout, POI Designer, Level Designer, Environment Art, Set Dressing",
 		type: "Mars Games",
         tools: ["UE5", "Blender", "Set Dressing"],
@@ -444,7 +461,8 @@
         id: 3,
         name: "Daredevil",
 		isCurrent: true,
-        duration: "2 months",
+        tags: ["Level Design", "Systems Design", "Solo Project", "First-Person", "Single Player"],
+		duration: "2 months",
         role: "Level Designer, Blockout, Environment Art, Set Dressing",
 		type: "Solo Developer - Fan Game",
         tools: ["UE5", "Blender", "Photoshop", "Blueprints"],
@@ -465,6 +483,7 @@
     {
         id: 4,
         name: "Unannounced Game",
+		tags: ["Level Design", "Mars Games", "Multiplayer", "Third-Person", "AAA"],
 		duration: "2 sprints each",
         role: "Blockout, Level Design, Environment Art, Set Dressing",
         type: "Mars Games",
@@ -486,7 +505,8 @@
     {
 		id: 5,
         name: "Unannounced Game",
-        duration: "2 sprints each",
+        tags: ["Level Design", "Mars Games", "Multiplayer", "Third-Person", "AAA"],
+		duration: "2 sprints each",
         role: "Blockout, Level Design, Environment Art, Set Dressing",
 		type: "Mars Games",
         tools: ["UE5", "Splines", "Photoshop"],
@@ -507,7 +527,8 @@
 	{
         id: 6,
         name: "Enemy and Boss AI",
-        duration: "2 months",
+        tags: ["Systems Design", "Mars Games", "Multiplayer", "Third-Person", "AAA"],
+		duration: "2 months",
         role: "Technical Designer, Documentation, Systems Designer, Enemy AI, Boss AI",
 		type: "Mars Games",
         tools: ["UE5", "Blueprints", "Mixamo", "YouTube"],
@@ -528,7 +549,8 @@
 	{
         id: 7,
         name: "Daredevil",
-        duration: "3 months",
+        tags: ["Systems Design", "Solo Project", "Single Player", "First-Person"],
+		duration: "3 months",
         role: "Systems Designer, Technical Artist",
 		type: "Solo Developer",
         tools: ["UE5", "Blueprints", "Mixamo"],
@@ -549,7 +571,8 @@
     {
         id: 8,
         name: "Elixir Blitz",
-        duration: "2 months",
+        tags: ["Level Design", "Systems Design", "UI Design", "Full Sail University", "Single Player", "Third-Person", "Full Game"],
+		duration: "2 months",
         role: "Level Designer, Environment Art, Set Dressing, UI Designer, 3D Modeling",	
 		type: "Full Sail University",
         tools: ["UE5", "Blender", "GIMP", "Blueprints", "Unreal Widgets", "Photoshop"],
@@ -570,7 +593,8 @@
     {
         id: 9,
         name: "Village Game",
-        duration: "1 month",
+        tags: ["Level Design", "Systems Design", "UI Design", "Solo Project", "Single Player", "Third-Person", "Full Game"],
+		duration: "1 month",
         role: "UI Design, Systems Design, Enemy AI",
 		type: "Solo Developer",
         tools: ["UE5", "Blueprints", "Mixamo", "Fab"],
@@ -607,96 +631,134 @@
 
     let config = { ...defaultConfig };
 
-    // Render Project Cards
+
+
+
+
+
+
+
+
+		
+    // 1. Define your tag structure (3 lines/categories)
+    const tagCategories = {
+      line1: ['Level Design', 'Systems Design', 'UI Design', 'Full Games', 'Mods'],
+      line2: ['Mars Games', 'Solo Project', 'Full Sail University'],
+      line3: ['First-Person', 'Third-Person', 'Multiplayer', 'Single Player', 'AAA']
+    };
+
+    let activeTags = [];
+
+    // 2. Build the interactive tag buttons
+    function renderTags() {
+      const container = document.getElementById('tag-filters');
+      
+      container.innerHTML = Object.values(tagCategories).map(categoryTags => `
+        <div class="flex flex-wrap justify-center gap-2">
+          ${categoryTags.map(tag => {
+            const isActive = activeTags.includes(tag);
+            return `
+            <button onclick="toggleTag('${tag}')" 
+                    class="font-rajdhani text-sm md:text-base px-4 py-1.5 rounded-full transition-all duration-300 border ${isActive ? 'bg-[#00f0ff] text-[#0a0a14] border-[#00f0ff] font-bold shadow-[0_0_10px_rgba(0,240,255,0.5)]' : 'bg-transparent text-[#00f0ff] border-[#00f0ff]/30 hover:border-[#00f0ff]'}"
+                    style="letter-spacing: 0.05em;">
+              ${tag}
+            </button>
+            `;
+          }).join('')}
+        </div>
+      `).join('');
+    }
+
+    // 3. Handle clicking a tag
+    function toggleTag(tag) {
+      if (activeTags.includes(tag)) {
+        activeTags = activeTags.filter(t => t !== tag);
+      } else {
+        activeTags.push(tag);
+      }
+      renderTags();
+      renderProjectCards();
+    }
+
+    function clearAllTags() {
+      activeTags = [];
+      renderTags();
+      renderProjectCards();
+    }
+		
+	// Render Project Cards
+    // 4. Render Project Cards (Updated with Filter Logic)
     function renderProjectCards() {
+      const defaultLayout = document.getElementById('default-projects-layout');
+      const filteredLayout = document.getElementById('filtered-projects-layout');
       const currentGrid = document.getElementById('current-projects-grid');
       const allGrid = document.getElementById('projects-grid');
+      const filteredGrid = document.getElementById('filtered-projects-grid');
 
-      // Filter projects based on the isCurrent property
-      const currentProjects = projectsData.filter(project => project.isCurrent);
-      const allProjects = projectsData.filter(project => !project.isCurrent);
-
-      // 1. Render Current Projects (Wide Banners)
-      currentGrid.innerHTML = currentProjects.map(project => `
-        <div class="project-card cursor-pointer card-glow rounded-lg overflow-hidden flex flex-col md:flex-row w-full banner-height" onclick="openProjectOverlay(${project.id})" style="background: ${config.surface_color};">
-          
-          <div class="relative overflow-hidden w-full md:w-2/3 aspect-video md:aspect-auto md:h-full shrink-0" style="background: linear-gradient(135deg, rgba(0, 240, 255, 0.2), rgba(255, 0, 128, 0.2));">
-            ${project.thumbnail ? 
-            `<img src="${project.thumbnail}" alt="${project.name}" class="w-full h-full object-cover" loading="lazy" onerror="this.style.display='none';">` : `
-              <div class="w-full h-full flex items-center justify-center">
-                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="${config.primary_color}" stroke-width="1" class="opacity-30">
-                  <rect x="3" y="3" width="18" height="18" rx="2"/>
-                  <circle cx="8.5" cy="8.5" r="1.5"/>
-                  <path d="M21 15l-5-5L5 21"/>
-                </svg>
-              </div>
-            `}
-            <div class="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-black/80 via-transparent to-transparent md:from-transparent md:via-black/20 md:to-black/80"></div>
-          </div>
-
-          <div class="w-full md:w-1/3 p-6 md:p-8 flex flex-col h-full z-10 overflow-y-auto" style="background: ${config.surface_color}; scrollbar-width: thin;">
-            <h3 class="font-orbitron text-base font-bold mb-2 text-glow-micro leading-snug shrink-0" style="color: ${config.primary_color};">
-              ${project.name}
-            </h3>
-            
-            <div class="flex flex-wrap gap-2 mb-6 shrink-0">
-              ${project.tools.slice(0, 4).map(tool => `
-                <span class="font-rajdhani text-sm px-2 py-1 rounded" style="background: rgba(255, 0, 128, 0.2); color: ${config.secondary_color};">
-                  ${tool}
-                </span>
-              `).join('')}
-            </div>
-            
-            <p class="font-rajdhani text-base leading-relaxed mb-4" style="color: #ffffff;">
-  				${project.role}
-			</p>
-            
-            <div class="mt-auto pt-4 border-t border-white/10 shrink-0">
-               <p class="font-rajdhani text-xl font-bold transition-colors" style="color: #00f0ff;">
-                   View Details →
-               </p>
-            </div>
-          </div>
-        </div>
-      `).join('');
-
-      // 2. Render All Other Projects (Standard Grid)
-      allGrid.innerHTML = allProjects.map(project => `
+      // Helper template for standard 3-column grid cards
+      const standardCardTemplate = (project) => `
         <div class="project-card cursor-pointer card-glow rounded-lg overflow-hidden" onclick="openProjectOverlay(${project.id})" style="background: ${config.surface_color}; aspect-ratio: 2/3;">
-          
           <div class="relative overflow-hidden" style="background: linear-gradient(135deg, rgba(0, 240, 255, 0.2), rgba(255, 0, 128, 0.2)); height: 65%;">
-            ${project.thumbnail ? 
-            `<img src="${project.thumbnail}" alt="${project.name}" class="w-full h-full object-cover" loading="lazy" onerror="this.style.display='none';">` : `
-              <div class="w-full h-full flex items-center justify-center">
-                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="${config.primary_color}" stroke-width="1" class="opacity-30">
-                  <rect x="3" y="3" width="18" height="18" rx="2"/>
-                  <circle cx="8.5" cy="8.5" r="1.5"/>
-                  <path d="M21 15l-5-5L5 21"/>
-                </svg>
-              </div>
-            `}
+            ${project.thumbnail ? `<img src="${project.thumbnail}" alt="${project.name}" class="w-full h-full object-cover" loading="lazy" onerror="this.style.display='none';">` : `<div class="w-full h-full flex items-center justify-center"><svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="${config.primary_color}" stroke-width="1" class="opacity-30"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>`}
             <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
           </div>
-
           <div class="p-4 flex flex-col justify-between" style="height: 35%;">
             <div>
-              <h3 class="font-orbitron text-base font-bold mb-1 text-glow-micro truncate" style="color: ${config.primary_color};">
-                ${project.name}
-              </h3>
+              <h3 class="font-orbitron text-base font-bold mb-1 text-glow-micro truncate" style="color: ${config.primary_color};">${project.name}</h3>
               <div class="flex flex-wrap gap-1 mb-2">
-                ${project.tools.slice(0, 3).map(tool => `
-                  <span class="font-rajdhani text-sm px-2 py-1 rounded" style="background: rgba(255, 0, 128, 0.2); color: ${config.secondary_color};">
-                    ${tool}
-                  </span>
-                `).join('')}
+                ${project.tools.slice(0, 3).map(tool => `<span class="font-rajdhani text-sm px-2 py-1 rounded" style="background: rgba(255, 0, 128, 0.2); color: ${config.secondary_color};">${tool}</span>`).join('')}
               </div>
             </div>
-            <p class="font-rajdhani text-lg" style="color: #808090;">
-                View Details →
-            </p>
+            <p class="font-rajdhani text-lg" style="color: #808090;">View Details →</p>
           </div>
         </div>
-      `).join('');
+      `;
+
+      // Helper template for wide banner cards
+      const bannerCardTemplate = (project) => `
+        <div class="project-card cursor-pointer card-glow rounded-lg overflow-hidden flex flex-col md:flex-row w-full banner-height" onclick="openProjectOverlay(${project.id})" style="background: ${config.surface_color};">
+          <div class="relative overflow-hidden w-full md:w-2/3 aspect-video md:aspect-auto md:h-full shrink-0" style="background: linear-gradient(135deg, rgba(0, 240, 255, 0.2), rgba(255, 0, 128, 0.2));">
+            ${project.thumbnail ? `<img src="${project.thumbnail}" alt="${project.name}" class="w-full h-full object-cover" loading="lazy" onerror="this.style.display='none';">` : `<div class="w-full h-full flex items-center justify-center"><svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="${config.primary_color}" stroke-width="1" class="opacity-30"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>`}
+            <div class="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-black/80 via-transparent to-transparent md:from-transparent md:via-black/20 md:to-black/80"></div>
+          </div>
+          <div class="w-full md:w-1/3 p-6 md:p-8 flex flex-col h-full z-10 overflow-y-auto" style="background: ${config.surface_color}; scrollbar-width: thin;">
+            <h3 class="font-orbitron text-base font-bold mb-2 text-glow-micro leading-snug shrink-0" style="color: ${config.primary_color};">${project.name}</h3>
+            <div class="flex flex-wrap gap-2 mb-6 shrink-0">
+              ${project.tools.slice(0, 4).map(tool => `<span class="font-rajdhani text-sm px-2 py-1 rounded" style="background: rgba(255, 0, 128, 0.2); color: ${config.secondary_color};">${tool}</span>`).join('')}
+            </div>
+            <p class="font-rajdhani text-base md:text-lg leading-relaxed mb-4" style="color: #ffffff;">${project.role}</p>
+            <div class="mt-auto pt-4 border-t border-white/10 shrink-0">
+               <p class="font-rajdhani text-xl font-bold transition-colors" style="color: #00f0ff;">View Details →</p>
+            </div>
+          </div>
+        </div>
+      `;
+
+      // VIEW STATE 1: No tags selected (Show Default Layout)
+      if (activeTags.length === 0) {
+        defaultLayout.classList.remove('hidden');
+        filteredLayout.classList.add('hidden');
+        
+        currentGrid.innerHTML = projectsData.filter(p => p.isCurrent).map(bannerCardTemplate).join('');
+        allGrid.innerHTML = projectsData.filter(p => !p.isCurrent).map(standardCardTemplate).join('');
+      } 
+      // VIEW STATE 2: Tags are selected (Show Filtered Layout)
+      else {
+        defaultLayout.classList.add('hidden');
+        filteredLayout.classList.remove('hidden');
+
+        // Filter projects: Project MUST contain ALL currently active tags (AND logic)
+        const matchedProjects = projectsData.filter(project => {
+          if (!project.tags) return false;
+          return activeTags.every(tag => project.tags.includes(tag));
+        });
+
+        if (matchedProjects.length > 0) {
+          filteredGrid.innerHTML = matchedProjects.map(standardCardTemplate).join('');
+        } else {
+          filteredGrid.innerHTML = `<p class="col-span-full text-center font-rajdhani text-xl mt-8" style="color: #c0c0d0;">No projects match all selected filters.</p>`;
+        }
+      }
     }
 
     // Create placeholder for media
@@ -1165,8 +1227,9 @@
 
     // Initialize
     async function init() {
-      renderProjectCards();
-      if (window.elementSdk) {
+    	renderTags();
+		renderProjectCards();
+      	if (window.elementSdk) {
         await window.elementSdk.init({
           defaultConfig,
           onConfigChange,
