@@ -747,10 +747,10 @@
         defaultLayout.classList.add('hidden');
         filteredLayout.classList.remove('hidden');
 
-        // Filter projects: Project MUST contain ALL currently active tags (AND logic)
+        // Filter projects: Project MUST contain ANY currently active tags (OR logic)
         const matchedProjects = projectsData.filter(project => {
           if (!project.tags) return false;
-          return activeTags.every(tag => project.tags.includes(tag));
+          return activeTags.some(tag => project.tags.includes(tag));
         });
 
         if (matchedProjects.length > 0) {
