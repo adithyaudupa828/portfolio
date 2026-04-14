@@ -360,14 +360,17 @@
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto" id="projects-grid"></div>
         </div>
 
-        <div id="filtered-projects-layout" class="hidden">
-            <h3 class="font-orbitron text-2xl font-bold mb-6 text-glow-micro" style="color: #e0e0e0; max-w-5xl mx-auto">FILTERED PROJECTS</h3>
-                <button onclick="clearAllTags()" class="font-rajdhani text-sm text-white/50 hover:text-white underline">Clear All Tags</button>
-            </div>
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto" id="filtered-projects-grid"></div>
+        
+		
+		
+		
+		<div id="filtered-projects-layout" class="hidden">
+            <h3 class="font-orbitron text-2xl font-bold mb-6 text-glow-micro max-w-5xl mx-auto mb-6" style="color: #00f0ff;">FILTERED PROJECTS</h3>
         </div>
-    </div>
-</section>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto" id="filtered-projects-grid"></div>
+        </div>
+    	</div>
+	</section>
 
 	<section id="contact" class="py-24 px-6">
    	<div class="max-w-4xl mx-auto text-center">
@@ -655,24 +658,46 @@
 
     let activeTags = [];
 
-    // 2. Build the interactive tag buttons
+    
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	// 2. Build the interactive tag buttons
     function renderTags() {
       const container = document.getElementById('tag-filters');
       
-      container.innerHTML = Object.values(tagCategories).map(categoryTags => `
+      let tagsHTML = Object.values(tagCategories).map(categoryTags => `
         <div class="flex flex-wrap justify-center gap-2">
           ${categoryTags.map(tag => {
             const isActive = activeTags.includes(tag);
             return `
             <button onclick="toggleTag('${tag}')" 
-        class="font-rajdhani text-xs md:text-sm px-3 py-1 rounded-full transition-all duration-300 border ${isActive ? 'bg-[#00f0ff] text-[#0a0a14] border-[#00f0ff] font-bold shadow-[0_0_10px_rgba(0,240,255,0.5)]' : 'bg-transparent text-[#00f0ff] border-[#00f0ff]/30 hover:border-[#00f0ff]'}"
-        style="letter-spacing: 0.05em;">
-  		${tag}
-		</button>
+                    class="font-rajdhani text-xs md:text-sm px-3 py-1 rounded-full transition-all duration-300 border ${isActive ? 'bg-[#00f0ff] text-[#0a0a14] border-[#00f0ff] font-bold shadow-[0_0_10px_rgba(0,240,255,0.5)]' : 'bg-transparent text-[#00f0ff] border-[#00f0ff]/30 hover:border-[#00f0ff]'}"
+                    style="letter-spacing: 0.05em;">
+              ${tag}
+            </button>
             `;
           }).join('')}
         </div>
       `).join('');
+
+      if (activeTags.length > 0) {
+        tagsHTML += `
+          <div class="flex justify-center mt-4">
+            <button onclick="clearAllTags()" class="font-rajdhani text-sm tracking-wider underline transition-colors duration-300 hover:text-[#00f0ff]" style="color: #ff0080;">
+              Clear All Tags
+            </button>
+          </div>
+        `;
+      }
+
+      container.innerHTML = tagsHTML;
     }
 
     // 3. Handle clicking a tag
