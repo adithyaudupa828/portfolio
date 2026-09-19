@@ -31,7 +31,7 @@
     --font-head: "Nohemi", system-ui, sans-serif;
     --font-body: "Inter", system-ui, sans-serif;
     --radius: 14px;
-    --wrap: 1160px;
+    --wrap: 1280px;
     color-scheme: dark;
   }
 
@@ -67,8 +67,8 @@
   .tag--main { color: var(--accent); border-color: rgba(var(--accent-rgb), .45); }
 
   /* ---------- nav ---------- */
-  .nav { position: fixed; inset: 0 0 auto 0; z-index: 40; background: rgba(14, 16, 19, .86);
-    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  /* no backdrop-filter on the bars: blurring the content that scrolls under them costs frames */
+  .nav { position: fixed; inset: 0 0 auto 0; z-index: 40; background: rgba(14, 16, 19, .96); border-bottom: 1px solid var(--line); }
   .nav-inner { height: 64px; display: flex; align-items: center; justify-content: space-between; }
   .brand { font: 500 1.15rem var(--font-head); text-decoration: none; }
   .nav-links { display: flex; align-items: center; gap: 28px; }
@@ -78,12 +78,13 @@
 
   /* ---------- hero ---------- */
   .hero { padding: 176px 24px 96px; }
-  .hero h1 { font-size: clamp(3rem, 9vw, 6.5rem); line-height: 1; }
-  .hero h1 span { display: block; color: var(--muted); }
+  .hero h1 { font-size: clamp(3.5rem, 11vw, 8rem); line-height: 1; }
+  .hero h1 span { display: block; margin-top: .12em; font-size: .68em; color: var(--muted); }
   .hero .lead { margin-top: 28px; max-width: 540px; font-size: 1.125rem; color: var(--text-soft); }
   .hero .cta { margin-top: 36px; display: flex; flex-wrap: wrap; gap: 12px; }
 
   /* ---------- filters ---------- */
+  .label { margin-bottom: 12px; font: 500 12px var(--font-body); text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
   .filters { display: flex; flex-direction: column; gap: 10px; margin-bottom: 40px; }
   .filter-group { display: flex; flex-wrap: wrap; gap: 8px; }
   .chip { padding: 7px 14px; border-radius: 999px; border: 1px solid var(--line); background: transparent;
@@ -97,7 +98,7 @@
 
   .sub-title { font-size: 1.5rem; margin-bottom: 24px; }
   .sub-title small { font: 400 14px var(--font-body); color: var(--muted); margin-left: 10px; }
-  .grid { display: grid; gap: 24px; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); }
+  .grid { display: grid; gap: 24px; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); }
   .block + .block { margin-top: 72px; }
 
   /* ---------- project cards ---------- */
@@ -113,8 +114,8 @@
     background: linear-gradient(to top, rgba(8, 9, 11, .94) 0%, rgba(8, 9, 11, .6) 45%, rgba(8, 9, 11, 0) 75%); }
   .card-body { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 12px; padding: 22px; }
   .card-title { font: 500 1.5rem/1.2 var(--font-head); }
-  .card .tag { background: rgba(14, 16, 19, .62); border-color: rgba(255, 255, 255, .16);
-    color: var(--text-soft); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+  .card .tags { flex-wrap: nowrap; }   /* 3 tags, always one row */
+  .card .tag { background: rgba(14, 16, 19, .78); border-color: rgba(255, 255, 255, .16); color: var(--text-soft); }
   .card .tag--main { color: var(--accent); border-color: rgba(var(--accent-rgb), .55); }
   .empty { color: var(--muted); }
 
@@ -124,9 +125,9 @@
   .about .sec-title { margin-bottom: 0; }
   .about p { max-width: 62ch; font-size: 1.125rem; color: var(--text-soft); }
   .skills { margin: 40px 0 0; display: grid; gap: 0; }
-  .skills > div { display: grid; grid-template-columns: 110px 1fr; gap: 16px; padding: 16px 0; border-top: 1px solid var(--line); align-items: baseline; }
+  .skills > div { display: grid; grid-template-columns: 140px 1fr; gap: 16px; padding: 16px 0; border-top: 1px solid var(--line); align-items: baseline; }
   .skills > div:last-child { border-bottom: 1px solid var(--line); }
-  .skills dt { font-size: 13px; color: var(--muted); }
+  .skills dt { font: 500 1.15rem/1.2 var(--font-head); color: var(--muted); }
   .skills dd { margin: 0; color: var(--text); }
 
   /* ---------- contact ---------- */
@@ -136,8 +137,7 @@
   /* ---------- full-screen layers (project / resume / image viewer) ---------- */
   .layer { position: fixed; inset: 0; z-index: 50; background: var(--bg); overflow-y: auto; overscroll-behavior: contain; }
   .layer--resume { z-index: 55; display: flex; flex-direction: column; }
-  .layer-bar { position: sticky; top: 0; z-index: 5; background: rgba(14, 16, 19, .92); backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .layer-bar { position: sticky; top: 0; z-index: 5; background: rgba(14, 16, 19, .96); border-bottom: 1px solid var(--line); }
   .layer-bar .wrap { height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
   .layer-bar .btn { padding: 8px 18px; font-size: 14px; }
   .bar-title { font: 500 1rem var(--font-head); color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
@@ -165,7 +165,7 @@
   .p-sec { margin-top: 80px; }
   .p-sec > h3 { font-size: clamp(1.6rem, 3vw, 2.1rem); margin-bottom: 24px; }
   .hint { margin-top: 12px; font-size: 13px; color: var(--muted); }
-  .prose p { max-width: 72ch; margin-bottom: 1em; color: var(--text-soft); }
+  .prose p { margin-bottom: 1em; color: var(--text-soft); }
   .prose p:last-child { margin-bottom: 0; }
   .prose strong { color: var(--text); font-weight: 600; }
   .prose a { color: var(--accent) !important; text-underline-offset: 3px; }
@@ -244,6 +244,7 @@
   <section class="section" id="projects">
     <div class="wrap">
       <h2 class="sec-title">Projects</h2>
+      <p class="label">Filter</p>
       <div class="filters" id="filters"></div>
 
       <div id="view-default">
@@ -252,7 +253,7 @@
           <div class="grid" id="curated"></div>
         </div>
         <div class="block">
-          <h3 class="sub-title">All projects</h3>
+          <h3 class="sub-title">Other projects</h3>
           <div class="grid" id="all"></div>
         </div>
       </div>
@@ -332,13 +333,13 @@ const projectsData = [
 		type: "Modded Map, Ready Or Not",
         stats: [{ value: "20k", label: "Downloads" }, { value: "60k", label: "Views" }],
         tools: ["UE5", "FMod", "SWAT AI", "Collision", "Blender", "Navigation", "Set Dressing"],
-        thumbnail: "projects/cost-of-living/cover.png",
-        mainImages: ["projects/cost-of-living/cover.png", "projects/cost-of-living/media/garden.png", "projects/cost-of-living/media/surgicalroom.png", "projects/cost-of-living/media/preppingarea.png", "projects/cost-of-living/media/stagingarea.png", "projects/cost-of-living/media/office.png", "projects/cost-of-living/media/caves.png", "projects/cost-of-living/media/bodies.png", "projects/cost-of-living/media/secretstairs.png"],
+        thumbnail: "projects/cost-of-living/cover.webp",
+        mainImages: ["projects/cost-of-living/cover.webp", "projects/cost-of-living/media/garden.webp", "projects/cost-of-living/media/surgicalroom.webp", "projects/cost-of-living/media/preppingarea.webp", "projects/cost-of-living/media/stagingarea.webp", "projects/cost-of-living/media/office.webp", "projects/cost-of-living/media/caves.webp", "projects/cost-of-living/media/bodies.webp", "projects/cost-of-living/media/secretstairs.webp"],
         mainVideo: null,
         game: "**Ready Or Not:** is a tactical first-person shooter video game that follows the operations of a police SWAT team in the fictional American city of Los Sueños in the midst of a violent crime wave.\n\n<a href='https://www.nexusmods.com/readyornot/mods/7405' target='_blank' rel='noopener noreferrer' style='color: #00f0ff; text-decoration: underline;'>Cost Of Living - Nexus Mods</a>",
 		description: "**Cost Of Living** \nInfiltrate a multi-level funeral home that conceals a black market organ trafficking operation. \n\nFirst, I decided the lore, golden path, replayability, and different paths for the level. I designed the map, created the blockout, checked for cover & hide-outs, modeled the assets in Blender, and created the entire level. \nI also implemented the SWAT AI elements such as stack up points, clearing routes, room proxies, doorways, threat awareness points, and custom objectives. Finally, I added blocking volumes and light blockers to polish the level.",
         layoutImages: ["projects/cost-of-living/layout/wholemap1.jpeg", "projects/cost-of-living/layout/wholemap2.jpeg"], 
-		gallery: ["projects/cost-of-living/gallery/3dmodels.png", "projects/cost-of-living/gallery/gardenbts.png", "projects/cost-of-living/gallery/houseblockout.png", "projects/cost-of-living/gallery/doorway.png", "projects/cost-of-living/gallery/caves.png", "projects/cost-of-living/gallery/gardenblockout.png", "projects/cost-of-living/gallery/house.png", "projects/cost-of-living/gallery/clearuppaths.png", "projects/cost-of-living/gallery/caves2.png", "projects/cost-of-living/gallery/house2.png", "projects/cost-of-living/gallery/makeuproom.png", "projects/cost-of-living/gallery/slope.png"],
+		gallery: ["projects/cost-of-living/gallery/3dmodels.webp", "projects/cost-of-living/gallery/gardenbts.webp", "projects/cost-of-living/gallery/houseblockout.webp", "projects/cost-of-living/gallery/doorway.webp", "projects/cost-of-living/gallery/caves.webp", "projects/cost-of-living/gallery/gardenblockout.webp", "projects/cost-of-living/gallery/house.webp", "projects/cost-of-living/gallery/clearuppaths.webp", "projects/cost-of-living/gallery/caves2.webp", "projects/cost-of-living/gallery/house2.webp", "projects/cost-of-living/gallery/makeuproom.webp", "projects/cost-of-living/gallery/slope.webp"],
         galleryVideos: [null, null],
         postmortem: {
         	wentWell: "Finished an entire map by myself in under 2 months.",
@@ -355,12 +356,12 @@ const projectsData = [
         role: "Blockout, POI Designer, Level Designer, Environment Art, Set Dressing",
 		type: "Mars Games",
         tools: ["UE5", "Blender", "Set Dressing"],
-        thumbnail: "projects/tombstone/cover.png",
-        mainImages: ["projects/tombstone/media/trainstation2.png", "projects/tombstone/media/stable3.png", "projects/tombstone/media/train5.png"],
+        thumbnail: "projects/tombstone/cover.webp",
+        mainImages: ["projects/tombstone/media/trainstation2.webp", "projects/tombstone/media/stable3.webp", "projects/tombstone/media/train5.webp"],
         mainVideo: null,
         game: "**Multiplayer, Action-Shooter, AAA Game:** Still in its early stages, this game offers variety of gameplay scenarios, such as PvP and PvPvE action, combat, interactions, resource gathering, building communities, buying and selling items, and lots more.",
 		description: "**Area: Tombstone** \nTombstone is the main city in the game where players can interact with all citizens, sellers, players, and other creatures. \n\n**1. Train Station** The spawn point of every player. It acts as an interaction area through which players can reach different places in the game. \n**2. Stockyard and Stables** A central hub where players can buy, sell, and upgrade horses, carriages, cosmetics, and supplies essential for raids. \n**3. Blacksmith** A small blacksmith shop with weapons and other parts. \n**4. Stage Coach** A rest area where players can interact with people from the city, rest their horses, repair their carriages, and interact with other players.", 
-        gallery: ["projects/tombstone/gallery/train3.png", "projects/tombstone/gallery/train4.png", "projects/tombstone/gallery/blacksmith1.png", "projects/tombstone/gallery/blacksmith2.png", "projects/tombstone/gallery/blacksmith.png", "projects/tombstone/gallery/stable.png", "projects/tombstone/gallery/stable4.png", "projects/tombstone/gallery/stable5.png", "projects/tombstone/gallery/scfront.png", "projects/tombstone/gallery/scinside.png", "projects/tombstone/gallery/sctop.png", "projects/tombstone/gallery/scside.png"],
+        gallery: ["projects/tombstone/gallery/train3.webp", "projects/tombstone/gallery/train4.webp", "projects/tombstone/gallery/blacksmith1.webp", "projects/tombstone/gallery/blacksmith2.webp", "projects/tombstone/gallery/blacksmith.webp", "projects/tombstone/gallery/stable.webp", "projects/tombstone/gallery/stable4.webp", "projects/tombstone/gallery/stable5.webp", "projects/tombstone/gallery/scfront.webp", "projects/tombstone/gallery/scinside.webp", "projects/tombstone/gallery/sctop.webp", "projects/tombstone/gallery/scside.webp"],
         galleryVideos: [null, null],
         postmortem: {
 	          wentWell: "Finished each POI in one sprint and delivered on time for the trailer.",
@@ -377,13 +378,13 @@ const projectsData = [
         role: "Level Designer, Blockout, Environment Art, Set Dressing",
 		type: "Solo Developer - Fan Game",
         tools: ["UE5", "Blender", "Photoshop", "Blueprints"],
-        thumbnail: "projects/daredevil-levels/cover.png",
-        mainImages: ["projects/daredevil-levels/media/ddhome1.png", "projects/daredevil-levels/media/ddshipyard2.png", "projects/daredevil-levels/media/ddwarehouse.png"],
+        thumbnail: "projects/daredevil-levels/cover.webp",
+        mainImages: ["projects/daredevil-levels/media/ddhome1.webp", "projects/daredevil-levels/media/ddshipyard2.webp", "projects/daredevil-levels/media/ddwarehouse.webp"],
         mainVideo: null,
         game: "**Daredevil:** A fan game (in progress) with Daredevil as the main character. It has different types of combat (hand-to-hand, melee and ranged weapons, throwables, etc.) and parkour-like movement abilities.",
 		description: "**Home Level:** Inspired by Ready Or Not's headquarters for loadout, mission select, and interactions, this serves as Daredevil’s base of operations, an interactive hub with distinct zones that each serve a purpose. \n**Shipyard and Warehouses:** Set in New York’s docks, this is a hostile combat environment filled with enemies and narrative clues. The docked ship contains a challenging mini-boss fight. Smaller warehouses hide civilians in need of rescue and hints that tie in to the larger story. \n\nDaredevil has both parkour/acrobats and extreme combat, which are facilitated in this level through different paths that can be taken. \nLeft half of the shipyard allows for stealth takedowns and quiet completion. Right half allows for heavy combat due to the increased enemy and security camera count.",
         layoutImages: ["projects/daredevil-levels/layout/daredevilwarehouse.jpeg"], 
-		gallery: ["projects/daredevil-levels/gallery/ddbathroom.png", "projects/daredevil-levels/gallery/ddreferences.png", "projects/daredevil-levels/gallery/ddreferences2.png", "projects/daredevil-levels/gallery/dddojo.png", "projects/daredevil-levels/gallery/ddwarehousestairs.png", "projects/daredevil-levels/gallery/ddshipyard.png", "projects/daredevil-levels/gallery/ddwarehouse2.png"],
+		gallery: ["projects/daredevil-levels/gallery/ddbathroom.webp", "projects/daredevil-levels/gallery/ddreferences.webp", "projects/daredevil-levels/gallery/ddreferences2.webp", "projects/daredevil-levels/gallery/dddojo.webp", "projects/daredevil-levels/gallery/ddwarehousestairs.webp", "projects/daredevil-levels/gallery/ddshipyard.webp", "projects/daredevil-levels/gallery/ddwarehouse2.webp"],
         galleryVideos: [null],
         postmortem: {
 	          wentWell: "Levels look visually realistic, cohesive, and memorable.",
@@ -399,13 +400,13 @@ const projectsData = [
         role: "Technical Designer, Documentation, Systems Designer, Enemy AI, Boss AI",
 		type: "Mars Games",
         tools: ["UE5", "Blueprints", "Mixamo", "YouTube"],
-        thumbnail: "projects/enemy-boss-ai/cover.png",
-        mainImages: ["projects/enemy-boss-ai/media/bpcattacks.png", "projects/enemy-boss-ai/media/enemybt.png"],
+        thumbnail: "projects/enemy-boss-ai/cover.webp",
+        mainImages: ["projects/enemy-boss-ai/media/bpcattacks.webp", "projects/enemy-boss-ai/media/enemybt.webp"],
         mainVideo: "projects/enemy-boss-ai/media/actions.mp4",
         game: "**Multiplayer Action Shooter Game** Still in its early stages, this game offers variety of gameplay scenarios, such as action, combat, interactions, resource gathering, building communities, buying and selling items, and lots more.",
 		description: "This is a comprehensive documentation project on different types of enemy AI, including melee, ranged, and magic enemies. The AI uses behavior trees and blackboards to manage their states and actions, allowing for complex behaviors such as patrolling, chasing, and attacking the player. \n\nThe melee enemy can perform single and combo attacks. They can also block and parry the player's melee attacks. \nThe ranged enemy can locate different vantage points and attack from a distance. They can't block the player's attacks. \nThe mage enemy can teleport to different locations and perform ranged attacks. They can also heal when their health reduces to a certain point. \nThe boss can perform attacks from all other enemies, ranged, magic, and melee, can block and parry, and can heal themselves. The only way to deal damage is by parrying or dodging all attacks. \n\nThis is documentation task during my time as a systems design intern at Mars Games to understand AI programming in Unreal Engine 5. The system is designed to be modular and can be easily integrated into any Unreal Engine 5 project. \n\nI documented how different AI features can be implemented and came up with many magic and ranged weapons. I designed these abilities for our game and helped oher designers realise their ideas.",
         layoutImages: null, 
-        gallery: ["projects/enemy-boss-ai/gallery/smallenemies.png", "projects/enemy-boss-ai/gallery/bt-kingpin.png", "projects/enemy-boss-ai/gallery/da-kingpin.png", "projects/enemy-boss-ai/gallery/da-woodsword.png", "projects/enemy-boss-ai/gallery/bpc-combat1.png", "projects/enemy-boss-ai/gallery/bpc-combat2.png", "projects/enemy-boss-ai/gallery/bpc-combat3.png", "projects/enemy-boss-ai/gallery/bpc-combat4.png", "projects/enemy-boss-ai/gallery/bpcattacks.png", "projects/enemy-boss-ai/gallery/playerbp.png", "projects/enemy-boss-ai/gallery/enemymage.png", "projects/enemy-boss-ai/gallery/enemybt.png", "projects/enemy-boss-ai/gallery/bossbt.png"],
+        gallery: ["projects/enemy-boss-ai/gallery/smallenemies.webp", "projects/enemy-boss-ai/gallery/bt-kingpin.webp", "projects/enemy-boss-ai/gallery/da-kingpin.webp", "projects/enemy-boss-ai/gallery/da-woodsword.webp", "projects/enemy-boss-ai/gallery/bpc-combat1.webp", "projects/enemy-boss-ai/gallery/bpc-combat2.webp", "projects/enemy-boss-ai/gallery/bpc-combat3.webp", "projects/enemy-boss-ai/gallery/bpc-combat4.webp", "projects/enemy-boss-ai/gallery/bpcattacks.webp", "projects/enemy-boss-ai/gallery/playerbp.webp", "projects/enemy-boss-ai/gallery/enemymage.webp", "projects/enemy-boss-ai/gallery/enemybt.webp", "projects/enemy-boss-ai/gallery/bossbt.webp"],
         galleryVideos: ["projects/enemy-boss-ai/gallery/magicenemy.mp4"],
         postmortem: {
 	          wentWell: "Systems were designed modularly, allowing for quick iteration and easy bug fixing. The documentation received positive feedback.",
@@ -415,19 +416,19 @@ const projectsData = [
     },
     {
         id: 5,
-        name: "Unannounced Game",
+        name: "Unannounced AAA Game",
 		tags: ["Levels", "Mars Games", "Multiplayer", "Third-Person", "AAA"],
 		duration: "2 sprints each",
         role: "Blockout, Level Design, Environment Art, Set Dressing",
         type: "Mars Games",
         tools: ["UE5", "Splines", "Blender"],
-        thumbnail: "projects/swamp-biome/cover.png",
-        mainImages: ["projects/swamp-biome/media/swamp1.png", "projects/swamp-biome/media/bridge.png", "projects/swamp-biome/media/logs.png"],
+        thumbnail: "projects/swamp-biome/cover.webp",
+        mainImages: ["projects/swamp-biome/media/swamp1.webp", "projects/swamp-biome/media/bridge.webp", "projects/swamp-biome/media/logs.webp"],
         mainVideo: null,
         game: "**Multiplayer, Action-Shooter, AAA Game: **Still in its early stages, this game offers variety of gameplay scenarios, such as PvP and PvPvE action, combat, interactions, resource gathering, building communities, buying and selling items, and lots more.",
         description: "**Biome: Swamp** \nDifferent levels from this biome all share similar pacing, visuals, and aesthetics. They all have a swampy green fog, lots of trees, poisonous clouds, and swamp-related enemies. \n\n**1. The Forest** is a combat focused area with poison clouds and creatures. It has a small magic pond near the cabin that can grant players random buffs. \n**2. The Quarry** is an abandoned area flooded with swampy water and a blocked off tunnel. At the top of the quarry is a magic pond that grants buffs. \n\nI also created 2 interactive parts for this map that controls the pacing of the level. \n1. An old bridge that collapses at a certain point when the player enters the trigger box. \n2. A bunch of floating logs thta sinks the player into poisonous water if they stand on the same log for more than 1s.",
-        layoutImages: ["projects/swamp-biome/layout/swampforestmap.jpeg", "projects/swamp-biome/layout/swampquarryref.png"], 
-        gallery: ["projects/swamp-biome/gallery/swampmap.png", "projects/swamp-biome/gallery/swamp3.png", "projects/swamp-biome/gallery/swamp4.png", "projects/swamp-biome/gallery/swamp1.png", "projects/swamp-biome/gallery/swamp2.png", "projects/swamp-biome/gallery/swampforestref.png"],
+        layoutImages: ["projects/swamp-biome/layout/swampforestmap.jpeg", "projects/swamp-biome/layout/swampquarryref.webp"], 
+        gallery: ["projects/swamp-biome/gallery/swampmap.webp", "projects/swamp-biome/gallery/swamp3.webp", "projects/swamp-biome/gallery/swamp4.webp", "projects/swamp-biome/gallery/swamp1.webp", "projects/swamp-biome/gallery/swamp2.webp", "projects/swamp-biome/gallery/swampforestref.webp"],
         galleryVideos: [null],
         postmortem: {
 	          wentWell: "Implemented splines to reduce work while manually placing assets.",
@@ -437,19 +438,19 @@ const projectsData = [
     },
     {
 		id: 6,
-        name: "Unannounced Game",
+        name: "Unannounced AAA Game",
         tags: ["Levels", "Mars Games", "Multiplayer", "Third-Person", "AAA"],
 		duration: "2 sprints each",
         role: "Blockout, Level Design, Environment Art, Set Dressing",
 		type: "Mars Games",
         tools: ["UE5", "Splines", "Photoshop"],
-        thumbnail: "projects/general-fantasy-biome/cover.png",
-        mainImages: ["projects/general-fantasy-biome/media/coppermineflood.png", "projects/general-fantasy-biome/media/plants.png", "projects/general-fantasy-biome/media/wheat.png"],
+        thumbnail: "projects/general-fantasy-biome/cover.webp",
+        mainImages: ["projects/general-fantasy-biome/media/coppermineflood.webp", "projects/general-fantasy-biome/media/plants.webp", "projects/general-fantasy-biome/media/wheat.webp"],
         mainVideo: null,
         game: "**Multiplayer, Action-Shooter, AAA Game: **Still in its early stages, this game offers variety of gameplay scenarios, PvP and PvPvE such as action, combat, interactions, resource gathering, building communities, buying and selling items, and lots more.",
 		description: "**Biome: General Fantasy** \nThis biome is inspired by fantasy elements like bright flowering plants, tall trees, magical animals, and appropriate enemies. It contains lots of resources and little enemies to encourage exploration. \n\n**1. Copper and Tin Mines** A maze-like tunnel system with lots of exploration and resources deep in the center, which has higher risk but gives higher reward. \n**2. Farm** A relatively calm level with low combat where players can interact and exchange resources.",
         layoutImages: ["projects/general-fantasy-biome/layout/cavesmap.jpeg"], 
-        gallery: ["projects/general-fantasy-biome/gallery/wheat.png", "projects/general-fantasy-biome/gallery/farmplants.png", "projects/general-fantasy-biome/gallery/farmtop.png", "projects/general-fantasy-biome/gallery/restarea.png", "projects/general-fantasy-biome/gallery/copperminetracks.png", "projects/general-fantasy-biome/gallery/coppertinmap.png", "projects/general-fantasy-biome/gallery/coppermineflood.png", "projects/general-fantasy-biome/gallery/splines.png", "projects/general-fantasy-biome/gallery/coppertinhouse2.png", "projects/general-fantasy-biome/gallery/genfantasy1.png", "projects/general-fantasy-biome/gallery/coppertinhouses.png"],
+        gallery: ["projects/general-fantasy-biome/gallery/wheat.webp", "projects/general-fantasy-biome/gallery/farmplants.webp", "projects/general-fantasy-biome/gallery/farmtop.webp", "projects/general-fantasy-biome/gallery/restarea.webp", "projects/general-fantasy-biome/gallery/copperminetracks.webp", "projects/general-fantasy-biome/gallery/coppertinmap.webp", "projects/general-fantasy-biome/gallery/coppermineflood.webp", "projects/general-fantasy-biome/gallery/splines.webp", "projects/general-fantasy-biome/gallery/coppertinhouse2.webp", "projects/general-fantasy-biome/gallery/genfantasy1.webp", "projects/general-fantasy-biome/gallery/coppertinhouses.webp"],
         galleryVideos: [null],
         postmortem: {
 	          wentWell: "Finished each level in a tight schedule perfectly.",
@@ -465,13 +466,13 @@ const projectsData = [
         role: "Systems Designer, Technical Artist",
 		type: "Solo Developer",
         tools: ["UE5", "Blueprints", "Mixamo"],
-        thumbnail: "projects/daredevil-systems/cover.png",
-        mainImages: ["projects/daredevil-systems/media/sideview.png", "projects/daredevil-systems/media/postprocessing.png", "projects/daredevil-systems/media/mantlingimage.png", "projects/daredevil-systems/media/sliding.png"],
+        thumbnail: "projects/daredevil-systems/cover.webp",
+        mainImages: ["projects/daredevil-systems/media/sideview.webp", "projects/daredevil-systems/media/postprocessing.webp", "projects/daredevil-systems/media/mantlingimage.webp", "projects/daredevil-systems/media/sliding.webp"],
         mainVideo: "projects/daredevil-systems/media/jumps.mp4",
         game: "**Daredevil: **A fan game (in progress) with Daredevil as the main character. The game has different types of combat (hand-to-hand, melee and ranged weapons, throwables, etc.) and parkour-like movement abilities.",
 		description: "**World On Fire (X-Ray Vision / Radar Sense)** is a modular, post-processing effect that allows the player to see through walls to locate enemies and items of interest. The effect is achieved using a custom depth pass and a post-process material that highlights objects based on their stencil value. It has different colors for different object types, such as enemies and items, to enhance situational awareness.\n\n**The Parkour System** is a comprehensive movement system with various mechanics like sprinting, mantling, sliding, rolling, grappling hook, and different types of jumps (vault, double jump, triple jump, spin jump, and long jump). This is an important part of my Daredevil fan game as it focuses almost completely on combat and parkour.",
         layoutImages: null, 
-        gallery: ["projects/daredevil-systems/gallery/differentjumps.png", "projects/daredevil-systems/gallery/grappling.png", "projects/daredevil-systems/gallery/player.png", "projects/daredevil-systems/gallery/rolling.png", "projects/daredevil-systems/gallery/sliding.png", "projects/daredevil-systems/gallery/default.png", "projects/daredevil-systems/gallery/depth.png", "projects/daredevil-systems/gallery/frontview.png", "projects/daredevil-systems/gallery/postprocessing.png", "projects/daredevil-systems/gallery/sideview.png"],
+        gallery: ["projects/daredevil-systems/gallery/differentjumps.webp", "projects/daredevil-systems/gallery/grappling.webp", "projects/daredevil-systems/gallery/player.webp", "projects/daredevil-systems/gallery/rolling.webp", "projects/daredevil-systems/gallery/sliding.webp", "projects/daredevil-systems/gallery/default.webp", "projects/daredevil-systems/gallery/depth.webp", "projects/daredevil-systems/gallery/frontview.webp", "projects/daredevil-systems/gallery/postprocessing.webp", "projects/daredevil-systems/gallery/sideview.webp"],
         galleryVideos: ["projects/daredevil-systems/gallery/xray.mp4", ],
         postmortem: {
 	          wentWell: "The player movement and interaction systems felt responsive and natural. \n\nVisual consistency was maintained well. Can be easily upgraded to have more features.",
@@ -487,13 +488,13 @@ const projectsData = [
         role: "Level Designer, Environment Art, Set Dressing, UI Designer, 3D Modeling",	
 		type: "Full Sail University",
         tools: ["UE5", "Blender", "GIMP", "Blueprints", "Unreal Widgets", "Photoshop"],
-        thumbnail: "projects/elixir-blitz/cover.png",
-        mainImages: ["projects/elixir-blitz/media/forest.png", "projects/elixir-blitz/media/portal.png", "projects/elixir-blitz/media/ui1.png", "projects/elixir-blitz/media/3d1.png"],
+        thumbnail: "projects/elixir-blitz/cover.webp",
+        mainImages: ["projects/elixir-blitz/media/forest.webp", "projects/elixir-blitz/media/portal.webp", "projects/elixir-blitz/media/ui1.webp", "projects/elixir-blitz/media/3d1.webp"],
         mainVideo: "projects/elixir-blitz/media/screen-recording-2025-09-15-184544.mp4",
 		game: "**Elixir Blitz:** A cozy shop management game set in a mystical forest. Here the player takes orders from customers and goes through magic portals to different locations, which offer different ingredients. The player then returns to the shop to craft potions ordered by the customers.",
         description: "**Level Design - Mystical Forest:** The environment shifts between serene lakes, cascading waterfalls, and shadowy forests, creating both beauty and mystery. Once the ingredients are collected, players must reach the portal to complete the run and craft the ingredients into potions. \n\n**UI Design: **I created all the UI elements such as the inventory, main menu, settings, and the pause menu. I modeled and textured a set of ingredients that the player collects in the game. \n**3D Modeling: **Modeled ingredients, Sun Berries, Moon Flowers, Beetles, Mushrooms, and Roots that the player collects around the level to create potions.",
         layoutImages: null, 
-        gallery: ["projects/elixir-blitz/gallery/castle.png", "projects/elixir-blitz/gallery/windmill.png", "projects/elixir-blitz/gallery/foggyforest.png", "projects/elixir-blitz/gallery/darkforest.png", "projects/elixir-blitz/gallery/portal.png", "projects/elixir-blitz/gallery/ui2.png", "projects/elixir-blitz/gallery/3d2.png", "projects/elixir-blitz/gallery/mainmenu.png", "projects/elixir-blitz/gallery/pausemenu.png", "projects/elixir-blitz/gallery/3d1.png", "projects/elixir-blitz/gallery/ui1.png"],
+        gallery: ["projects/elixir-blitz/gallery/castle.webp", "projects/elixir-blitz/gallery/windmill.webp", "projects/elixir-blitz/gallery/foggyforest.webp", "projects/elixir-blitz/gallery/darkforest.webp", "projects/elixir-blitz/gallery/portal.webp", "projects/elixir-blitz/gallery/ui2.webp", "projects/elixir-blitz/gallery/3d2.webp", "projects/elixir-blitz/gallery/mainmenu.webp", "projects/elixir-blitz/gallery/pausemenu.webp", "projects/elixir-blitz/gallery/3d1.webp", "projects/elixir-blitz/gallery/ui1.webp"],
         galleryVideos: [],
         postmortem: {
 	          wentWell: "Art style is charming and consistent. Core loop is relaxing and engaging. \n\nMade a simple UI that can be easily upgraded as needed.",
@@ -509,13 +510,13 @@ const projectsData = [
         role: "UI Design, Systems Design, Enemy AI",
 		type: "Solo Developer",
         tools: ["UE5", "Blueprints", "Mixamo", "Fab"],
-        thumbnail: "projects/village-game/cover.png",
-        mainImages: ["projects/village-game/media/town.png", "projects/village-game/media/coin.png"],
+        thumbnail: "projects/village-game/cover.webp",
+        mainImages: ["projects/village-game/media/town.webp", "projects/village-game/media/coin.webp"],
         mainVideo: null,
         game: "**Village Game** This is a simple game similar to Pac-Man, but in 3D, where the player has to navigate a densely populated environment to collect coins. ",
         description: "The villagers have a simple perception system and follow the player while in range. They have a single axe-swing animation that reduces one life on the player when connected. Since I reduced the player speed compared to the villagers' speed, I gave the player a jump animation with a 3s cooldown to quickly get away. I also created a simple UI to easily see the number of coins collected and the number of lives remaining.",
         layoutImages: null, 
-        gallery: ["projects/village-game/gallery/enemysenses.png", "projects/village-game/gallery/player.png", "projects/village-game/gallery/town.png", "projects/village-game/gallery/enemyai.png", "projects/village-game/gallery/coin.png"],
+        gallery: ["projects/village-game/gallery/enemysenses.webp", "projects/village-game/gallery/player.webp", "projects/village-game/gallery/town.webp", "projects/village-game/gallery/enemyai.webp", "projects/village-game/gallery/coin.webp"],
         galleryVideos: [null],
         postmortem: {
 	          wentWell: "Maintained a cohesive art style across all environment assets and UI elements.",
@@ -552,7 +553,7 @@ const card = p => `
   <button class="card" type="button" data-open="${p.id}">
     <span class="card-media"><img src="${p.thumbnail}" alt="" loading="lazy" decoding="async"></span>
     <span class="card-body">
-      <span class="tags">${tagList(p.tags, 4)}</span>
+      <span class="tags">${tagList(p.tags, 3)}</span>
       <span class="card-title">${p.name}</span>
     </span>
   </button>`;
@@ -563,7 +564,7 @@ function renderProjects() {
   $('view-filtered').hidden = !filtering;
   if (!filtering) {
     $('curated').innerHTML = projectsData.filter(p => p.isCurrent).map(card).join('');
-    $('all').innerHTML = projectsData.map(card).join('');
+    $('all').innerHTML = projectsData.filter(p => !p.isCurrent).map(card).join('');
     return;
   }
   const matches = projectsData.filter(p => active.some(t => p.tags.includes(t)));
@@ -670,7 +671,7 @@ function openProject(id) {
   showLayer('project');
   $('project').scrollTop = 0;
   $('project').focus({ preventScroll: true });
-  $('project-content').querySelectorAll('.track').forEach(updateCarousel);
+  $('project-content').querySelectorAll('.track').forEach(t => { t.scrollLeft = 0; updateCarousel(t); });   // always start on the first image
 }
 
 /* ---------- events ---------- */
