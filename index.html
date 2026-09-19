@@ -50,7 +50,6 @@
 
   .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 24px; }
   .section { padding: 96px 0; }
-  .section + .section { border-top: 1px solid var(--line); }
   .sec-title { font-size: clamp(2rem, 4vw, 2.75rem); margin-bottom: 40px; }
 
   /* ---------- buttons + tags ---------- */
@@ -60,11 +59,11 @@
   .btn:hover { border-color: var(--accent); color: var(--accent); }
   .btn--primary { background: var(--accent-strong); border-color: var(--accent-strong); color: #fff; }
   .btn--primary:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .btn--lg { padding: 17px 36px; font-size: 17px; }
 
   .tags { display: flex; flex-wrap: wrap; gap: 6px; }
   .tag { font-size: 12px; line-height: 1; padding: 6px 11px; border-radius: 999px; background: var(--surface-2);
     border: 1px solid var(--line); color: var(--muted); white-space: nowrap; }
-  .tag--main { color: var(--accent); border-color: rgba(var(--accent-rgb), .45); }
 
   /* ---------- nav ---------- */
   /* no backdrop-filter on the bars: blurring the content that scrolls under them costs frames */
@@ -84,17 +83,30 @@
   .hero .cta { margin-top: 36px; display: flex; flex-wrap: wrap; gap: 12px; }
 
   /* ---------- filters ---------- */
-  .label { margin-bottom: 12px; font: 500 14px var(--font-head); text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
-  .filters { display: flex; flex-direction: column; gap: 10px; margin-bottom: 40px; }
+  /* the Filter button sits beside the "Projects" heading; its panel opens on its own row below and pushes the projects down */
+  .projects-top { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; margin-bottom: 40px; }
+  .projects-top .sec-title { margin: 0; }
+  .filters { display: contents; }
+  .filter-bar { display: flex; align-items: center; gap: 18px; height: 44px; }
+  .filter-btn { display: inline-flex; align-items: center; gap: 10px; height: 44px; padding: 0 18px; border-radius: 999px;
+    border: 1px solid var(--line); background: var(--surface); color: var(--text); font: 500 15px var(--font-head);
+    transition: border-color .2s; }
+  .filter-btn:hover { border-color: var(--muted); }
+  .filter-btn[aria-expanded="true"] { border-color: var(--accent); }
+  .filter-btn svg { transition: transform .2s; }
+  .filter-btn[aria-expanded="true"] svg { transform: rotate(180deg); }
+  .filter-count { min-width: 20px; height: 20px; padding: 0 6px; border-radius: 999px; background: var(--accent-strong);
+    color: #fff; font: 600 12px/20px var(--font-body); text-align: center; }
+  /* no box: the chips sit directly on the page background */
+  .filter-panel { flex: 0 0 100%; display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
   .filter-group { display: flex; flex-wrap: wrap; gap: 8px; }
   .chip { padding: 7px 14px; border-radius: 999px; border: 1px solid var(--line); background: transparent;
     color: var(--muted); font-size: 13px; font-weight: 500; transition: border-color .2s, color .2s, background .2s; }
   .chip:hover { border-color: var(--muted); color: var(--text); }
   .chip.is-on { background: var(--accent-strong); border-color: var(--accent-strong); color: #fff; }
-  /* always rendered so the grid below never shifts; just invisible until a filter is on */
-  .clear { align-self: flex-start; background: none; border: 0; padding: 4px 0; color: var(--accent);
+  /* sits beside the Filter button, so showing/hiding it never changes the height of anything */
+  .clear { background: none; border: 0; padding: 4px 0; color: var(--accent);
     font-size: 13px; text-decoration: underline; text-underline-offset: 3px; }
-  .clear[hidden] { display: block !important; visibility: hidden; }
 
   .sub-title { font-size: 1.5rem; margin-bottom: 24px; }
   .sub-title small { font: 400 14px var(--font-body); color: var(--muted); margin-left: 10px; }
@@ -105,8 +117,8 @@
   /* image-first cards: the picture fills the card and fades to black under the text */
   .card { position: relative; display: flex; flex-direction: column; justify-content: flex-end; width: 100%;
     aspect-ratio: 5 / 4; padding: 0; text-align: left; overflow: hidden; background: var(--surface-2);
-    border: 1px solid var(--line); border-radius: var(--radius); transition: transform .25s, border-color .25s; }
-  .card:hover { transform: translateY(-4px); border-color: var(--accent); }
+    border: 1px solid transparent; border-radius: var(--radius); transition: transform .25s, border-color .25s; }
+  .card:hover, .card:focus-visible { transform: translateY(-4px) scale(1.03); border-color: var(--card-color, var(--accent)); }
   .card-media { position: absolute; inset: 0; display: block; }
   .card-media img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
   .card:hover .card-media img { transform: scale(1.04); }
@@ -115,8 +127,11 @@
   .card-body { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 12px; padding: 22px; }
   .card-title { font: 500 1.5rem/1.2 var(--font-head); }
   .card .tags { flex-wrap: nowrap; }   /* 3 tags, always one row */
-  .card .tag { background: rgba(14, 16, 19, .78); border-color: rgba(255, 255, 255, .16); color: var(--text-soft); }
-  .card .tag--main { color: var(--accent); border-color: rgba(var(--accent-rgb), .55); }
+  /* tags are white; on hover they take the project's colour (same as the border) */
+  .card .tag { background: rgba(14, 16, 19, .78); color: #fff; border-color: rgba(255, 255, 255, .35);
+    transition: color .25s, border-color .25s; }
+  .card:hover .tag, .card:focus-visible .tag { color: var(--card-color, #fff);
+    border-color: var(--card-color, #fff); border-color: color-mix(in srgb, var(--card-color, #fff) 55%, transparent); }
   .empty { color: var(--muted); }
 
   /* ---------- about ---------- */
@@ -150,15 +165,21 @@
 
   /* ---------- project page ---------- */
   .project { padding-top: 48px; padding-bottom: 120px; }
-  .p-head h2 { font-size: clamp(2.25rem, 5.5vw, 4rem); margin-bottom: 20px; }
-  .p-stats { display: flex; flex-wrap: wrap; gap: 12px 40px; margin-top: 28px; }
+  .p-head h2 { font-size: clamp(2.25rem, 5.5vw, 4rem); margin-bottom: 8px; }
+  .p-top { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 16px 40px; }
+  .p-tags { justify-content: flex-end; max-width: 440px; padding-top: 14px; }
+  .p-sub { font: 500 clamp(1.6rem, 3.6vw, 2.5rem)/1.15 var(--font-head); color: var(--muted); }
+  .p-stats { display: flex; flex-wrap: wrap; gap: 12px 40px; margin-top: 32px; }
   .p-stats div { display: flex; align-items: baseline; gap: 10px; }
   .p-stats strong { font: 500 2rem/1 var(--font-head); color: var(--accent); }
   .p-stats span { font-size: 14px; color: var(--muted); }
-  /* row 1: timeline + context, row 2: role, row 3: tools (one line where it fits) */
-  .p-meta { margin: 28px 0 0; padding-top: 20px; border-top: 1px solid var(--line); display: grid; gap: 16px 40px;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); }
-  .p-meta .wide { grid-column: 1 / -1; }
+  /* timeline, role and tools: three boxes side by side */
+  .p-meta { margin: 32px 0 0; display: grid; gap: 16px; grid-template-columns: minmax(0, .8fr) minmax(0, 1.4fr) minmax(0, 1.6fr); }
+  .p-meta > div { padding: 18px 20px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
+  @media (max-width: 800px) {
+    .p-meta { grid-template-columns: 1fr; }
+    .p-tags { justify-content: flex-start; max-width: none; padding-top: 0; }
+  }
   .p-meta dt { font: 500 12px var(--font-body); text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-bottom: 4px; }
   .p-meta dd { margin: 0; color: var(--text); }
   .p-meta .tags { gap: 5px; }
@@ -236,16 +257,17 @@
     <h1>Adithya Udupa <span>Game Designer</span></h1>
     <p class="lead">Crafting immersive digital experiences through code, creativity, and passion for interactive entertainment.</p>
     <div class="cta">
-      <a class="btn btn--primary" href="#projects">View projects</a>
+      <a class="btn btn--primary btn--lg" href="#projects">View projects</a>
       <button class="btn" type="button" data-resume>Resume</button>
     </div>
   </section>
 
   <section class="section" id="projects">
     <div class="wrap">
-      <h2 class="sec-title">Projects</h2>
-      <p class="label">Filter</p>
-      <div class="filters" id="filters"></div>
+      <div class="projects-top">
+        <h2 class="sec-title">Projects</h2>
+        <div class="filters" id="filters"></div>
+      </div>
 
       <div id="view-default">
         <div class="block">
@@ -285,8 +307,8 @@
       <h2 class="sec-title">Get in touch</h2>
       <p>I am always excited to discuss new projects, creative ideas, or opportunities to be part of your visions. Feel free to reach out!</p>
       <div class="cta">
-        <a class="btn btn--primary" href="mailto:adithyaudupa828@gmail.com">E-Mail</a>
-        <a class="btn" href="https://linkedin.com/in/828-adithya-udupa/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a class="btn btn--primary btn--lg" href="mailto:adithyaudupa828@gmail.com">E-Mail</a>
+        <a class="btn btn--primary btn--lg" href="https://linkedin.com/in/828-adithya-udupa/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         <button class="btn" type="button" data-resume>Resume</button>
       </div>
     </div>
@@ -307,11 +329,11 @@
   <div class="layer-bar">
     <div class="wrap">
       <button class="btn" type="button" data-back>&larr; Back</button>
-      <a class="btn btn--primary" href="assets/resume/AdithyaUdupa_Resume.pdf" download>Download PDF</a>
+      <a class="btn btn--primary" href="assets/resume/Resume_AdithyaUdupa.pdf" download>Download PDF</a>
     </div>
   </div>
-  <iframe class="resume-frame" loading="lazy" src="assets/resume/AdithyaUdupa_Resume.pdf" title="Resume">
-    <p><a href="assets/resume/AdithyaUdupa_Resume.pdf">Download the resume (PDF)</a></p>
+  <iframe class="resume-frame" loading="lazy" src="assets/resume/Resume_AdithyaUdupa.pdf" title="Resume">
+    <p><a href="assets/resume/Resume_AdithyaUdupa.pdf">Download the resume (PDF)</a></p>
   </iframe>
 </div>
 
@@ -326,12 +348,14 @@ const projectsData = [
     {
     	id: 1,
         name: "Cost of Living",
+        subtitle: "Ready Or Not",
+        color: "#f0323c",   // card border colour
 		isCurrent: true,
         tags: ["Levels", "Solo Project", "Multiplayer", "AAA", "Mods", "First-Person"],
 		duration: "2 months",
         role: "Blockout, Level Designer, AI, Environment Artist, Set Dressing",
 		type: "Modded Map, Ready Or Not",
-        stats: [{ value: "20k", label: "Downloads" }, { value: "60k", label: "Views" }],
+        stats: [{ value: "20k", label: "Downloads" }, { value: "50k", label: "Views" }, { value: "5", label: "Features on community YouTube videos" }],
         tools: ["UE5", "FMod", "SWAT AI", "Collision", "Blender", "Navigation", "Set Dressing"],
         thumbnail: "projects/cost-of-living/cover.webp",
         mainImages: ["projects/cost-of-living/cover.webp", "projects/cost-of-living/media/garden.webp", "projects/cost-of-living/media/surgicalroom.webp", "projects/cost-of-living/media/preppingarea.webp", "projects/cost-of-living/media/stagingarea.webp", "projects/cost-of-living/media/office.webp", "projects/cost-of-living/media/caves.webp", "projects/cost-of-living/media/bodies.webp", "projects/cost-of-living/media/secretstairs.webp"],
@@ -350,6 +374,8 @@ const projectsData = [
 	{
         id: 2,
         name: "Unannounced AAA Game",
+        subtitle: "Tombstone",
+        color: "#b07a4a",   // card border colour
 		isCurrent: true,
         tags: ["Levels", "Mars Games", "Multiplayer", "Third-Person", "AAA"],
 		duration: "1 sprint each",
@@ -372,6 +398,8 @@ const projectsData = [
 	{
         id: 3,
         name: "Daredevil",
+        subtitle: "Shipyard and Warehouse",
+        color: "#f0323c",   // card border colour
 		isCurrent: true,
         tags: ["Levels", "Systems", "Solo Project", "Third-Person", "Single Player"],
 		duration: "2 months",
@@ -395,6 +423,8 @@ const projectsData = [
 		{
         id: 4,
         name: "Enemy and Boss AI",
+        subtitle: "Combat",
+        color: "#a26bd6",   // card border colour
         tags: ["Systems", "Mars Games", "Multiplayer", "Third-Person", "AAA"],
 		duration: "2 months",
         role: "Technical Designer, Documentation, Systems Designer, Enemy AI, Boss AI",
@@ -417,6 +447,8 @@ const projectsData = [
     {
         id: 5,
         name: "Unannounced AAA Game",
+        subtitle: "Swamp Biome",
+        color: "#4fa85a",   // card border colour
 		tags: ["Levels", "Mars Games", "Multiplayer", "Third-Person", "AAA"],
 		duration: "2 sprints each",
         role: "Blockout, Level Design, Environment Art, Set Dressing",
@@ -439,6 +471,8 @@ const projectsData = [
     {
 		id: 6,
         name: "Unannounced AAA Game",
+        subtitle: "General Fantasy Biome",
+        color: "#b07a4a",   // card border colour
         tags: ["Levels", "Mars Games", "Multiplayer", "Third-Person", "AAA"],
 		duration: "2 sprints each",
         role: "Blockout, Level Design, Environment Art, Set Dressing",
@@ -461,6 +495,8 @@ const projectsData = [
 	{
         id: 7,
         name: "Daredevil",
+        subtitle: "World On Fire",
+        color: "#f0323c",   // card border colour
         tags: ["Systems", "Solo Project", "Single Player", "Third-Person"],
 		duration: "3 months",
         role: "Systems Designer, Technical Artist",
@@ -483,6 +519,8 @@ const projectsData = [
     {
         id: 8,
         name: "Elixir Blitz",
+        subtitle: "Saya's Trials",
+        color: "#e6b422",   // card border colour
         tags: ["Levels", "Systems", "UI", "Full Sail University", "Single Player", "Third-Person", "Full Game"],
 		duration: "2 months",
         role: "Level Designer, Environment Art, Set Dressing, UI Designer, 3D Modeling",	
@@ -505,6 +543,8 @@ const projectsData = [
     {
         id: 9,
         name: "Village Game",
+        subtitle: "3D Pacman Style",
+        color: "#e6b422",   // card border colour
         tags: ["Systems", "UI", "Solo Project", "Single Player", "Third-Person", "Full Game"],
 		duration: "1 month",
         role: "UI Design, Systems Design, Enemy AI",
@@ -531,7 +571,7 @@ const $ = id => document.getElementById(id);
 const isVideo = s => /\.(mp4|webm|mov)$/i.test(s);
 const fmt = s => (s || '').split(/\n{2,}/).filter(p => p.trim())
   .map(p => '<p>' + p.trim().replace(/\n/g, '<br>').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') + '</p>').join('');
-const tagList = (tags, n) => tags.slice(0, n).map((t, i) => `<span class="tag${i === 0 ? ' tag--main' : ''}">${t}</span>`).join('');
+const tagList = (tags, n) => tags.slice(0, n).map(t => `<span class="tag">${t}</span>`).join('');
 
 /* ---------- filters + project grids ---------- */
 const tagGroups = [
@@ -540,21 +580,36 @@ const tagGroups = [
   ['First-Person', 'Third-Person', 'Single Player', 'Multiplayer']
 ];
 let active = [];
+let filterOpen = false;
 
 function renderFilters() {
-  $('filters').innerHTML = tagGroups.map(group =>
-    `<div class="filter-group">${group.map(t =>
-      `<button class="chip${active.includes(t) ? ' is-on' : ''}" type="button" data-tag="${t}" aria-pressed="${active.includes(t)}">${t}</button>`
-    ).join('')}</div>`).join('')
-    + `<button class="clear" type="button" data-clear${active.length ? '' : ' hidden'}>Clear filters</button>`;
+  // keyboard users keep their place after the re-render; mouse clicks never get a focus ring
+  const a = document.activeElement;
+  const refocus = a && a.closest && a.closest('#filters') && a.matches(':focus-visible')
+    ? (a.dataset.tag ? `[data-tag="${a.dataset.tag}"]` : a.hasAttribute('data-clear') ? '[data-clear]' : '[data-filter-toggle]') : null;
+  $('filters').innerHTML = `
+    <div class="filter-bar">
+      <button class="filter-btn" type="button" data-filter-toggle aria-expanded="${filterOpen}" aria-controls="filter-panel">
+        Filter${active.length ? `<span class="filter-count">${active.length}</span>` : ''}
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <button class="clear" type="button" data-clear${active.length ? '' : ' hidden'}>Clear filters</button>
+    </div>
+    <div class="filter-panel" id="filter-panel"${filterOpen ? '' : ' hidden'}>
+      ${tagGroups.map(group =>
+        `<div class="filter-group">${group.map(t =>
+          `<button class="chip${active.includes(t) ? ' is-on' : ''}" type="button" data-tag="${t}" aria-pressed="${active.includes(t)}">${t}</button>`
+        ).join('')}</div>`).join('')}
+    </div>`;
+  if (refocus) $('filters').querySelector(refocus).focus();
 }
 
 const card = p => `
-  <button class="card" type="button" data-open="${p.id}">
+  <button class="card" type="button" data-open="${p.id}" style="--card-color: ${p.color}">
     <span class="card-media"><img src="${p.thumbnail}" alt="" loading="lazy" decoding="async"></span>
     <span class="card-body">
       <span class="tags">${tagList(p.tags, 3)}</span>
-      <span class="card-title">${p.name}</span>
+      <span class="card-title">${p.name === 'Unannounced AAA Game' ? p.subtitle : p.name}</span>
     </span>
   </button>`;
 
@@ -590,7 +645,11 @@ function hideLayer(id) {
   if (!openLayer()) document.body.classList.remove('no-scroll');
 }
 addEventListener('popstate', () => { const id = openLayer(); if (id) hideLayer(id); });
-addEventListener('keydown', e => { if (e.key === 'Escape' && openLayer()) history.back(); });
+addEventListener('keydown', e => {
+  if (e.key !== 'Escape') return;
+  if (openLayer()) history.back();
+  else if (filterOpen) { filterOpen = false; renderFilters(); }
+});
 
 /* ---------- media helpers ---------- */
 function slide(src, alt) {
@@ -646,17 +705,21 @@ function openProject(id) {
   const pm = p.postmortem || {};
   const pmRows = [['What went well', pm.wentWell], ['What I learned', pm.learned], ['What went wrong', pm.wentWrong]].filter(r => r[1]);
 
-  $('bar-title').textContent = p.name;
+  $('bar-title').textContent = p.subtitle ? `${p.name} - ${p.subtitle}` : p.name;
   $('project-content').innerHTML = `
     <header class="p-head">
-      <h2 id="project-name">${p.name}</h2>
-      <div class="tags">${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+      <div class="p-top">
+        <div>
+          <h2 id="project-name">${p.name}</h2>
+          ${p.subtitle ? `<p class="p-sub">${p.subtitle}</p>` : ''}
+        </div>
+        <div class="tags p-tags">${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+      </div>
       ${p.stats ? `<div class="p-stats">${p.stats.map(s => `<div><strong>${s.value}</strong><span>${s.label}</span></div>`).join('')}</div>` : ''}
       <dl class="p-meta">
         <div><dt>Timeline</dt><dd>${p.duration}</dd></div>
-        <div><dt>Context</dt><dd>${p.type}</dd></div>
-        <div class="wide"><dt>Role</dt><dd>${p.role}</dd></div>
-        <div class="wide"><dt>Tools</dt><dd><span class="tags">${p.tools.map(t => `<span class="tag">${t}</span>`).join('')}</span></dd></div>
+        <div><dt>Role</dt><dd>${p.role}</dd></div>
+        <div><dt>Tools</dt><dd><span class="tags">${p.tools.map(t => `<span class="tag">${t}</span>`).join('')}</span></dd></div>
       </dl>
     </header>
     ${featured.length ? `<section class="p-sec">${carousel(featured, p.name)}</section>` : ''}
@@ -678,7 +741,10 @@ function openProject(id) {
 document.addEventListener('click', e => {
   const t = e.target;
   let el;
-  if ((el = t.closest('[data-tag]'))) {
+  if (t.closest('[data-filter-toggle]')) {
+    filterOpen = !filterOpen;
+    renderFilters();
+  } else if ((el = t.closest('[data-tag]'))) {
     const tag = el.dataset.tag;
     active = active.includes(tag) ? active.filter(x => x !== tag) : [...active, tag];
     refresh();
