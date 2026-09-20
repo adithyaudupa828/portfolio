@@ -153,6 +153,14 @@
   .layer { position: fixed; inset: 0; z-index: 50; background: var(--bg); overflow-y: auto; overscroll-behavior: contain; }
   .layer--resume { z-index: 55; display: flex; flex-direction: column; }
   .layer-bar { position: sticky; top: 0; z-index: 5; background: rgba(14, 16, 19, .96); border-bottom: 1px solid var(--line); }
+  /* project pages: a faint wash of the project's colour fades out over the header, and again (mirrored) at the bottom. It scrolls with the page
+     (background-attachment: local), and the top bar stays see-through until you scroll so the wash isn't cut by a dark strip */
+  #project { background:
+    linear-gradient(to bottom, color-mix(in srgb, var(--accent) 15%, transparent), transparent) top / 100% 560px no-repeat local,
+    linear-gradient(to top, color-mix(in srgb, var(--accent) 15%, transparent), transparent) bottom / 100% 560px no-repeat local,
+    var(--bg); }
+  #project .layer-bar { background: transparent; transition: background .2s; }
+  #project.scrolled .layer-bar { background: rgba(14, 16, 19, .96); }
   .layer-bar .wrap { height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
   .layer-bar .btn { padding: 8px 18px; font-size: 14px; }
   .bar-title { font: 500 1rem var(--font-head); color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
@@ -180,6 +188,8 @@
   .p-meta > div { padding: 18px 20px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
   @media (max-width: 800px) {
     .p-meta { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 1000px) {   /* the tags no longer fit beside the title: they drop under it, left-aligned */
     .p-tags { align-items: flex-start; padding-top: 0; }
     .p-tags .tags { flex-wrap: wrap; justify-content: flex-start; }
   }
@@ -287,7 +297,7 @@
     <h1>Adithya Udupa <span>Game Designer</span></h1>
     <p class="lead">Crafting immersive digital experiences through code, creativity, and passion for interactive entertainment.</p>
     <div class="cta">
-      <a class="btn btn--primary btn--lg" href="#projects">View projects</a>
+      <a class="btn btn--primary btn--lg" href="#projects">Projects</a>
       <button class="btn" type="button" data-resume>Resume</button>
     </div>
   </section>
@@ -457,7 +467,7 @@ const projectsData = [
           { title: "Level 0: Home map design", text: "Designed the home level as an interactive hub with distinct zones, each with its own purpose. This is Daredevil's base of operations." },
           { title: "Level 1: Warehouses blockout", text: "Blocked out the smaller warehouses, which hide civilians who need rescuing and hints that tie into the larger story." },
           { title: "Shipyard map design", text: "Planned the layout of the shipyard on New York's docks: a hostile combat area filled with enemies and story clues, with a docked ship that holds a mini-boss fight." },
-          { title: "Home blockout", text: "Blocked out the home level. [Add details.]" },
+          { title: "Home blockout", text: "Blocked out the home level with kitchen (health), dojo (training), and bedroom areas (save/exit), interrogation room (mission select)." },
           { title: "Path options", text: "The player chooses how to cross the shipyard: go straight into the fight, or stay quiet and avoid the security cameras to take enemies down one at a time." },
           { title: "Modeling in Blender", text: "Modeled the assets in Blender for the warehouses and the shipyard." },
           { title: "Shipyard blockout", text: "[Describe this pass: what was blocked out or changed, for example the docked ship and its mini-boss space.]" },
@@ -495,7 +505,7 @@ const projectsData = [
           { title: "Object-oriented design", text: "One base enemy holds everything shared, and each enemy type derives from it as a child. This keeps the system modular so it drops into any Unreal Engine 5 project." },
           { title: "Enemies", text: "Three types. The melee enemy performs single and combo attacks and can block and parry. The ranged enemy finds vantage points and attacks from a distance, and cannot block. The mage teleports between locations, attacks from range and heals when its health gets low." },
           { title: "Boss", text: "Uses melee, ranged and magic attacks, blocks, parries and heals itself. The only way to damage it is to parry or dodge its attacks." },
-          { title: "Arena blockout", text: "Blocked out an arena to test the enemies and the boss fight. " },
+          { title: "Arena blockout", text: "Blocked out an arena to test the enemies and the boss fight." },
           { title: "Documentation", text: "Wrote up how each AI feature can be built. Also came up with magic and ranged weapons and helped other designers realize their ideas." },
           { title: "Delivery", text: "The first plan was too ambitious, so some features were cut. The documentation received positive feedback." }
         ],
@@ -529,12 +539,12 @@ const projectsData = [
         timeline: [
           { title: "Biome direction", text: "Every swamp level shares the same pacing, visuals and feel: green fog, dense trees, poison clouds and swamp enemies." },
           { title: "Level 1: Forest map design", text: "Designed the forest as a combat-focused area with poison clouds and creatures. A small magic pond near the cabin gives players random buffs." },
-          { title: "Forest blockout", text: "Blocked out the forest. [Add details.]" },
+          { title: "Forest blockout", text: "Blocked out the forest with the main path and side paths, along with the relevant enemy placements." },
           { title: "Forest splines", text: "Used splines to cut down the work of placing assets by hand and learned Unreal Engine's modeling tools." },
           { title: "Elements", text: "Poison clouds, an old bridge that collapses when the player enters a trigger box, and floating logs that sink the player into poisonous water after one second. These control the pacing of the level." },
           { title: "Paths", text: "Different routes lead to different enemies, and each enemy gives a different reward." },
           { title: "Level 2: Quarry map design", text: "Designed an abandoned quarry flooded with swampy water and a blocked-off tunnel. A magic pond at the top grants buffs." },
-          { title: "Quarry blockout", text: "Blocked out the quarry." },
+          { title: "Quarry blockout", text: "Blocked out the quarry with swamp water, cabin, tunnels, and small rewards." },
           { title: "Delivery", text: "Finished both levels in 2 sprints each. The cave system turned out too complex and took too long to explore, a reminder to keep exploration time in mind in a fast-paced game." }
         ],
 		tags: ["Levels", "Mars Games", "Multiplayer", "Third-Person", "AAA"],
@@ -566,12 +576,12 @@ const projectsData = [
         timeline: [
           { title: "Biome direction", text: "Bright flowering plants, tall trees, magical animals and fitting enemies. Lots of resources and few enemies, to encourage exploring." },
           { title: "Level 1: Copper and tin mines map design", text: "A maze-like tunnel system with the best resources deep in the center, which means higher risk and higher reward." },
-          { title: "Blockout", text: "Blocked out the tunnel system. [Add details.]" },
+          { title: "Blockout", text: "Blocked out the tunnel system with branching pathways, exploration based rewards, and small number of enemies" },
           { title: "Splines", text: "Used splines to place repeated assets faster." },
           { title: "Elements", text: "[Placeholder: describe the elements in this biome and how they shape the pacing, in the same way as the poison clouds and bridges in the swamp.]" },
           { title: "Paths", text: "[Placeholder: describe the different routes through the mines and what each one rewards.]" },
           { title: "Level 2: Farm map design", text: "A calm, low-combat level where players can meet and trade resources." },
-          { title: "Blockout", text: "Blocked out the farm. [Add details.]" },
+          { title: "Blockout", text: "Blocked out the farm with high visibility, main focal point, and strategic placement of resources." },
           { title: "Delivery", text: "Finished both levels on a tight schedule. The crunch that followed led the team to start sprint retrospectives to talk about what went wrong." }
         ],
         tags: ["Levels", "Mars Games", "Multiplayer", "Third-Person", "AAA"],
@@ -677,7 +687,7 @@ const projectsData = [
           { title: "Villager AI and combat", text: "Villagers have a basic perception system and chase the player while in range. They swing an axe, and if it connects the player loses a life." },
           { title: "Balance", text: "The player is slower than the villagers, so a jump with a 3-second cooldown lets the player get away." },
           { title: "Level design", text: "A densely populated town to move through while collecting coins." },
-          { title: "Blockout", text: "Blocked out the town. [Add details.]" },
+          { title: "Blockout", text: "Blocked out the town with hundreds of small buildings and pathways." },
           { title: "UI", text: "A simple display for the coins collected and the lives left." },
           { title: "Delivery", text: "Kept a cohesive art style across the environment and the UI. Animations did not work at first and had to be reimported and retargeted." }
         ],
@@ -851,21 +861,21 @@ function fitGallery(wrap) {
   const items = [...grid.children];
   const rows = [...new Set(items.map(i => i.offsetTop))];
   const many = rows.length > 2;
-  const collapsed = many && !wrap.dataset.open;
+  const collapsed = many && !wrap.dataset.expanded;
   wrap.classList.toggle('is-collapsed', collapsed);
   if (collapsed) grid.style.maxHeight = (rows[1] - rows[0] + items[0].offsetHeight / 2) + 'px';
   btn.hidden = !many;
-  btn.textContent = wrap.dataset.open ? 'Show less' : 'Show all';
+  btn.textContent = wrap.dataset.expanded ? 'Show less' : 'Show all';
 }
 
 function toggleGallery(btn) {
   const wrap = btn.previousElementSibling;
-  if (wrap.dataset.open) {
-    delete wrap.dataset.open;
+  if (wrap.dataset.expanded) {
+    delete wrap.dataset.expanded;
     fitGallery(wrap);
     wrap.closest('.p-sec').scrollIntoView({ behavior: 'smooth', block: 'start' });   // keep the reader at the top of the gallery
   } else {
-    wrap.dataset.open = '1';
+    wrap.dataset.expanded = '1';
     fitGallery(wrap);
   }
 }
@@ -939,6 +949,7 @@ function openProject(id) {
   ['project', 'viewer'].forEach(id => $(id).style.setProperty('--accent', p.color));
   showLayer('project');
   $('project').scrollTop = 0;
+  $('project').classList.remove('scrolled');
   $('project').focus({ preventScroll: true });
   $('project-content').querySelectorAll('.track').forEach(t => { t.scrollLeft = 0; updateCarousel(t); });   // always start on the first image
   $('project-content').querySelectorAll('.g-wrap').forEach(fitGallery);
@@ -971,7 +982,8 @@ document.addEventListener('click', e => {
 
 // scroll doesn't bubble, so listen in the capture phase to keep the slide counter in sync
 $('project').addEventListener('scroll', e => {
-  if (e.target.classList && e.target.classList.contains('track')) updateCarousel(e.target);
+  if (e.target === $('project')) $('project').classList.toggle('scrolled', $('project').scrollTop > 4);   // solid top bar once scrolled
+  else if (e.target.classList && e.target.classList.contains('track')) updateCarousel(e.target);
 }, true);
 
 // rows change with the width, so refit the galleries when the window is resized
