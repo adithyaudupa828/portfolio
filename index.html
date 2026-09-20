@@ -214,7 +214,9 @@
   .tl-step h4 { grid-column: 2; display: flex; align-items: center; min-height: 44px; font-size: 1.3rem; }
   .tl-body { grid-column: 2; padding-top: 4px; color: var(--text-soft); }
   /* optional small pictures under a step: same tile size as the gallery, only rendered when a step has `images` */
-  .tl-media { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 300px)); gap: 12px; margin-top: 16px; }
+  .tl-media { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 16px; }
+  .tl-media .g-item { flex: 0 0 auto; width: min(var(--tile-w, 295px), 100%); }   /* --tile-w = the measured gallery tile width (see syncTileSize) */
+  .tl-body a { color: var(--accent); text-underline-offset: 3px; }
   @media (min-width: 800px) {
     .tl-step { grid-template-columns: 44px minmax(220px, 340px) 1fr; column-gap: 28px; }
     .tl-node { grid-row: auto; }
@@ -393,11 +395,11 @@ const projectsData = [
         keywords: ["SWAT AI", "room proxies", "threat awareness", "stack-up points", "Blender", "golden path"],
         timeline: [
           { title: "Concept and lore", text: "Decided the story: a multi-level funeral home hiding a black market organ trafficking operation. Planned the golden path, replayability and the alternate routes through the level." },
-          { title: "Learning the Ready Or Not mod kit", text: "Learned how the game handles its SWAT AI: room proxies, doorways, threat awareness actors and stack-up points." },
+          { title: "Learning the Ready Or Not mod kit", text: "Learned how the game handles its SWAT AI: room proxies, doorways, threat awareness actors and stack-up points. Resource: <a href='https://unofficial-modding-guide.com/' target='_blank' rel='noopener noreferrer'>Unofficial Modding Guide</a>." },
           { title: "Map design", text: "Designed the map, then checked it for cover and hide-outs." },
-          { title: "Blockout", text: "Built the blockout of the level." },
-          { title: "SWAT AI", text: "Implemented stack-up points, clearing routes, room proxies, doorways, threat awareness points and custom objectives. The stairs gave the most trouble because AI navigation around them was difficult." },
-          { title: "Modeling in Blender", text: "Modeled the assets in Blender and built out the entire level." },
+          { title: "Blockout", text: "Built the blockout of the level.", images: ["projects/cost-of-living/gallery/houseblockout.webp"] },
+          { title: "SWAT AI", text: "Implemented stack-up points, clearing routes, room proxies, doorways, threat awareness points and custom objectives. The stairs gave the most trouble because AI navigation around them was difficult.", images: ["projects/cost-of-living/gallery/gardenbts.webp", "projects/cost-of-living/gallery/doorway.webp"] },
+          { title: "Modeling in Blender", text: "Modeled the assets in Blender and built out the entire level.", images: ["projects/cost-of-living/gallery/3dmodels.webp"] },
           { title: "Polish", text: "Added blocking volumes and light blockers to finish the level." },
           { title: "Release", text: "Published on Nexus Mods after finishing the whole map solo in under 2 months. 20k downloads, 50k views and 5 features on community YouTube videos." }
         ],
@@ -430,10 +432,10 @@ const projectsData = [
         stats: [{ value: "4", label: "Areas in 4 sprints" }, { value: "4", label: "Areas featured in the trailer" }, { value: "100+", label: "Players supported in the train station" }],
         keywords: ["navigation", "100+ players", "purchasable items", "walking paths", "trailer"],
         timeline: [
-          { title: "Area 1: Train station", text: "The spawn point of every player and the hub they use to reach the rest of the game. Made sure there is room and clear navigation for 100+ players at once. It took a little longer than planned." },
-          { title: "Area 2: Stockyard and stables", text: "A central hub where players buy, sell and upgrade horses, carriages, cosmetics and raid supplies. Made sure the shop works and that purchasable items are easy to see." },
-          { title: "Area 3: Blacksmith", text: "A small shop for buying and selling weapons, upgrades and parts. It does not need navigation." },
-          { title: "Area 4: Stage coach", text: "A rest and interaction area where players meet people from the city, rest their horses, repair carriages and buy or sell horses. The building is surrounded by walking paths so players can move around it easily." },
+          { title: "Area 1: Train station", text: "The spawn point of every player and the hub they use to reach the rest of the game. Made sure there is room and clear navigation for 100+ players at once. It took a little longer than planned.", images: ["projects/tombstone/gallery/train3.webp"] },
+          { title: "Area 2: Stockyard and stables", text: "A central hub where players buy, sell and upgrade horses, carriages, cosmetics and raid supplies. Made sure the shop works and that purchasable items are easy to see.", images: ["projects/tombstone/gallery/stable.webp"] },
+          { title: "Area 3: Blacksmith", text: "A small shop for buying and selling weapons, upgrades and parts. It does not need navigation.", images: ["projects/tombstone/gallery/blacksmith2.webp"] },
+          { title: "Area 4: Stage coach", text: "A rest and interaction area where players meet people from the city, rest their horses, repair carriages and buy or sell horses. The building is surrounded by walking paths so players can move around it easily.", images: ["projects/tombstone/gallery/scinside.webp"] },
           { title: "Delivery", text: "Each area was finished in one sprint and delivered on time for the trailer, working closely with the environment artist." }
         ],
 		isCurrent: true,
@@ -463,12 +465,12 @@ const projectsData = [
         stats: [{ value: "6", label: "Systems (save, train, armor, mission select and more)" }, { value: "3", label: "Paths in level 1" }],
         keywords: ["interactive hub", "mini-boss", "security cameras", "Nanite"],
         timeline: [
-          { title: "Inspiration", text: "The home level takes its loadout, mission select and interaction idea from Ready Or Not's headquarters. [Add any other references or films that shaped the look.]" },
-          { title: "Level 0: Home map design", text: "Designed the home level as an interactive hub with distinct zones, each with its own purpose. This is Daredevil's base of operations." },
+          { title: "Inspiration", text: "The home level takes its loadout, mission select and interaction idea from Ready Or Not's headquarters. In Ready or Not, different areas in the police HQ do different things, like a range to practice, locker room to customize weapons, briefing room to select missions, etc. ", images: ["projects/daredevil-levels/timeline/Shooting_Range_Inner.webp", "projects/daredevil-levels/timeline/Spawn.webp", "projects/daredevil-levels/timeline/Lockers.webp"] },
+          { title: "Level 0: Home map design", text: "Designed the home level as an interactive hub with distinct zones, each with its own purpose. This is Daredevil's base of operations.", images: ["projects/daredevil-levels/timeline/murdockapartment2.webp", "projects/daredevil-levels/timeline/murdockapartment.webp"] },
           { title: "Level 1: Warehouses blockout", text: "Blocked out the smaller warehouses, which hide civilians who need rescuing and hints that tie into the larger story." },
           { title: "Shipyard map design", text: "Planned the layout of the shipyard on New York's docks: a hostile combat area filled with enemies and story clues, with a docked ship that holds a mini-boss fight." },
           { title: "Home blockout", text: "Blocked out the home level with kitchen (health), dojo (training), and bedroom areas (save/exit), interrogation room (mission select)." },
-          { title: "Path options", text: "The player chooses how to cross the shipyard: go straight into the fight, or stay quiet and avoid the security cameras to take enemies down one at a time." },
+          { title: "Path options", text: "The player chooses how to cross the shipyard: go straight into the fight, or stay quiet and avoid the security cameras to take enemies down one at a time.", images: ["projects/daredevil-levels/layout/daredevilwarehouse.jpeg"] },
           { title: "Modeling in Blender", text: "Modeled the assets in Blender for the warehouses and the shipyard." },
           { title: "Shipyard blockout", text: "[Describe this pass: what was blocked out or changed, for example the docked ship and its mini-boss space.]" },
           { title: "Performance fix", text: "Some assets and materials were too detailed and dropped the frame rate. Fixed it with Nanite and lower polygon counts." }
@@ -499,11 +501,11 @@ const projectsData = [
         subtitle: "Combat",
         color: "#a26bd6",   // card border colour
         stats: [{ value: "4", label: "Enemies" }, { value: "20+", label: "Fields for modular enemies" }, { value: "10+", label: "Player attacks" }, { value: "20+", label: "Enemy attacks" }],
-        keywords: ["behavior trees", "blackboards", "modular", "parry"],
+        keywords: ["behavior trees", "blackboards", "modular", "One base enemy", "system modular", "Three types", "helped other designers"],
         timeline: [
-          { title: "Learning", text: "A documentation task during a systems design internship at Mars Games, built to understand AI programming in Unreal Engine 5. Learned from documentation, YouTube and more, starting with behavior trees and blackboards." },
-          { title: "Object-oriented design", text: "One base enemy holds everything shared, and each enemy type derives from it as a child. This keeps the system modular so it drops into any Unreal Engine 5 project." },
-          { title: "Enemies", text: "Three types. The melee enemy performs single and combo attacks and can block and parry. The ranged enemy finds vantage points and attacks from a distance, and cannot block. The mage teleports between locations, attacks from range and heals when its health gets low." },
+          { title: "Learning", text: "A documentation task during a systems design internship at Mars Games, built to understand AI programming in Unreal Engine 5. Learned from documentation, YouTube and more, starting with behavior trees and blackboards.", images: ["projects/enemy-boss-ai/media/enemybt.webp", "projects/enemy-boss-ai/gallery/bt-kingpin.webp"] },
+          { title: "Object-oriented design", text: "One base enemy holds everything shared, and each enemy type derives from it as a child. This keeps the system modular so it drops into any Unreal Engine 5 project.", images: ["projects/enemy-boss-ai/gallery/da-kingpin.webp"] },
+          { title: "Enemies", text: "Three types. The melee enemy performs single and combo attacks and can block and parry. The ranged enemy finds vantage points and attacks from a distance, and cannot block. The mage teleports between locations, attacks from range and heals when its health gets low.", images: ["projects/enemy-boss-ai/gallery/smallenemies.webp"] },
           { title: "Boss", text: "Uses melee, ranged and magic attacks, blocks, parries and heals itself. The only way to damage it is to parry or dodge its attacks." },
           { title: "Arena blockout", text: "Blocked out an arena to test the enemies and the boss fight." },
           { title: "Documentation", text: "Wrote up how each AI feature can be built. Also came up with magic and ranged weapons and helped other designers realize their ideas." },
@@ -537,11 +539,11 @@ const projectsData = [
         stats: [{ value: "4", label: "Environmental hazards" }, { value: "3", label: "Paths" }, { value: "Rewards", label: "scale with the enemies you encounter" }],
         keywords: ["poison clouds", "trigger box", "splines", "magic pond"],
         timeline: [
-          { title: "Biome direction", text: "Every swamp level shares the same pacing, visuals and feel: green fog, dense trees, poison clouds and swamp enemies." },
+          { title: "Biome direction", text: "Every swamp level shares the same pacing, visuals and feel: green fog, dense trees, poison clouds and swamp enemies.", images: ["projects/swamp-biome/gallery/swampforestref.webp"] },
           { title: "Level 1: Forest map design", text: "Designed the forest as a combat-focused area with poison clouds and creatures. A small magic pond near the cabin gives players random buffs." },
           { title: "Forest blockout", text: "Blocked out the forest with the main path and side paths, along with the relevant enemy placements." },
           { title: "Forest splines", text: "Used splines to cut down the work of placing assets by hand and learned Unreal Engine's modeling tools." },
-          { title: "Elements", text: "Poison clouds, an old bridge that collapses when the player enters a trigger box, and floating logs that sink the player into poisonous water after one second. These control the pacing of the level." },
+          { title: "Elements", text: "Poison clouds, an old bridge that collapses when the player enters a trigger box, and floating logs that sink the player into poisonous water after one second. These control the pacing of the level.", images: ["projects/swamp-biome/media/bridge.webp", "projects/swamp-biome/media/logs.webp"] },
           { title: "Paths", text: "Different routes lead to different enemies, and each enemy gives a different reward." },
           { title: "Level 2: Quarry map design", text: "Designed an abandoned quarry flooded with swampy water and a blocked-off tunnel. A magic pond at the top grants buffs." },
           { title: "Quarry blockout", text: "Blocked out the quarry with swamp water, cabin, tunnels, and small rewards." },
@@ -574,15 +576,15 @@ const projectsData = [
         stats: [{ value: "5000+", label: "Optimized assets" }, { value: "3", label: "Paths" }, { value: "Rewards", label: "based on exploration" }],
         keywords: ["splines", "higher risk", "resources", "sprint retrospectives"],
         timeline: [
-          { title: "Biome direction", text: "Bright flowering plants, tall trees, magical animals and fitting enemies. Lots of resources and few enemies, to encourage exploring." },
+          { title: "Biome direction", text: "Bright flowering plants, tall trees, magical animals and fitting enemies. Lots of resources and few enemies, to encourage exploring.", images: ["projects/general-fantasy-biome/gallery/genfantasy1.webp"] },
           { title: "Level 1: Copper and tin mines map design", text: "A maze-like tunnel system with the best resources deep in the center, which means higher risk and higher reward." },
           { title: "Blockout", text: "Blocked out the tunnel system with branching pathways, exploration based rewards, and small number of enemies" },
-          { title: "Splines", text: "Used splines to place repeated assets faster." },
+          { title: "Splines", text: "Used splines to place repeated assets faster.", images: ["projects/general-fantasy-biome/gallery/splines.webp"] },
           { title: "Elements", text: "[Placeholder: describe the elements in this biome and how they shape the pacing, in the same way as the poison clouds and bridges in the swamp.]" },
           { title: "Paths", text: "[Placeholder: describe the different routes through the mines and what each one rewards.]" },
           { title: "Level 2: Farm map design", text: "A calm, low-combat level where players can meet and trade resources." },
-          { title: "Blockout", text: "Blocked out the farm with high visibility, main focal point, and strategic placement of resources." },
-          { title: "Delivery", text: "Finished both levels on a tight schedule. The crunch that followed led the team to start sprint retrospectives to talk about what went wrong." }
+          { title: "Blockout", text: "Blocked out the farm with high visibility, main focal point, and strategic placement of resources.", images: ["projects/general-fantasy-biome/gallery/farmplants.webp"] },
+          { title: "Delivery", text: "Finished both levels on a tight schedule. The crunch that followed led the team to start sprint retrospectives to talk about what went wrong.", images: ["projects/general-fantasy-biome/media/plants.webp", "projects/general-fantasy-biome/media/wheat.webp"] }
         ],
         tags: ["Levels", "Mars Games", "Multiplayer", "Third-Person", "AAA"],
 		duration: "2 sprints each",
@@ -614,12 +616,12 @@ const projectsData = [
           { title: "System 1: Parkour", text: "A movement system built for a fan game that focuses on combat and parkour. [Placeholder: what inspired the parkour system.]" },
           { title: "Basic jumps", text: "The standard jump plus double and triple jumps." },
           { title: "Extended jumps", text: "Vaulting, the long jump, the spin jump and more." },
-          { title: "Dynamic jumps", text: "The system picks the right jump depending on the distance to the target and the obstacle in the way." },
-          { title: "Mantling, sliding and grappling hook", text: "Mantling lets the player pull themselves up onto ledges. Sliding and a grappling hook round out the movement set." },
+          { title: "Dynamic jumps", text: "The system picks the right jump depending on the distance to the target and the obstacle in the way.", images: ["projects/daredevil-systems/timeline/jump1.webp", "projects/daredevil-systems/timeline/jump2.webp"] },
+          { title: "Mantling, sliding, crouching, and grappling hook", text: "Mantling lets the player pull themselves up onto ledges. Sliding and a grappling hook round out the movement set.", images: ["projects/daredevil-systems/timeline/slide.webp", "projects/daredevil-systems/timeline/crouch.webp"] },
           { title: "System 2: World On Fire", text: "An X-ray and radar-sense ability that lets the player see through walls to find enemies and items. [Placeholder: what inspired World On Fire.]" },
           { title: "Building the system", text: "A modular post-process effect made from a custom depth pass and a post-process material that highlights objects by their stencil value." },
-          { title: "Color coding", text: "Different colors for enemies and items, so the player can read the scene at a glance." },
-          { title: "Polish", text: "Kept the look consistent and made the effect easy to upgrade with more features. The first plan was too ambitious and some features were cut." }
+          { title: "Color coding", text: "Different colors for enemies and items, so the player can read the scene at a glance.", images: ["projects/daredevil-systems/timeline/blue.webp", "projects/daredevil-systems/timeline/green.webp"] },
+          { title: "Polish", text: "Kept the look consistent and made the effect easy to upgrade with more features. The first plan was too ambitious and some features were cut.", images: ["projects/daredevil-systems/media/sideview.webp"] }
         ],
         tags: ["Systems", "Solo Project", "Single Player", "Third-Person"],
 		duration: "3 months",
@@ -646,15 +648,14 @@ const projectsData = [
         subtitle: "Saya's Trials",
         color: "#e6b422",   // card border colour
         stats: [{ value: "8", label: "Team members" }],
-        keywords: ["fog", "magic portals", "Unreal Engine widgets", "Sun Berries", "Moon Flowers"],
+        keywords: ["fog", "magic portals", "Unreal Engine widgets", "Modeled and textured"],
         timeline: [
           { title: "The game", text: "A cozy shop management game in a mystical forest. Take customer orders, travel through magic portals for ingredients, then return to the shop to craft the potions." },
-          { title: "Level 2: Forest", text: "A mystical forest that shifts between serene lakes, waterfalls and shadowy woods. Fog guides the player: foggier areas signal danger." },
+          { title: "Level 2: Forest", text: "A mystical forest that shifts between serene lakes, waterfalls and shadowy woods. Fog guides the player: foggier areas signal danger.", images: ["projects/elixir-blitz/media/forest.webp", "projects/elixir-blitz/gallery/darkforest.webp"] },
           { title: "Blockout", text: "Blocked out the waterfall, portal, dark forest, river, windmill and castle." },
-          { title: "Modeling", text: "Modeled the environment assets that fill the forest." },
           { title: "Ingredients scattering", text: "Placed the collectible ingredients around the level so players have a reason to explore before they reach the portal that ends the run." },
-          { title: "Modeling ingredients", text: "Modeled and textured the Sun Berries, Moon Flowers, Beetles, Mushrooms and Roots that players collect." },
-          { title: "UI for the game", text: "Designed the inventory, main menu, settings and pause menu, built with Unreal Engine widgets." },
+          { title: "Modeling ingredients", text: "Modeled and textured the Sun Berries, Moon Flowers, Beetles, Mushrooms and Roots that players collect.", images: ["projects/elixir-blitz/media/3d1.webp", "projects/elixir-blitz/gallery/3d2.webp"] },
+          { title: "UI for the game", text: "Designed the inventory, main menu, settings and pause menu, built with Unreal Engine widgets.", images: ["projects/elixir-blitz/gallery/mainmenu.webp"] },
           { title: "Delivery", text: "A charming, consistent art style and a relaxing core loop. The first assets were too detailed for a simple stylized game, and the save system sometimes caused minor problems." }
         ],
         tags: ["Levels", "Systems", "UI", "Full Sail University", "Single Player", "Third-Person", "Full Game"],
@@ -684,8 +685,8 @@ const projectsData = [
         keywords: ["Pac-Man", "perception system", "3-second cooldown", "retargeted"],
         timeline: [
           { title: "Idea", text: "A simple 3D take on Pac-Man: move through a crowded town and collect coins." },
-          { title: "Villager AI and combat", text: "Villagers have a basic perception system and chase the player while in range. They swing an axe, and if it connects the player loses a life." },
-          { title: "Balance", text: "The player is slower than the villagers, so a jump with a 3-second cooldown lets the player get away." },
+          { title: "Villager AI and combat", text: "Villagers have a basic perception system and chase the player while in range. They swing an axe, and if it connects the player loses a life.", images: ["projects/village-game/gallery/enemysenses.webp"] },
+          { title: "Balance", text: "The player is slower than the villagers, so a jump with a 3-second cooldown lets the player get away.", images: ["projects/village-game/gallery/enemyai.webp"] },
           { title: "Level design", text: "A densely populated town to move through while collecting coins." },
           { title: "Blockout", text: "Blocked out the town with hundreds of small buildings and pathways." },
           { title: "UI", text: "A simple display for the coins collected and the lives left." },
@@ -868,6 +869,12 @@ function fitGallery(wrap) {
   btn.textContent = wrap.dataset.expanded ? 'Show less' : 'Show all';
 }
 
+// make the timeline pictures exactly as big as the gallery tiles (the gallery's width depends on the screen)
+function syncTileSize() {
+  const root = $('project-content'), tile = root.querySelector('.g-grid .g-item');
+  if (tile) root.style.setProperty('--tile-w', tile.getBoundingClientRect().width + 'px');
+}
+
 function toggleGallery(btn) {
   const wrap = btn.previousElementSibling;
   if (wrap.dataset.expanded) {
@@ -953,6 +960,7 @@ function openProject(id) {
   $('project').focus({ preventScroll: true });
   $('project-content').querySelectorAll('.track').forEach(t => { t.scrollLeft = 0; updateCarousel(t); });   // always start on the first image
   $('project-content').querySelectorAll('.g-wrap').forEach(fitGallery);
+  syncTileSize();
 }
 
 /* ---------- events ---------- */
@@ -987,7 +995,11 @@ $('project').addEventListener('scroll', e => {
 }, true);
 
 // rows change with the width, so refit the galleries when the window is resized
-addEventListener('resize', () => { if (!$('project').hidden) $('project-content').querySelectorAll('.g-wrap').forEach(fitGallery); });
+addEventListener('resize', () => {
+  if ($('project').hidden) return;
+  $('project-content').querySelectorAll('.g-wrap').forEach(fitGallery);
+  syncTileSize();
+});
 
 refresh();
 </script>
