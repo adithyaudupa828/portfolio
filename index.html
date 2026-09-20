@@ -393,6 +393,7 @@ const projectsData = [
         subtitle: "Ready Or Not",
         color: "#f0323c",   // card border colour
         keywords: ["SWAT AI", "room proxies", "threat awareness", "stack-up points", "Blender", "golden path"],
+        galleryGroups: [["cover"], ["wholemap"], ["garden"], ["house", "staging"], ["doorway", "clearup", "slope"], ["surgical", "prepping", "office", "makeup", "bodies"], ["caves", "secretstairs"], ["3dmodels"]],   // gallery order: one list per group of similar images
         timeline: [
           { title: "Concept and lore", text: "Decided the story: a multi-level funeral home hiding a black market organ trafficking operation. Planned the golden path, replayability and the alternate routes through the level." },
           { title: "Learning the Ready Or Not mod kit", text: "Learned how the game handles its SWAT AI: room proxies, doorways, threat awareness actors and stack-up points. Resource: <a href='https://unofficial-modding-guide.com/' target='_blank' rel='noopener noreferrer'>Unofficial Modding Guide</a>." },
@@ -431,6 +432,7 @@ const projectsData = [
         color: "#b07a4a",   // card border colour
         stats: [{ value: "4", label: "Areas in 4 sprints" }, { value: "4", label: "Areas featured in the trailer" }, { value: "100+", label: "Players supported in the train station" }],
         keywords: ["navigation", "100+ players", "purchasable items", "walking paths", "trailer"],
+        galleryGroups: [["trainstation", "train3", "train4", "train5"], ["stable3", "stable4", "stable5", "stable"], ["blacksmith1", "blacksmith2", "blacksmith"], ["scfront", "scside", "sctop", "scinside"]],   // gallery order: one list per group of similar images
         timeline: [
           { title: "Area 1: Train station", text: "The spawn point of every player and the hub they use to reach the rest of the game. Made sure there is room and clear navigation for 100+ players at once. It took a little longer than planned.", images: ["projects/tombstone/gallery/train3.webp"] },
           { title: "Area 2: Stockyard and stables", text: "A central hub where players buy, sell and upgrade horses, carriages, cosmetics and raid supplies. Made sure the shop works and that purchasable items are easy to see.", images: ["projects/tombstone/gallery/stable.webp"] },
@@ -464,6 +466,7 @@ const projectsData = [
         color: "#f0323c",   // card border colour
         stats: [{ value: "6", label: "Systems (save, train, armor, mission select and more)" }, { value: "3", label: "Paths in level 1" }],
         keywords: ["interactive hub", "mini-boss", "security cameras", "Nanite"],
+        galleryGroups: [["ddreferences"], ["ddhome", "murdock", "dojo", "bathroom", "shooting", "spawn", "lockers"], ["warehouse"], ["shipyard"]],   // gallery order: one list per group of similar images
         timeline: [
           { title: "Inspiration", text: "The home level takes its loadout, mission select and interaction idea from Ready Or Not's headquarters. In Ready or Not, different areas in the police HQ do different things, like a range to practice, locker room to customize weapons, briefing room to select missions, etc. ", images: ["projects/daredevil-levels/timeline/Shooting_Range_Inner.webp", "projects/daredevil-levels/timeline/Spawn.webp", "projects/daredevil-levels/timeline/Lockers.webp"] },
           { title: "Level 0: Home map design", text: "Designed the home level as an interactive hub with distinct zones, each with its own purpose. This is Daredevil's base of operations.", images: ["projects/daredevil-levels/timeline/murdockapartment2.webp", "projects/daredevil-levels/timeline/murdockapartment.webp"] },
@@ -472,7 +475,7 @@ const projectsData = [
           { title: "Home blockout", text: "Blocked out the home level with kitchen (health), dojo (training), and bedroom areas (save/exit), interrogation room (mission select)." },
           { title: "Path options", text: "The player chooses how to cross the shipyard: go straight into the fight, or stay quiet and avoid the security cameras to take enemies down one at a time.", images: ["projects/daredevil-levels/layout/daredevilwarehouse.jpeg"] },
           { title: "Modeling in Blender", text: "Modeled the assets in Blender for the warehouses and the shipyard." },
-          { title: "Shipyard blockout", text: "[Describe this pass: what was blocked out or changed, for example the docked ship and its mini-boss space.]" },
+          { title: "Shipyard blockout", text: "Blocked out the shipyard on the docks: the open yard, the docked ship with room for its mini-boss fight, a quiet left side for stealth takedowns, and a right side with more enemies and security cameras.", images: ["projects/daredevil-levels/gallery/ddshipyard.webp"] },
           { title: "Performance fix", text: "Some assets and materials were too detailed and dropped the frame rate. Fixed it with Nanite and lower polygon counts." }
         ],
 		isCurrent: true,
@@ -502,6 +505,7 @@ const projectsData = [
         color: "#a26bd6",   // card border colour
         stats: [{ value: "4", label: "Enemies" }, { value: "20+", label: "Fields for modular enemies" }, { value: "10+", label: "Player attacks" }, { value: "20+", label: "Enemy attacks" }],
         keywords: ["behavior trees", "blackboards", "modular", "One base enemy", "system modular", "Three types", "helped other designers"],
+        galleryGroups: [["smallenemies", "enemymage", "enemybt"], ["kingpin", "bossbt"], ["woodsword", "bpc", "playerbp"]],   // gallery order: one list per group of similar images
         timeline: [
           { title: "Learning", text: "A documentation task during a systems design internship at Mars Games, built to understand AI programming in Unreal Engine 5. Learned from documentation, YouTube and more, starting with behavior trees and blackboards.", images: ["projects/enemy-boss-ai/media/enemybt.webp", "projects/enemy-boss-ai/gallery/bt-kingpin.webp"] },
           { title: "Object-oriented design", text: "One base enemy holds everything shared, and each enemy type derives from it as a child. This keeps the system modular so it drops into any Unreal Engine 5 project.", images: ["projects/enemy-boss-ai/gallery/da-kingpin.webp"] },
@@ -523,7 +527,7 @@ const projectsData = [
         game: "**Multiplayer Action Shooter Game** Still in its early stages, this game offers variety of gameplay scenarios, such as action, combat, interactions, resource gathering, building communities, buying and selling items, and lots more.",
 		description: "I designed a modular enemy and boss AI system for Unreal Engine 5, and wrote the documentation that explains how to build it.",
         layoutImages: null, 
-        gallery: ["projects/enemy-boss-ai/gallery/smallenemies.webp", "projects/enemy-boss-ai/gallery/bt-kingpin.webp", "projects/enemy-boss-ai/gallery/da-kingpin.webp", "projects/enemy-boss-ai/gallery/da-woodsword.webp", "projects/enemy-boss-ai/gallery/bpc-combat1.webp", "projects/enemy-boss-ai/gallery/bpc-combat2.webp", "projects/enemy-boss-ai/gallery/bpc-combat3.webp", "projects/enemy-boss-ai/gallery/bpc-combat4.webp", "projects/enemy-boss-ai/gallery/bpcattacks.webp", "projects/enemy-boss-ai/gallery/playerbp.webp", "projects/enemy-boss-ai/gallery/enemymage.webp", "projects/enemy-boss-ai/gallery/enemybt.webp", "projects/enemy-boss-ai/gallery/bossbt.webp"],
+        gallery: ["projects/enemy-boss-ai/gallery/smallenemies.webp", "projects/enemy-boss-ai/gallery/bt-kingpin.webp", "projects/enemy-boss-ai/gallery/da-kingpin.webp", "projects/enemy-boss-ai/gallery/da-woodsword.webp", "projects/enemy-boss-ai/gallery/bpc-combat1.webp", "projects/enemy-boss-ai/gallery/bpc-combat2.webp", "projects/enemy-boss-ai/gallery/bpc-combat3.webp", "projects/enemy-boss-ai/gallery/bpc-combat4.webp", "projects/enemy-boss-ai/media/bpcattacks.webp", "projects/enemy-boss-ai/gallery/playerbp.webp", "projects/enemy-boss-ai/gallery/enemymage.webp", "projects/enemy-boss-ai/media/enemybt.webp", "projects/enemy-boss-ai/gallery/bossbt.webp"],
         galleryVideos: [],
         postmortem: {
 	          wentWell: "Systems were designed modularly, allowing for quick iteration and easy bug fixing. The documentation received positive feedback.",
@@ -538,6 +542,7 @@ const projectsData = [
         color: "#4fa85a",   // card border colour
         stats: [{ value: "4", label: "Environmental hazards" }, { value: "3", label: "Paths" }, { value: "Rewards", label: "scale with the enemies you encounter" }],
         keywords: ["poison clouds", "trigger box", "splines", "magic pond"],
+        galleryGroups: [["swampforestmap", "swampmap", "swampforestref"], ["swamp1", "swamp2", "swamp3", "swamp4"], ["bridge", "logs"], ["quarry"]],   // gallery order: one list per group of similar images
         timeline: [
           { title: "Biome direction", text: "Every swamp level shares the same pacing, visuals and feel: green fog, dense trees, poison clouds and swamp enemies.", images: ["projects/swamp-biome/gallery/swampforestref.webp"] },
           { title: "Level 1: Forest map design", text: "Designed the forest as a combat-focused area with poison clouds and creatures. A small magic pond near the cabin gives players random buffs." },
@@ -560,7 +565,7 @@ const projectsData = [
         game: "**Multiplayer, Action-Shooter, AAA Game: **Still in its early stages, this game offers variety of gameplay scenarios, such as PvP and PvPvE action, combat, interactions, resource gathering, building communities, buying and selling items, and lots more.",
         description: "I designed and built two swamp levels, the Forest and the Quarry, from layout to set dressing.",
         layoutImages: ["projects/swamp-biome/layout/swampforestmap.jpeg", "projects/swamp-biome/layout/swampquarryref.webp"], 
-        gallery: ["projects/swamp-biome/gallery/swampmap.webp", "projects/swamp-biome/gallery/swamp3.webp", "projects/swamp-biome/gallery/swamp4.webp", "projects/swamp-biome/gallery/swamp1.webp", "projects/swamp-biome/gallery/swamp2.webp", "projects/swamp-biome/gallery/swampforestref.webp"],
+        gallery: ["projects/swamp-biome/gallery/swampmap.webp", "projects/swamp-biome/gallery/swamp3.webp", "projects/swamp-biome/gallery/swamp4.webp", "projects/swamp-biome/gallery/swampforestref.webp", "projects/swamp-biome/media/swamp1.webp", "projects/swamp-biome/gallery/swamp2.webp"],
         galleryVideos: [null],
         postmortem: {
 	          wentWell: "Implemented splines to reduce work while manually placing assets.",
@@ -575,13 +580,14 @@ const projectsData = [
         color: "#b07a4a",   // card border colour
         stats: [{ value: "5000+", label: "Optimized assets" }, { value: "3", label: "Paths" }, { value: "Rewards", label: "based on exploration" }],
         keywords: ["splines", "higher risk", "resources", "sprint retrospectives"],
+        galleryGroups: [["cavesmap", "coppertinmap"], ["copper", "genfantasy1", "splines"], ["farm", "plants", "wheat", "restarea"]],   // gallery order: one list per group of similar images
         timeline: [
           { title: "Biome direction", text: "Bright flowering plants, tall trees, magical animals and fitting enemies. Lots of resources and few enemies, to encourage exploring.", images: ["projects/general-fantasy-biome/gallery/genfantasy1.webp"] },
           { title: "Level 1: Copper and tin mines map design", text: "A maze-like tunnel system with the best resources deep in the center, which means higher risk and higher reward." },
           { title: "Blockout", text: "Blocked out the tunnel system with branching pathways, exploration based rewards, and small number of enemies" },
           { title: "Splines", text: "Used splines to place repeated assets faster.", images: ["projects/general-fantasy-biome/gallery/splines.webp"] },
-          { title: "Elements", text: "[Placeholder: describe the elements in this biome and how they shape the pacing, in the same way as the poison clouds and bridges in the swamp.]" },
-          { title: "Paths", text: "[Placeholder: describe the different routes through the mines and what each one rewards.]" },
+          { title: "Elements", text: "Bright flowering plants and magical animals fill the biome. In the mines, tracks and a flooded section change how players move through the tunnels, while the farm's crops and rest area keep the pace calm." },
+          { title: "Paths", text: "The mines branch into 3 paths. Each one rewards exploring: the deeper and riskier the route, the better the resources, with only a few enemies along the way." },
           { title: "Level 2: Farm map design", text: "A calm, low-combat level where players can meet and trade resources." },
           { title: "Blockout", text: "Blocked out the farm with high visibility, main focal point, and strategic placement of resources.", images: ["projects/general-fantasy-biome/gallery/farmplants.webp"] },
           { title: "Delivery", text: "Finished both levels on a tight schedule. The crunch that followed led the team to start sprint retrospectives to talk about what went wrong.", images: ["projects/general-fantasy-biome/media/plants.webp", "projects/general-fantasy-biome/media/wheat.webp"] }
@@ -597,7 +603,7 @@ const projectsData = [
         game: "**Multiplayer, Action-Shooter, AAA Game: **Still in its early stages, this game offers variety of gameplay scenarios, PvP and PvPvE such as action, combat, interactions, resource gathering, building communities, buying and selling items, and lots more.",
 		description: "I designed and built two levels for the general fantasy biome, the Copper and Tin Mines and the Farm, from layout to set dressing.",
         layoutImages: ["projects/general-fantasy-biome/layout/cavesmap.jpeg"], 
-        gallery: ["projects/general-fantasy-biome/gallery/wheat.webp", "projects/general-fantasy-biome/gallery/farmplants.webp", "projects/general-fantasy-biome/gallery/farmtop.webp", "projects/general-fantasy-biome/gallery/restarea.webp", "projects/general-fantasy-biome/gallery/copperminetracks.webp", "projects/general-fantasy-biome/gallery/coppertinmap.webp", "projects/general-fantasy-biome/gallery/coppermineflood.webp", "projects/general-fantasy-biome/gallery/splines.webp", "projects/general-fantasy-biome/gallery/coppertinhouse2.webp", "projects/general-fantasy-biome/gallery/genfantasy1.webp", "projects/general-fantasy-biome/gallery/coppertinhouses.webp"],
+        gallery: ["projects/general-fantasy-biome/media/wheat.webp", "projects/general-fantasy-biome/gallery/farmplants.webp", "projects/general-fantasy-biome/gallery/farmtop.webp", "projects/general-fantasy-biome/gallery/restarea.webp", "projects/general-fantasy-biome/gallery/copperminetracks.webp", "projects/general-fantasy-biome/gallery/coppertinmap.webp", "projects/general-fantasy-biome/media/coppermineflood.webp", "projects/general-fantasy-biome/gallery/splines.webp", "projects/general-fantasy-biome/gallery/coppertinhouse2.webp", "projects/general-fantasy-biome/gallery/genfantasy1.webp", "projects/general-fantasy-biome/gallery/coppertinhouses.webp"],
         galleryVideos: [null],
         postmortem: {
 	          wentWell: "Finished each level in a tight schedule perfectly.",
@@ -612,13 +618,14 @@ const projectsData = [
         color: "#f0323c",   // card border colour
         stats: [{ value: "10+", label: "Dynamic jumps and actions" }, { value: "8", label: "Color-coded pieces of player information" }],
         keywords: ["custom depth pass", "post-process material", "stencil value", "grappling hook", "radar-sense"],
+        galleryGroups: [["jump"], ["mantling"], ["slid", "crouch", "rolling"], ["grappling", "player"], ["default", "depth", "postprocessing"], ["frontview", "sideview"], ["blue", "green"], ["xray"]],   // gallery order: one list per group of similar images
         timeline: [
-          { title: "System 1: Parkour", text: "A movement system built for a fan game that focuses on combat and parkour. [Placeholder: what inspired the parkour system.]" },
+          { title: "System 1: Parkour", text: "A movement system built for a fan game that focuses on combat and parkour. Inspired by the way Daredevil moves: acrobatic, fluid and fast." },
           { title: "Basic jumps", text: "The standard jump plus double and triple jumps." },
           { title: "Extended jumps", text: "Vaulting, the long jump, the spin jump and more." },
           { title: "Dynamic jumps", text: "The system picks the right jump depending on the distance to the target and the obstacle in the way.", images: ["projects/daredevil-systems/timeline/jump1.webp", "projects/daredevil-systems/timeline/jump2.webp"] },
           { title: "Mantling, sliding, crouching, and grappling hook", text: "Mantling lets the player pull themselves up onto ledges. Sliding and a grappling hook round out the movement set.", images: ["projects/daredevil-systems/timeline/slide.webp", "projects/daredevil-systems/timeline/crouch.webp"] },
-          { title: "System 2: World On Fire", text: "An X-ray and radar-sense ability that lets the player see through walls to find enemies and items. [Placeholder: what inspired World On Fire.]" },
+          { title: "System 2: World On Fire", text: "An X-ray and radar-sense ability that lets the player see through walls to find enemies and items. Inspired by Daredevil's radar sense, which lets him perceive his surroundings without sight." },
           { title: "Building the system", text: "A modular post-process effect made from a custom depth pass and a post-process material that highlights objects by their stencil value." },
           { title: "Color coding", text: "Different colors for enemies and items, so the player can read the scene at a glance.", images: ["projects/daredevil-systems/timeline/blue.webp", "projects/daredevil-systems/timeline/green.webp"] },
           { title: "Polish", text: "Kept the look consistent and made the effect easy to upgrade with more features. The first plan was too ambitious and some features were cut.", images: ["projects/daredevil-systems/media/sideview.webp"] }
@@ -634,7 +641,7 @@ const projectsData = [
         game: "**Daredevil: **A fan game (in progress) with Daredevil as the main character. The game has different types of combat (hand-to-hand, melee and ranged weapons, throwables, etc.) and parkour-like movement abilities.",
 		description: "I built two systems for the Daredevil fan game: a parkour movement system, and World On Fire, an X-ray ability that lets the player see through walls.",
         layoutImages: null, 
-        gallery: ["projects/daredevil-systems/gallery/differentjumps.webp", "projects/daredevil-systems/gallery/grappling.webp", "projects/daredevil-systems/gallery/player.webp", "projects/daredevil-systems/gallery/rolling.webp", "projects/daredevil-systems/gallery/sliding.webp", "projects/daredevil-systems/gallery/default.webp", "projects/daredevil-systems/gallery/depth.webp", "projects/daredevil-systems/gallery/frontview.webp", "projects/daredevil-systems/gallery/postprocessing.webp", "projects/daredevil-systems/gallery/sideview.webp"],
+        gallery: ["projects/daredevil-systems/gallery/differentjumps.webp", "projects/daredevil-systems/gallery/grappling.webp", "projects/daredevil-systems/gallery/player.webp", "projects/daredevil-systems/gallery/rolling.webp", "projects/daredevil-systems/media/sliding.webp", "projects/daredevil-systems/gallery/default.webp", "projects/daredevil-systems/gallery/depth.webp", "projects/daredevil-systems/gallery/frontview.webp", "projects/daredevil-systems/media/postprocessing.webp", "projects/daredevil-systems/media/sideview.webp"],
         galleryVideos: ["projects/daredevil-systems/gallery/xray.mp4", ],
         postmortem: {
 	          wentWell: "The player movement and interaction systems felt responsive and natural. \n\nVisual consistency was maintained well. Can be easily upgraded to have more features.",
@@ -649,6 +656,7 @@ const projectsData = [
         color: "#e6b422",   // card border colour
         stats: [{ value: "8", label: "Team members" }],
         keywords: ["fog", "magic portals", "Unreal Engine widgets", "Modeled and textured"],
+        galleryGroups: [["forest", "windmill", "castle", "portal"], ["3d"], ["ui", "menu"]],   // gallery order: one list per group of similar images
         timeline: [
           { title: "The game", text: "A cozy shop management game in a mystical forest. Take customer orders, travel through magic portals for ingredients, then return to the shop to craft the potions." },
           { title: "Level 2: Forest", text: "A mystical forest that shifts between serene lakes, waterfalls and shadowy woods. Fog guides the player: foggier areas signal danger.", images: ["projects/elixir-blitz/media/forest.webp", "projects/elixir-blitz/gallery/darkforest.webp"] },
@@ -669,7 +677,7 @@ const projectsData = [
 		game: "**Elixir Blitz:** A cozy shop management game set in a mystical forest. Here the player takes orders from customers and goes through magic portals to different locations, which offer different ingredients. The player then returns to the shop to craft potions ordered by the customers.",
         description: "I built the forest level, modeled the ingredients players collect, and designed the game's UI.",
         layoutImages: null, 
-        gallery: ["projects/elixir-blitz/gallery/castle.webp", "projects/elixir-blitz/gallery/windmill.webp", "projects/elixir-blitz/gallery/foggyforest.webp", "projects/elixir-blitz/gallery/darkforest.webp", "projects/elixir-blitz/gallery/portal.webp", "projects/elixir-blitz/gallery/ui2.webp", "projects/elixir-blitz/gallery/3d2.webp", "projects/elixir-blitz/gallery/mainmenu.webp", "projects/elixir-blitz/gallery/pausemenu.webp", "projects/elixir-blitz/gallery/3d1.webp", "projects/elixir-blitz/gallery/ui1.webp"],
+        gallery: ["projects/elixir-blitz/gallery/castle.webp", "projects/elixir-blitz/gallery/windmill.webp", "projects/elixir-blitz/gallery/foggyforest.webp", "projects/elixir-blitz/gallery/darkforest.webp", "projects/elixir-blitz/media/portal.webp", "projects/elixir-blitz/gallery/ui2.webp", "projects/elixir-blitz/gallery/3d2.webp", "projects/elixir-blitz/gallery/mainmenu.webp", "projects/elixir-blitz/gallery/pausemenu.webp", "projects/elixir-blitz/media/3d1.webp", "projects/elixir-blitz/media/ui1.webp"],
         galleryVideos: [],
         postmortem: {
 	          wentWell: "Art style is charming and consistent. Core loop is relaxing and engaging. \n\nMade a simple UI that can be easily upgraded as needed.",
@@ -683,6 +691,7 @@ const projectsData = [
         subtitle: "3D Pacman Style",
         color: "#e6b422",   // card border colour
         keywords: ["Pac-Man", "perception system", "3-second cooldown", "retargeted"],
+        galleryGroups: [["town", "coin"], ["player"], ["enemy"]],   // gallery order: one list per group of similar images
         timeline: [
           { title: "Idea", text: "A simple 3D take on Pac-Man: move through a crowded town and collect coins." },
           { title: "Villager AI and combat", text: "Villagers have a basic perception system and chase the player while in range. They swing an axe, and if it connects the player loses a life.", images: ["projects/village-game/gallery/enemysenses.webp"] },
@@ -703,7 +712,7 @@ const projectsData = [
         game: "**Village Game** This is a simple game similar to Pac-Man, but in 3D, where the player has to navigate a densely populated environment to collect coins. ",
         description: "I built the villager AI, the game's systems and its UI.",
         layoutImages: null, 
-        gallery: ["projects/village-game/gallery/enemysenses.webp", "projects/village-game/gallery/player.webp", "projects/village-game/gallery/town.webp", "projects/village-game/gallery/enemyai.webp", "projects/village-game/gallery/coin.webp"],
+        gallery: ["projects/village-game/gallery/enemysenses.webp", "projects/village-game/gallery/player.webp", "projects/village-game/media/town.webp", "projects/village-game/gallery/enemyai.webp", "projects/village-game/media/coin.webp"],
         galleryVideos: [null],
         postmortem: {
 	          wentWell: "Maintained a cohesive art style across all environment assets and UI elements.",
@@ -849,6 +858,21 @@ const galleryItem = (src, alt) => isVideo(src)
   ? `<div class="g-item"><video src="${src}#t=0.1" controls preload="metadata"></video></div>`
   : `<div class="g-item"><img src="${src}" alt="${alt}" data-full="${src}" loading="lazy" decoding="async" onerror="dropMedia(this)"></div>`;
 
+// put similar pictures next to each other: `groups` is a list of keyword lists (see galleryGroups in the data);
+// a file goes into the first group with a keyword in its name; inside a group the keyword order decides, then the original order
+function orderGallery(items, groups) {
+  if (!groups || !groups.length) return items;
+  const rank = src => {
+    const name = src.split('/').pop().toLowerCase();
+    for (let g = 0; g < groups.length; g++) {
+      const k = groups[g].findIndex(word => name.includes(word));
+      if (k >= 0) return g * 1000 + k;
+    }
+    return groups.length * 1000;
+  };
+  return items.map((src, i) => [src, i]).sort((a, b) => rank(a[0]) - rank(b[0]) || a[1] - b[1]).map(x => x[0]);
+}
+
 function gallery(items, alt) {
   return `<div class="g-wrap"><div class="g-grid">${items.map(src => galleryItem(src, alt)).join('')}</div></div>
     <button class="btn g-more" type="button" data-gallery-toggle hidden>Show all</button>
@@ -919,7 +943,7 @@ function openProject(id) {
   const layout = (p.layoutImages || []).filter(Boolean);
   // the gallery shows every image the project uses (featured, layout, timeline) plus its own gallery, repeats included
   const timelineImages = (p.timeline || []).flatMap(s => s.images || []);
-  const all = [...(p.mainImages || []), ...layout, ...timelineImages, ...(p.gallery || []), ...(p.galleryVideos || [])].filter(Boolean);
+  const all = orderGallery([...new Set([...(p.mainImages || []), ...layout, ...timelineImages, ...(p.gallery || []), ...(p.galleryVideos || [])].filter(Boolean))], p.galleryGroups);   // no picture twice inside the gallery
   const pm = p.postmortem || {};
   const pmRows = [['What went well', pm.wentWell], ['What I learned', pm.learned], ['What went wrong', pm.wentWrong]].filter(r => r[1]);
 
