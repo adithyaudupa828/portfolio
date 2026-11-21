@@ -388,44 +388,6 @@
 /* ============================ PROJECT DATA (unchanged; only media paths point at projects/<slug>/...) ============================ */
 const projectsData = [
     {
-    	id: 5,
-        name: "Cost of Living",
-        subtitle: "Ready Or Not",
-        color: "#f0323c",   // card border colour
-        keywords: ["SWAT AI", "room proxies", "threat awareness", "stack-up points", "Blender", "golden path"],
-        galleryGroups: [["cover"], ["wholemap"], ["garden"], ["house", "staging"], ["doorway", "clearup", "slope"], ["surgical", "prepping", "office", "makeup", "bodies"], ["caves", "secretstairs"], ["3dmodels"]],   // gallery order: one list per group of similar images
-        timeline: [
-          { title: "Concept and lore", text: "Decided the story: a multi-level funeral home hiding a black market organ trafficking operation. Planned the golden path, replayability and the alternate routes through the level." },
-          { title: "Learning the Ready Or Not mod kit", text: "Learned how the game handles its SWAT AI: room proxies, doorways, threat awareness actors and stack-up points. Resource: <a href='https://unofficial-modding-guide.com/' target='_blank' rel='noopener noreferrer'>Unofficial Modding Guide</a>." },
-          { title: "Map design", text: "Designed the map, then checked it for cover and hide-outs." },
-          { title: "Blockout", text: "Built the blockout of the level.", images: ["projects/cost-of-living/gallery/houseblockout.webp"] },
-          { title: "SWAT AI", text: "Implemented stack-up points, clearing routes, room proxies, doorways, threat awareness points and custom objectives. The stairs gave the most trouble because AI navigation around them was difficult.", images: ["projects/cost-of-living/gallery/gardenbts.webp", "projects/cost-of-living/gallery/doorway.webp"] },
-          { title: "Modeling in Blender", text: "Modeled the assets in Blender and built out the entire level.", images: ["projects/cost-of-living/gallery/3dmodels.webp"] },
-          { title: "Polish", text: "Added blocking volumes and light blockers to finish the level." },
-          { title: "Release", text: "Published on Nexus Mods after finishing the whole map solo in under 2 months. 20k downloads, 50k views and 5 features on community YouTube videos." }
-        ],
-		isCurrent: true,
-        tags: ["Levels", "Solo Project", "Multiplayer", "AAA", "Mods", "First-Person"],
-		duration: "2 months",
-        role: "Blockout, Level Designer, AI, Environment Artist, Set Dressing",
-		type: "Modded Map, Ready Or Not",
-        stats: [{ value: "20k+", label: "Downloads" }, { value: "50k+", label: "Views" }, { value: "5", label: "Features on community YouTube videos" }],
-        tools: ["UE5", "FMod", "SWAT AI", "Collision", "Blender", "Navigation", "Set Dressing"],
-        thumbnail: "projects/cost-of-living/cover.webp",
-        mainImages: ["projects/cost-of-living/cover.webp", "projects/cost-of-living/media/garden.webp", "projects/cost-of-living/media/surgicalroom.webp", "projects/cost-of-living/media/preppingarea.webp", "projects/cost-of-living/media/stagingarea.webp", "projects/cost-of-living/media/office.webp", "projects/cost-of-living/media/caves.webp", "projects/cost-of-living/media/bodies.webp", "projects/cost-of-living/media/secretstairs.webp"],
-        mainVideo: null,
-        game: "**Ready Or Not:** is a tactical first-person shooter video game that follows the operations of a police SWAT team in the fictional American city of Los Sueños in the midst of a violent crime wave.\n\n<a href='https://www.nexusmods.com/readyornot/mods/7405' target='_blank' rel='noopener noreferrer' style='color: #00f0ff; text-decoration: underline;'>Cost Of Living - Nexus Mods</a>",
-		description: "I built this map on my own, from the story and layout to the blockout, the Blender models and the SWAT AI.",
-        layoutImages: ["projects/cost-of-living/layout/wholemap1.jpeg", "projects/cost-of-living/layout/wholemap2.jpeg"], 
-		gallery: ["projects/cost-of-living/gallery/3dmodels.webp", "projects/cost-of-living/gallery/gardenbts.webp", "projects/cost-of-living/gallery/houseblockout.webp", "projects/cost-of-living/gallery/doorway.webp", "projects/cost-of-living/gallery/caves.webp", "projects/cost-of-living/gallery/gardenblockout.webp", "projects/cost-of-living/gallery/house.webp", "projects/cost-of-living/gallery/clearuppaths.webp", "projects/cost-of-living/gallery/caves2.webp", "projects/cost-of-living/gallery/house2.webp", "projects/cost-of-living/gallery/makeuproom.webp", "projects/cost-of-living/gallery/slope.webp"],
-        galleryVideos: [null, null],
-        postmortem: {
-        	wentWell: "Finished an entire map by myself in under 2 months.",
-          	learned: "Learnt about room proxies, doorways, threat awareness actors, stack up points.",
-          	wentWrong: "Stairs! AI navigation around stairs proved to be difficult."
-        }
-    },
-	{
         id: 1,
         name: "Unannounced AAA Game",
         subtitle: "Main City",
@@ -460,82 +422,6 @@ const projectsData = [
           }
     },
 	{
-        id: 6,
-        name: "Daredevil",
-        subtitle: "Shipyard and Warehouse",
-        color: "#f0323c",   // card border colour
-        stats: [{ value: "6", label: "Systems (save, train, armor, mission select and more)" }, { value: "3", label: "Paths in level 1" }],
-        keywords: ["interactive hub", "mini-boss", "security cameras", "Nanite"],
-        galleryGroups: [["ddreferences"], ["ddhome", "murdock", "dojo", "bathroom", "shooting", "spawn", "lockers"], ["warehouse"], ["shipyard"]],   // gallery order: one list per group of similar images
-        timeline: [
-          { title: "Inspiration", text: "The home level takes its loadout, mission select and interaction idea from Ready Or Not's headquarters. In Ready or Not, different areas in the police HQ do different things, like a range to practice, locker room to customize weapons, briefing room to select missions, etc. ", images: ["projects/daredevil-levels/timeline/Shooting_Range_Inner.webp", "projects/daredevil-levels/timeline/Spawn.webp", "projects/daredevil-levels/timeline/Lockers.webp"] },
-          { title: "Level 0: Home map design", text: "Designed the home level as an interactive hub with distinct zones, each with its own purpose. This is Daredevil's base of operations.", images: ["projects/daredevil-levels/timeline/murdockapartment2.webp", "projects/daredevil-levels/timeline/murdockapartment.webp"] },
-          { title: "Level 1: Warehouses blockout", text: "Blocked out the smaller warehouses, which hide civilians who need rescuing and hints that tie into the larger story." },
-          { title: "Shipyard map design", text: "Planned the layout of the shipyard on New York's docks: a hostile combat area filled with enemies and story clues, with a docked ship that holds a mini-boss fight." },
-          { title: "Home blockout", text: "Blocked out the home level with kitchen (health), dojo (training), and bedroom areas (save/exit), interrogation room (mission select)." },
-          { title: "Path options", text: "The player chooses how to cross the shipyard: go straight into the fight, or stay quiet and avoid the security cameras to take enemies down one at a time.", images: ["projects/daredevil-levels/layout/daredevilwarehouse.jpeg"] },
-          { title: "Modeling in Blender", text: "Modeled the assets in Blender for the warehouses and the shipyard." },
-          { title: "Shipyard blockout", text: "Blocked out the shipyard on the docks: the open yard, the docked ship with room for its mini-boss fight, a quiet left side for stealth takedowns, and a right side with more enemies and security cameras.", images: ["projects/daredevil-levels/gallery/ddshipyard.webp"] },
-          { title: "Performance fix", text: "Some assets and materials were too detailed and dropped the frame rate. Fixed it with Nanite and lower polygon counts." }
-        ],
-		isCurrent: true,
-        tags: ["Levels", "Systems", "Solo Project", "Third-Person", "Single Player"],
-		duration: "2 months",
-        role: "Level Designer, Blockout, Environment Art, Set Dressing",
-		type: "Solo Developer - Fan Game",
-        tools: ["UE5", "Blender", "Photoshop", "Blueprints"],
-        thumbnail: "projects/daredevil-levels/cover.webp",
-        mainImages: ["projects/daredevil-levels/media/ddhome1.webp", "projects/daredevil-levels/media/ddshipyard2.webp", "projects/daredevil-levels/media/ddwarehouse.webp"],
-        mainVideo: null,
-        game: "**Daredevil:** A fan game (in progress) with Daredevil as the main character. It has different types of combat (hand-to-hand, melee and ranged weapons, throwables, etc.) and parkour-like movement abilities.",
-		description: "I designed and built two spaces for a Daredevil fan game: a home hub, and a shipyard with warehouses.",
-        layoutImages: ["projects/daredevil-levels/layout/daredevilwarehouse.jpeg"], 
-		gallery: ["projects/daredevil-levels/gallery/ddbathroom.webp", "projects/daredevil-levels/gallery/ddreferences.webp", "projects/daredevil-levels/gallery/ddreferences2.webp", "projects/daredevil-levels/gallery/dddojo.webp", "projects/daredevil-levels/gallery/ddwarehousestairs.webp", "projects/daredevil-levels/gallery/ddshipyard.webp", "projects/daredevil-levels/gallery/ddwarehouse2.webp"],
-        galleryVideos: [null],
-        postmortem: {
-	          wentWell: "Levels look visually realistic, cohesive, and memorable.",
-	          learned: "Learnt how to use trigger boxes to implement realistic interaction system.",
-	          wentWrong: "Some assets and materials were too detailed and reduced FPS greatly. Fixed it by implementing Nanite and lower polygon counts."
-        }
-    },
-		{
-        id: 4,
-        name: "Enemy and Boss AI",
-        subtitle: "Combat",
-        color: "#a26bd6",   // card border colour
-        stats: [{ value: "4", label: "Enemies" }, { value: "20+", label: "Fields for modular enemies" }, { value: "10+", label: "Player attacks" }, { value: "20+", label: "Enemy attacks" }],
-        keywords: ["behavior trees", "blackboards", "modular", "One base enemy", "system modular", "Three types", "helped other designers"],
-        galleryGroups: [["smallenemies", "enemymage", "enemybt"], ["kingpin", "bossbt"], ["woodsword", "bpc", "playerbp"]],   // gallery order: one list per group of similar images
-        timeline: [
-          { title: "Learning", text: "A documentation task during a systems design internship at Mars Games, built to understand AI programming in Unreal Engine 5. Learned from documentation, YouTube and more, starting with behavior trees and blackboards.", images: ["projects/enemy-boss-ai/media/enemybt.webp", "projects/enemy-boss-ai/gallery/bt-kingpin.webp"] },
-          { title: "Object-oriented design", text: "One base enemy holds everything shared, and each enemy type derives from it as a child. This keeps the system modular so it drops into any Unreal Engine 5 project.", images: ["projects/enemy-boss-ai/gallery/da-kingpin.webp"] },
-          { title: "Enemies", text: "Three types. The melee enemy performs single and combo attacks and can block and parry. The ranged enemy finds vantage points and attacks from a distance, and cannot block. The mage teleports between locations, attacks from range and heals when its health gets low.", images: ["projects/enemy-boss-ai/gallery/smallenemies.webp"] },
-          { title: "Boss", text: "Uses melee, ranged and magic attacks, blocks, parries and heals itself. The only way to damage it is to parry or dodge its attacks." },
-          { title: "Arena blockout", text: "Blocked out an arena to test the enemies and the boss fight." },
-          { title: "Documentation", text: "Wrote up how each AI feature can be built. Also came up with magic and ranged weapons and helped other designers realize their ideas." },
-          { title: "Delivery", text: "The first plan was too ambitious, so some features were cut. The documentation received positive feedback." }
-        ],
-        tags: ["Systems", "Mars Games", "Multiplayer", "Third-Person", "AAA"],
-		duration: "2 months",
-        role: "Technical Designer, Documentation, Systems Designer, Enemy AI, Boss AI",
-		type: "Mars Games",
-        tools: ["UE5", "Blueprints", "Mixamo", "YouTube"],
-        thumbnail: "projects/enemy-boss-ai/cover.webp",
-        mainImages: ["projects/enemy-boss-ai/media/bpcattacks.webp", "projects/enemy-boss-ai/media/enemybt.webp"],
-        introVideos: ["projects/enemy-boss-ai/media/actions.mp4", "projects/enemy-boss-ai/media/magicenemy.mp4"],   // shown first in the carousel
-        mainVideo: null,
-        game: "**Multiplayer Action Shooter Game** Still in its early stages, this game offers variety of gameplay scenarios, such as action, combat, interactions, resource gathering, building communities, buying and selling items, and lots more.",
-		description: "I designed a modular enemy and boss AI system for Unreal Engine 5, and wrote the documentation that explains how to build it.",
-        layoutImages: null, 
-        gallery: ["projects/enemy-boss-ai/gallery/smallenemies.webp", "projects/enemy-boss-ai/gallery/bt-kingpin.webp", "projects/enemy-boss-ai/gallery/da-kingpin.webp", "projects/enemy-boss-ai/gallery/da-woodsword.webp", "projects/enemy-boss-ai/gallery/bpc-combat1.webp", "projects/enemy-boss-ai/gallery/bpc-combat2.webp", "projects/enemy-boss-ai/gallery/bpc-combat3.webp", "projects/enemy-boss-ai/gallery/bpc-combat4.webp", "projects/enemy-boss-ai/media/bpcattacks.webp", "projects/enemy-boss-ai/gallery/playerbp.webp", "projects/enemy-boss-ai/gallery/enemymage.webp", "projects/enemy-boss-ai/media/enemybt.webp", "projects/enemy-boss-ai/gallery/bossbt.webp"],
-        galleryVideos: [],
-        postmortem: {
-	          wentWell: "Systems were designed modularly, allowing for quick iteration and easy bug fixing. The documentation received positive feedback.",
-	          learned: "Gained a deeper understanding of specific engine tools like Unreal's Behavior Trees or Blueprints.",
-	          wentWrong: "Initial scope was too ambitious, had to cut some planned features."
-        }
-    },
-    {
         id: 2,
         name: "Unannounced AAA Game",
         subtitle: "Swamp Biome",
@@ -610,6 +496,120 @@ const projectsData = [
 	          learned: "Learnt how to manage different tasks simultaneously and deliver all of them on time.",
 	          wentWrong: "Tight schedule made our team work in crunches. So we implemented Sprint Retrospectives to discuss team failures."
     	}
+    },
+	{
+        id: 4,
+        name: "Enemy and Boss AI",
+        subtitle: "Combat",
+        color: "#a26bd6",   // card border colour
+        stats: [{ value: "4", label: "Enemies" }, { value: "20+", label: "Fields for modular enemies" }, { value: "10+", label: "Player attacks" }, { value: "20+", label: "Enemy attacks" }],
+        keywords: ["behavior trees", "blackboards", "modular", "One base enemy", "system modular", "Three types", "helped other designers"],
+        galleryGroups: [["smallenemies", "enemymage", "enemybt"], ["kingpin", "bossbt"], ["woodsword", "bpc", "playerbp"]],   // gallery order: one list per group of similar images
+        timeline: [
+          { title: "Learning", text: "A documentation task during a systems design internship at Mars Games, built to understand AI programming in Unreal Engine 5. Learned from documentation, YouTube and more, starting with behavior trees and blackboards.", images: ["projects/enemy-boss-ai/media/enemybt.webp", "projects/enemy-boss-ai/gallery/bt-kingpin.webp"] },
+          { title: "Object-oriented design", text: "One base enemy holds everything shared, and each enemy type derives from it as a child. This keeps the system modular so it drops into any Unreal Engine 5 project.", images: ["projects/enemy-boss-ai/gallery/da-kingpin.webp"] },
+          { title: "Enemies", text: "Three types. The melee enemy performs single and combo attacks and can block and parry. The ranged enemy finds vantage points and attacks from a distance, and cannot block. The mage teleports between locations, attacks from range and heals when its health gets low.", images: ["projects/enemy-boss-ai/gallery/smallenemies.webp"] },
+          { title: "Boss", text: "Uses melee, ranged and magic attacks, blocks, parries and heals itself. The only way to damage it is to parry or dodge its attacks." },
+          { title: "Arena blockout", text: "Blocked out an arena to test the enemies and the boss fight." },
+          { title: "Documentation", text: "Wrote up how each AI feature can be built. Also came up with magic and ranged weapons and helped other designers realize their ideas." },
+          { title: "Delivery", text: "The first plan was too ambitious, so some features were cut. The documentation received positive feedback." }
+        ],
+        tags: ["Systems", "Mars Games", "Multiplayer", "Third-Person", "AAA"],
+		duration: "2 months",
+        role: "Technical Designer, Documentation, Systems Designer, Enemy AI, Boss AI",
+		type: "Mars Games",
+        tools: ["UE5", "Blueprints", "Mixamo", "YouTube"],
+        thumbnail: "projects/enemy-boss-ai/cover.webp",
+        mainImages: ["projects/enemy-boss-ai/media/bpcattacks.webp", "projects/enemy-boss-ai/media/enemybt.webp"],
+        introVideos: ["projects/enemy-boss-ai/media/actions.mp4", "projects/enemy-boss-ai/media/magicenemy.mp4"],   // shown first in the carousel
+        mainVideo: null,
+        game: "**Multiplayer Action Shooter Game** Still in its early stages, this game offers variety of gameplay scenarios, such as action, combat, interactions, resource gathering, building communities, buying and selling items, and lots more.",
+		description: "I designed a modular enemy and boss AI system for Unreal Engine 5, and wrote the documentation that explains how to build it.",
+        layoutImages: null, 
+        gallery: ["projects/enemy-boss-ai/gallery/smallenemies.webp", "projects/enemy-boss-ai/gallery/bt-kingpin.webp", "projects/enemy-boss-ai/gallery/da-kingpin.webp", "projects/enemy-boss-ai/gallery/da-woodsword.webp", "projects/enemy-boss-ai/gallery/bpc-combat1.webp", "projects/enemy-boss-ai/gallery/bpc-combat2.webp", "projects/enemy-boss-ai/gallery/bpc-combat3.webp", "projects/enemy-boss-ai/gallery/bpc-combat4.webp", "projects/enemy-boss-ai/media/bpcattacks.webp", "projects/enemy-boss-ai/gallery/playerbp.webp", "projects/enemy-boss-ai/gallery/enemymage.webp", "projects/enemy-boss-ai/media/enemybt.webp", "projects/enemy-boss-ai/gallery/bossbt.webp"],
+        galleryVideos: [],
+        postmortem: {
+	          wentWell: "Systems were designed modularly, allowing for quick iteration and easy bug fixing. The documentation received positive feedback.",
+	          learned: "Gained a deeper understanding of specific engine tools like Unreal's Behavior Trees or Blueprints.",
+	          wentWrong: "Initial scope was too ambitious, had to cut some planned features."
+        }
+    },
+	{
+    	id: 5,
+        name: "Cost of Living",
+        subtitle: "Ready Or Not",
+        color: "#f0323c",   // card border colour
+        keywords: ["SWAT AI", "room proxies", "threat awareness", "stack-up points", "Blender", "golden path"],
+        galleryGroups: [["cover"], ["wholemap"], ["garden"], ["house", "staging"], ["doorway", "clearup", "slope"], ["surgical", "prepping", "office", "makeup", "bodies"], ["caves", "secretstairs"], ["3dmodels"]],   // gallery order: one list per group of similar images
+        timeline: [
+          { title: "Concept and lore", text: "Decided the story: a multi-level funeral home hiding a black market organ trafficking operation. Planned the golden path, replayability and the alternate routes through the level." },
+          { title: "Learning the Ready Or Not mod kit", text: "Learned how the game handles its SWAT AI: room proxies, doorways, threat awareness actors and stack-up points. Resource: <a href='https://unofficial-modding-guide.com/' target='_blank' rel='noopener noreferrer'>Unofficial Modding Guide</a>." },
+          { title: "Map design", text: "Designed the map, then checked it for cover and hide-outs." },
+          { title: "Blockout", text: "Built the blockout of the level.", images: ["projects/cost-of-living/gallery/houseblockout.webp"] },
+          { title: "SWAT AI", text: "Implemented stack-up points, clearing routes, room proxies, doorways, threat awareness points and custom objectives. The stairs gave the most trouble because AI navigation around them was difficult.", images: ["projects/cost-of-living/gallery/gardenbts.webp", "projects/cost-of-living/gallery/doorway.webp"] },
+          { title: "Modeling in Blender", text: "Modeled the assets in Blender and built out the entire level.", images: ["projects/cost-of-living/gallery/3dmodels.webp"] },
+          { title: "Polish", text: "Added blocking volumes and light blockers to finish the level." },
+          { title: "Release", text: "Published on Nexus Mods after finishing the whole map solo in under 2 months. 20k downloads, 50k views and 5 features on community YouTube videos." }
+        ],
+		isCurrent: true,
+        tags: ["Levels", "Solo Project", "Multiplayer", "AAA", "Mods", "First-Person"],
+		duration: "2 months",
+        role: "Blockout, Level Designer, AI, Environment Artist, Set Dressing",
+		type: "Modded Map, Ready Or Not",
+        stats: [{ value: "20k+", label: "Downloads" }, { value: "50k+", label: "Views" }, { value: "5", label: "Features on community YouTube videos" }],
+        tools: ["UE5", "FMod", "SWAT AI", "Collision", "Blender", "Navigation", "Set Dressing"],
+        thumbnail: "projects/cost-of-living/cover.webp",
+        mainImages: ["projects/cost-of-living/cover.webp", "projects/cost-of-living/media/garden.webp", "projects/cost-of-living/media/surgicalroom.webp", "projects/cost-of-living/media/preppingarea.webp", "projects/cost-of-living/media/stagingarea.webp", "projects/cost-of-living/media/office.webp", "projects/cost-of-living/media/caves.webp", "projects/cost-of-living/media/bodies.webp", "projects/cost-of-living/media/secretstairs.webp"],
+        mainVideo: null,
+        game: "**Ready Or Not:** is a tactical first-person shooter video game that follows the operations of a police SWAT team in the fictional American city of Los Sueños in the midst of a violent crime wave.\n\n<a href='https://www.nexusmods.com/readyornot/mods/7405' target='_blank' rel='noopener noreferrer' style='color: #00f0ff; text-decoration: underline;'>Cost Of Living - Nexus Mods</a>",
+		description: "I built this map on my own, from the story and layout to the blockout, the Blender models and the SWAT AI.",
+        layoutImages: ["projects/cost-of-living/layout/wholemap1.jpeg", "projects/cost-of-living/layout/wholemap2.jpeg"], 
+		gallery: ["projects/cost-of-living/gallery/3dmodels.webp", "projects/cost-of-living/gallery/gardenbts.webp", "projects/cost-of-living/gallery/houseblockout.webp", "projects/cost-of-living/gallery/doorway.webp", "projects/cost-of-living/gallery/caves.webp", "projects/cost-of-living/gallery/gardenblockout.webp", "projects/cost-of-living/gallery/house.webp", "projects/cost-of-living/gallery/clearuppaths.webp", "projects/cost-of-living/gallery/caves2.webp", "projects/cost-of-living/gallery/house2.webp", "projects/cost-of-living/gallery/makeuproom.webp", "projects/cost-of-living/gallery/slope.webp"],
+        galleryVideos: [null, null],
+        postmortem: {
+        	wentWell: "Finished an entire map by myself in under 2 months.",
+          	learned: "Learnt about room proxies, doorways, threat awareness actors, stack up points.",
+          	wentWrong: "Stairs! AI navigation around stairs proved to be difficult."
+        }
+    },
+	{
+        id: 6,
+        name: "Daredevil",
+        subtitle: "Shipyard and Warehouse",
+        color: "#f0323c",   // card border colour
+        stats: [{ value: "6", label: "Systems (save, train, armor, mission select and more)" }, { value: "3", label: "Paths in level 1" }],
+        keywords: ["interactive hub", "mini-boss", "security cameras", "Nanite"],
+        galleryGroups: [["ddreferences"], ["ddhome", "murdock", "dojo", "bathroom", "shooting", "spawn", "lockers"], ["warehouse"], ["shipyard"]],   // gallery order: one list per group of similar images
+        timeline: [
+          { title: "Inspiration", text: "The home level takes its loadout, mission select and interaction idea from Ready Or Not's headquarters. In Ready or Not, different areas in the police HQ do different things, like a range to practice, locker room to customize weapons, briefing room to select missions, etc. ", images: ["projects/daredevil-levels/timeline/Shooting_Range_Inner.webp", "projects/daredevil-levels/timeline/Spawn.webp", "projects/daredevil-levels/timeline/Lockers.webp"] },
+          { title: "Level 0: Home map design", text: "Designed the home level as an interactive hub with distinct zones, each with its own purpose. This is Daredevil's base of operations.", images: ["projects/daredevil-levels/timeline/murdockapartment2.webp", "projects/daredevil-levels/timeline/murdockapartment.webp"] },
+          { title: "Level 1: Warehouses blockout", text: "Blocked out the smaller warehouses, which hide civilians who need rescuing and hints that tie into the larger story." },
+          { title: "Shipyard map design", text: "Planned the layout of the shipyard on New York's docks: a hostile combat area filled with enemies and story clues, with a docked ship that holds a mini-boss fight." },
+          { title: "Home blockout", text: "Blocked out the home level with kitchen (health), dojo (training), and bedroom areas (save/exit), interrogation room (mission select)." },
+          { title: "Path options", text: "The player chooses how to cross the shipyard: go straight into the fight, or stay quiet and avoid the security cameras to take enemies down one at a time.", images: ["projects/daredevil-levels/layout/daredevilwarehouse.jpeg"] },
+          { title: "Modeling in Blender", text: "Modeled the assets in Blender for the warehouses and the shipyard." },
+          { title: "Shipyard blockout", text: "Blocked out the shipyard on the docks: the open yard, the docked ship with room for its mini-boss fight, a quiet left side for stealth takedowns, and a right side with more enemies and security cameras.", images: ["projects/daredevil-levels/gallery/ddshipyard.webp"] },
+          { title: "Performance fix", text: "Some assets and materials were too detailed and dropped the frame rate. Fixed it with Nanite and lower polygon counts." }
+        ],
+		isCurrent: true,
+        tags: ["Levels", "Systems", "Solo Project", "Third-Person", "Single Player"],
+		duration: "2 months",
+        role: "Level Designer, Blockout, Environment Art, Set Dressing",
+		type: "Solo Developer - Fan Game",
+        tools: ["UE5", "Blender", "Photoshop", "Blueprints"],
+        thumbnail: "projects/daredevil-levels/cover.webp",
+        mainImages: ["projects/daredevil-levels/media/ddhome1.webp", "projects/daredevil-levels/media/ddshipyard2.webp", "projects/daredevil-levels/media/ddwarehouse.webp"],
+        mainVideo: null,
+        game: "**Daredevil:** A fan game (in progress) with Daredevil as the main character. It has different types of combat (hand-to-hand, melee and ranged weapons, throwables, etc.) and parkour-like movement abilities.",
+		description: "I designed and built two spaces for a Daredevil fan game: a home hub, and a shipyard with warehouses.",
+        layoutImages: ["projects/daredevil-levels/layout/daredevilwarehouse.jpeg"], 
+		gallery: ["projects/daredevil-levels/gallery/ddbathroom.webp", "projects/daredevil-levels/gallery/ddreferences.webp", "projects/daredevil-levels/gallery/ddreferences2.webp", "projects/daredevil-levels/gallery/dddojo.webp", "projects/daredevil-levels/gallery/ddwarehousestairs.webp", "projects/daredevil-levels/gallery/ddshipyard.webp", "projects/daredevil-levels/gallery/ddwarehouse2.webp"],
+        galleryVideos: [null],
+        postmortem: {
+	          wentWell: "Levels look visually realistic, cohesive, and memorable.",
+	          learned: "Learnt how to use trigger boxes to implement realistic interaction system.",
+	          wentWrong: "Some assets and materials were too detailed and reduced FPS greatly. Fixed it by implementing Nanite and lower polygon counts."
+        }
     },
 	{
         id: 7,
